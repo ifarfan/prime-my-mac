@@ -107,7 +107,7 @@ function run_ansible_provisioning {
 }
 
 
-function all_install {
+function install_all {
 	echo " ${BLACK}-${NORMAL}  Bootstrap Go!"
 	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 
@@ -127,4 +127,4 @@ function all_install {
 	echo " ${BLACK}-${NORMAL}  Bootstrap Done!"
 }
 
-all_install
+install_all
