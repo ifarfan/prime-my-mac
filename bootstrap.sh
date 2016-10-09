@@ -42,6 +42,7 @@ function xcode_cli_install {
 		touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 		XCODE_CLT_VER=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
 		softwareupdate -i "$XCODE_CLT_VER" -v
+		rm -rf /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 	fi
 }
 
