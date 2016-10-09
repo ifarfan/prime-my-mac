@@ -28,21 +28,23 @@ WHITE=$(tput setaf 7)
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+#  Variables
+TMP_DIR=~/.tmp
+GIT_REPO=https://github.com/ifarfan/prime-my-mac.git
+
 
 function status_msg {
 	#
-	#  status_msg: Print package install status
+	#  Print package install status
 	#
-	[[ "$1" -ne 0 ]] && echo "${BLACK}[${RED}N${BLACK}]${NORMAL} Installing ${BLUE}$2${NORMAL}..." || echo "${BLACK}[${GREEN}Y${BLACK}]${NORMAL} ${BLUE}$2${NORMAL} already installed"
+	[[ "$1" -ne 0 ]] && echo "${BLACK}[${RED}N${BLACK}]${NORMAL} Installing ${BLUE}$2${NORMAL}..." || echo "${BLACK}[${GREEN}Y${BLACK}]${NORMAL} ${BLUE}$2${NORMAL} installed"
 }
 
 
-function xcode_cli_install {
+function install_xcode_cli {
 	#
-	#  Xcode CLI tools:
 	#  Tell "softwareupdate" that we were installing the CLI tool before and will attempt to continue
-	#
-	#  With help from: https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+	#  With help from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
 	#
 	XCODE_ERR_CODE=$(command -v xcode-select > /dev/null 2>&1; echo $?)
 	status_msg "$XCODE_ERR_CODE" "XCode Command Line Tools"
@@ -57,9 +59,9 @@ function xcode_cli_install {
 }
 
 
-function pip_install {
+function install_pip {
 	#
-	#  pip: via "easy_install"
+	#  Install via "easy_install"
 	#
 	PIP_ERR_CODE=$(command -v pip > /dev/null 2>&1; echo $?)
 	status_msg "$PIP_ERR_CODE" "pip"
@@ -67,9 +69,9 @@ function pip_install {
 }
 
 
-function ansible_install {
+function install_ansible {
 	#
-	#  ansible: https://www.ansible.com/
+	#  https://www.ansible.com/
 	#
 	ANSIBLE_ERR_CODE=$(command -v ansible > /dev/null 2>&1; echo $?)
 	status_msg "$ANSIBLE_ERR_CODE" "ansible"
@@ -77,9 +79,9 @@ function ansible_install {
 }
 
 
-function brew_install {
+function install_brew {
 	#
-	#  homebrew: http://brew.sh/
+	#  http://brew.sh/
 	#
 	BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
 	status_msg "$BREW_ERR_CODE" "homebrew"
@@ -87,15 +89,39 @@ function brew_install {
 }
 
 
+function install_git_repo {
+	#
+	#  Fetch repo with ansible playbook
+	#
+	status_msg 1 "Git repository"
+	[[ -d "$TMP_DIR" ]] && cd $TMP_DIR && git fetch && cd - > /dev/null 2>&1 || git clone ${GIT_REPO} $TMP_DIR/
+}
+
+
+function run_ansible_provisioning {
+	#
+	#  Run ansible playbook
+	#
+	status_msg 1 "ansible provisioning"
+	# TODO: invoke playbook
+}
+
+
 function all_install {
 	echo " ${BLACK}-${NORMAL}  Bootstrap Go!"
 	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 
-	#  Packages
-	xcode_cli_install
-	pip_install
-	ansible_install
-	brew_install
+	#  Install components
+	install_xcode_cli
+	install_pip
+	install_ansible
+	install_brew
+
+	#  Get repo
+	install_git_repo
+
+	#  Run ansible Provisioning
+	run_ansible_provisioning
 
 	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 	echo " ${BLACK}-${NORMAL}  Bootstrap Done!"
