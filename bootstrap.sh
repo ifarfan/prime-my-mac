@@ -95,4 +95,3 @@ function all_install {
 }
 
 all_install
-exit 0
