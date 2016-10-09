@@ -32,7 +32,7 @@ function xcode_cli_install {
 	#  Tell "softwareupdate" that we were installing the CLI tool before and will attempt install from scratch
 	#
 	#  With help from:
-	#  - https://github.com/timsutton/osx-vm-templates/blob/ce8df8a7468faa7c5312444ece1b977c1b2f77a4/scripts/xcode-cli-tools.sh
+	#  - https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
 	#
 	XCODE_ERR_CODE=$(command -v xcode-select > /dev/null 2>&1; echo $?)
 	status_msg "$XCODE_ERR_CODE" "XCode Command Line"
