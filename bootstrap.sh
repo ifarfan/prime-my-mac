@@ -21,18 +21,16 @@ function status_msg {
 	#
 	#  status_msg: Print package install status
 	#
-	[[ "$1" -ne 0 ]] && echo "[_] - Installing '$2'..." || echo "[X] - '$2' already installed"
+	[[ "$1" -ne 0 ]] && echo "[.] - Installing '$2'..." || echo "[X] - '$2' already installed"
 }
 
 
 function xcode_cli_install {
 	#
 	#  Xcode CLI tools:
+	#  Tell "softwareupdate" that we were installing the CLI tool before and will attempt to continue
 	#
-	#  Tell "softwareupdate" that we were installing the CLI tool before and will attempt install from scratch
-	#
-	#  With help from:
-	#  - https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+	#  With help from: https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
 	#
 	XCODE_ERR_CODE=$(command -v xcode-select > /dev/null 2>&1; echo $?)
 	status_msg "$XCODE_ERR_CODE" "XCode Command Line"
@@ -53,7 +51,6 @@ function pip_install {
 	#
 	PIP_ERR_CODE=$(command -v pip > /dev/null 2>&1; echo $?)
 	status_msg "$PIP_ERR_CODE" "pip"
-
 	[[ "$PIP_ERR_CODE" -ne 0 ]] && sudo easy_install pip
 }
 
@@ -64,7 +61,6 @@ function ansible_install {
 	#
 	ANSIBLE_ERR_CODE=$(command -v ansible > /dev/null 2>&1; echo $?)
 	status_msg "$ANSIBLE_ERR_CODE" "ansible"
-
 	[[ "$ANSIBLE_ERR_CODE" -ne 0 ]] && sudo pip install ansible --quiet
 }
 
@@ -75,7 +71,6 @@ function brew_install {
 	#
 	BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
 	status_msg "$BREW_ERR_CODE" "homebrew"
-
 	[[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
@@ -90,7 +85,6 @@ function all_install {
 	ansible_install
 	brew_install
 
-	#  Exit
 	echo " - ---------------------"
 	echo " -  Bootstrap Done!"
 }
