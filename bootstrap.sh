@@ -16,12 +16,24 @@
 #
 #  =============================================================================
 
+#  Colors
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
 
 function status_msg {
 	#
 	#  status_msg: Print package install status
 	#
-	[[ "$1" -ne 0 ]] && echo "[.] - Installing '$2'..." || echo "[X] - '$2' already installed"
+	[[ "$1" -ne 0 ]] && echo "${BLACK}[${RED}N${BLACK}]${NORMAL} Installing ${BLUE}$2${NORMAL}..." || echo "${BLACK}[${GREEN}Y${BLACK}]${NORMAL} ${BLUE}$2${NORMAL} already installed"
 }
 
 
@@ -33,7 +45,7 @@ function xcode_cli_install {
 	#  With help from: https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
 	#
 	XCODE_ERR_CODE=$(command -v xcode-select > /dev/null 2>&1; echo $?)
-	status_msg "$XCODE_ERR_CODE" "XCode Command Line"
+	status_msg "$XCODE_ERR_CODE" "XCode Command Line Tools"
 
 	if [ "$XCODE_ERR_CODE" -ne 0 ]
 	then
@@ -76,8 +88,8 @@ function brew_install {
 
 
 function all_install {
-	echo " -  Bootstrap Go!"
-	echo " - ---------------------"
+	echo " ${BLACK}-${NORMAL}  Bootstrap Go!"
+	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 
 	#  Packages
 	xcode_cli_install
@@ -85,8 +97,8 @@ function all_install {
 	ansible_install
 	brew_install
 
-	echo " - ---------------------"
-	echo " -  Bootstrap Done!"
+	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
+	echo " ${BLACK}-${NORMAL}  Bootstrap Done!"
 }
 
 all_install
