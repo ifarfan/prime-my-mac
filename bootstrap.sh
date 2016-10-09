@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #=======================================================================
 #
@@ -16,81 +16,83 @@
 #  curl -fsSL https://github.com/ifarfan/prime-my-mac/bootstrap.sh | bash
 #
 #=======================================================================
-echo " -  Bootstrap Go!"
-echo " - ---------------------"
+
+function status_msg {
+	#
+	#  status_msg: Print package install status
+	#
+	[[ "$1" -ne 0 ]] && echo "[_] - Installing '$2'..." || echo "[X] - '$2' already installed"
+}
 
 
-#
-#  Xcode CLI tools:
-#
-#  Tell "softwareupdate" that we were installing the CLI tool before and
-#  will attempt install from scratch
-#
-#  With help from:
-#  - https://github.com/timsutton/osx-vm-templates/blob/ce8df8a7468faa7c5312444ece1b977c1b2f77a4/scripts/xcode-cli-tools.sh
-#
-xcode-select -p > /dev/null 2>&1
-XCODE_ERR_CODE=$(echo $?)
+function xcode_cli_install {
+	#
+	#  Xcode CLI tools:
+	#
+	#  Tell "softwareupdate" that we were installing the CLI tool before and will attempt install from scratch
+	#
+	#  With help from:
+	#  - https://github.com/timsutton/osx-vm-templates/blob/ce8df8a7468faa7c5312444ece1b977c1b2f77a4/scripts/xcode-cli-tools.sh
+	#
+	XCODE_ERR_CODE=$(command -v xcode-select > /dev/null 2>&1; echo $?)
+	status_msg "$XCODE_ERR_CODE" "XCode Command Line"
 
-if [ "$XCODE_ERR_CODE" -ne 0 ]
-then
-	echo "[_] - Installing XCode Command Line Tools..."
-	touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-	XCODE_CLT_VER=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
-	softwareupdate -i "$XCODE_CLT_VER" -v
-else
-	echo "[X] - 'XCode Command Line Tools' already installed"
-fi
+	if [ "$XCODE_ERR_CODE" -ne 0 ]
+	then
+		touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+		XCODE_CLT_VER=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+		softwareupdate -i "$XCODE_CLT_VER" -v
+	fi
+}
 
 
-#
-#  pip:
-#  Via "easy_install"
-#
-pip --version > /dev/null 2>&1
-PIP_ERR_CODE=$(echo $?)
+function pip_install {
+	#
+	#  pip: via "easy_install"
+	#
+	PIP_ERR_CODE=$(command -v pip > /dev/null 2>&1; echo $?)
+	status_msg "$PIP_ERR_CODE" "pip"
 
-if [ "$PIP_ERR_CODE" -ne 0 ]
-then
-	echo "[_] - Installing pip..."
-	sudo easy_install pip
-else
-	echo "[X] - 'pip' already installed"
-fi
+	[[ "$PIP_ERR_CODE" -ne 0 ]] && sudo easy_install pip
+}
 
 
-#
-#  ansible:
-#
-ansible --version > /dev/null 2>&1
-ANSIBLE_ERR_CODE=$(echo $?)
+function ansible_install {
+	#
+	#  ansible: https://www.ansible.com/
+	#
+	ANSIBLE_ERR_CODE=$(command -v ansible > /dev/null 2>&1; echo $?)
+	status_msg "$ANSIBLE_ERR_CODE" "ansible"
 
-if [ "$ANSIBLE_ERR_CODE" -ne 0 ]
-then
-	echo "[_] - Installing ansible..."
-	sudo pip install ansible --quiet
-else
-	echo "[X] - 'ansible' already installed"
-fi
+	[[ "$ANSIBLE_ERR_CODE" -ne 0 ]] && sudo pip install ansible --quiet
+}
 
 
-#
-#  homebrew:
-#  http://brew.sh/
-#
-brew --version > /dev/null 2>&1
-BREW_ERR_CODE=$(echo $?)
+function brew_install {
+	#
+	#  homebrew: http://brew.sh/
+	#
+	BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
+	status_msg "$BREW_ERR_CODE" "homebrew"
 
-if [ "$BREW_ERR_CODE" -ne 0 ]
-then
-	echo "[_] - Installing homebrew..."
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-	echo "[X] - 'homebrew' already installed"
-fi
+	[[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
 
 
-#  Exit
-echo " - ---------------------"
-echo " -  Bootstrap Done!"
+function all_install {
+	echo " -  Bootstrap Go!"
+	echo " - ---------------------"
+
+	#  Packages
+	xcode_cli_install
+	pip_install
+	ansible_install
+	brew_install
+
+	#  Exit
+	echo " - ---------------------"
+	echo " -  Bootstrap Done!"
+}
+
+all_install
 exit 0
