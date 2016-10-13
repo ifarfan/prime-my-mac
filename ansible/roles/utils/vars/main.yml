@@ -5,10 +5,8 @@
 #
 #===============================================================================
 brew_pkgs:
-- aws-shell
 - awscli
-- bash
-- bash-completion
+- aws-shell
 - colordiff
 - dockutil
 - git-flow
@@ -26,6 +24,8 @@ brew_pkgs:
 - watch
 - wget
 - z
+- bash
+- bash-completion
 
 cask_pkgs:
 - caffeine

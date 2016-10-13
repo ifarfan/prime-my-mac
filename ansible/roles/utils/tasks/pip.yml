@@ -8,4 +8,7 @@
   pip:
     name={{ item }}
     state=present
+    become: true
+    become_method: sudo
+    become_user: root
   with_items: "{{ pip_pkgs }}"
