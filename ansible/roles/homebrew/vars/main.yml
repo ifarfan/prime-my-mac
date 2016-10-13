@@ -1,0 +1,45 @@
+---
+#===============================================================================
+#
+#  V A R S / M A I N . Y M L
+#
+#===============================================================================
+brew_pkgs:
+- aws-shell
+- awscli
+- bash
+- bash-completion
+- colordiff
+- git-flow
+- grc
+- gpg
+- htop
+- hub
+- imagemagick
+- jq
+- nmap
+- pup
+- tmux
+- tree
+- unrar
+- watch
+- wget
+- z
+
+cask_pkgs:
+- caffeine
+- dropbox
+- evernote
+- firefox
+- google-chrome
+- google-drive
+- iterm2
+- omnigraffle
+- skype
+- slack
+- spectacle
+- spotify
+- sublime
+- the-unarchiver
+- utorrent
+- virtualbox
