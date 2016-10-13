@@ -1,0 +1,12 @@
+---
+#===============================================================================
+#
+#  T A S K S / H O M E B R E W . Y M L
+#
+#===============================================================================
+- name: Install Homebrew packages
+  homebrew:
+    name={{ item }}
+    state=present
+    update_homebrew=yes
+  with_items: "{{ brew_pkgs }}"

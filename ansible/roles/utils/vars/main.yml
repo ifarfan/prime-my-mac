@@ -43,3 +43,7 @@ cask_pkgs:
 - the-unarchiver
 - utorrent
 - virtualbox
+
+pip_pkgs:
+- httpie
+- pygments

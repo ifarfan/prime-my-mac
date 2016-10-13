@@ -94,7 +94,7 @@ function install_git_repo {
 	#  Fetch repo with ansible playbook
 	#
 	status_msg 1 "Git repository"
-	[[ -d "$TMP_DIR" ]] && cd $TMP_DIR && git fetch && cd - > /dev/null 2>&1 || git clone ${GIT_REPO} $TMP_DIR/
+	[[ -d "$TMP_DIR" ]] && cd $TMP_DIR && git pull && cd - > /dev/null 2>&1 || git clone ${GIT_REPO} $TMP_DIR/
 }
 
 
