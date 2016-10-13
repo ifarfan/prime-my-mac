@@ -4,12 +4,6 @@
 #  T A S K S / P I P . Y M L
 #
 #===============================================================================
-- name: Upgrade pip via easy_install
-  command: >
-    easy_install -U pip
-  register: pip_install
-  changed_when: pip_install.stdout.find('Adding pip') != -1
-
 - name: Install pip packages
   pip:
     name={{ item }}

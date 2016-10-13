@@ -10,6 +10,7 @@ brew_pkgs:
 - bash
 - bash-completion
 - colordiff
+- dockutil
 - git-flow
 - grc
 - gpg
