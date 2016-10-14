@@ -8,5 +8,5 @@
   pip:
     name={{ item }}
     state=present
-    become: true
   with_items: "{{ pip_pkgs }}"
+  become: true

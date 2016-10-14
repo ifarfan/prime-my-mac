@@ -66,6 +66,13 @@ function install_pip {
 	PIP_ERR_CODE=$(command -v pip > /dev/null 2>&1; echo $?)
 	status_msg "$PIP_ERR_CODE" "pip"
 	[[ "$PIP_ERR_CODE" -ne 0 ]] && sudo easy_install pip
+
+	#  Install pip packages
+	pip_pks=( ansible httpie json2yaml pygments )
+	for pkg in "${pip[@]}"
+	do
+	   sudo pip install $pkg
+	done
 }
 
 
@@ -86,6 +93,20 @@ function install_brew {
 	BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
 	status_msg "$BREW_ERR_CODE" "homebrew"
 	[[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+	#  Install packages
+	brew_pks=( awscli aws-shell colordiff dockutil git-flow grc gpg htop hub imagemagick jq nmap pup tmux tree unrar watch wget z bash bash-completion )
+	for pkg in "${brew_pks[@]}"
+	do
+	   brew install $pkg
+	done
+
+	#  Install cask packages
+	cask_pks=( 1password a-better-finder-rename alfred caffeine coconutbattery cyberduck dropbox firefox google-chrome istat-menus iterm2 handbrake kitematic max meld omnigraffle querious skitch skype slack smcfancontrol spectacle spotify sublime-text teamviewer the-unarchiver timemachineeditor unetbootin unison utorrent virtualbox vagrant vagrant-manager vlc watts wireshark )
+	for pkg in "${cask_pks[@]}"
+	do
+	   brew cask install $pkg
+	done
 }
 
 

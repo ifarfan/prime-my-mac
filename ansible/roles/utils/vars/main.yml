@@ -28,22 +28,42 @@ brew_pkgs:
 - bash-completion
 
 cask_pkgs:
+- 1password
+- a-better-finder-rename
+- alfred
 - caffeine
+- coconutbattery
+- cyberduck
 - dropbox
-- evernote
 - firefox
 - google-chrome
-- google-drive
+- istat-menus
 - iterm2
+- handbrake
+- kitematic
+- max
+- meld
 - omnigraffle
+- querious
+- skitch
 - skype
 - slack
+- smcfancontrol
 - spectacle
 - spotify
-- sublime
+- sublime-text
+- teamviewer
 - the-unarchiver
+- timemachineeditor
+- unetbootin
+- unison
 - utorrent
 - virtualbox
+- vagrant
+- vagrant-manager
+- vlc
+- watts
+- wireshark
 
 pip_pkgs:
 - httpie
