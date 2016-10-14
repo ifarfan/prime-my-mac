@@ -43,42 +43,47 @@ declare brew_pkgs=(
 #  homebrew cask packages
 declare cask_pkgs=(
   1password
-  a-better-finder-rename
-  alfred
-  caffeine
-  coconutbattery
   dropbox
-  electric-sheep
   firefox
   google-chrome
   google-hangouts
-  istat-menus
   iterm2
   handbrake
   kitematic
   macdown
-  max
   meld
   omnigraffle
   querious
   skitch
   skype
   slack
-  smcfancontrol
-  spectacle
   spotify
   sublime-text
   teamviewer
-  the-unarchiver
-  timemachineeditor
   transmit
-  unetbootin
   unison
   utorrent
   virtualbox
   vagrant
   vagrant-manager
   vlc
+)
+
+
+#  homebrew cask utility packages
+declare cask_utils_pkgs=(
+  a-better-finder-rename
+  alfred
+  caffeine
+  coconutbattery
+  electric-sheep
+  istat-menus
+  max
+  smcfancontrol
+  spectacle
+  the-unarchiver
+  timemachineeditor
+  unetbootin
   watts
   wireshark
 )
@@ -106,6 +111,6 @@ declare dock_apps=(
 
 #  Dock Folders
 declare dock_folders=(
-  Applications
-  ~/Downloads
+  '/Applications'
+  '~/Downloads'
 )

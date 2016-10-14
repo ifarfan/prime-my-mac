@@ -80,6 +80,10 @@ function install_brew {
   do
      brew cask install $pkg
   done
+  for pkg in "${cask_utils_pkgs[@]}"
+  do
+     brew cask install $pkg --appdir /Applications/Utilities
+  done
 
   #  Install work-related packages
   for pkg in "${cask_work_pkgs[@]}"
@@ -109,24 +113,21 @@ function run_ansible_provisioning {
 
 
 function dock_setup {
-  #  Clean-up dock (remove all apps, folders & spacers -- put spacer between apps + folders)
-  dock_items=$(dockutil --list | cut -f1)
-  for dock_item in "${dock_items[@]}"
-  do
-     dockutil --remove '$dock_item'
-  done
-  dockutil --remove spacer-tiles
-  dockutil --add '' --type spacer --section apps
+
+  status_msg "0" "Custom Dock Setup"
+  #
+  #  Remove everything first
+  dockutil --remove all --no-restart
 
   #  Add new apps
   for dock_item in "${dock_apps[@]}"
   do
-     dockutil --add '/Applications/${dock_item}.app'
+    dockutil --add "/Applications/${dock_item}.app"
   done
 
   #  Add new folders
   for dock_item in "${dock_folders[@]}"
   do
-     dockutil --add '$dock_item' --view grid --display folder
+    dockutil --add "${dock_item}" --view grid --display folder --sort name
   done
 }
