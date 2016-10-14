@@ -108,6 +108,9 @@ function run_ansible_provisioning {
 
 
 function install_all {
+	#  Get sudo password out of the way
+	sudo -v
+
 	echo " ${BLACK}-${NORMAL}  Bootstrap Go!"
 	echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 
