@@ -34,6 +34,7 @@ cask_pkgs:
 - caffeine
 - coconutbattery
 - dropbox
+- electric-sheep
 - firefox
 - google-chrome
 - istat-menus
@@ -73,4 +74,5 @@ cask_work_pkgs:
 
 pip_pkgs:
 - httpie
+- json2yaml
 - pygments
