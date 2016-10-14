@@ -16,6 +16,7 @@
 #  Include libraries + variables
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 . $DIR/lib/_globals.sh
+. $DIR/lib/_data.sh
 
 
 #  Update sudo timestamp until script is finished
@@ -29,6 +30,9 @@ echo " ${BLACK}-  ----------------------------------------${NORMAL}"
 install_xcode_cli
 install_pip
 install_brew
+
+#  Customizations
+dock_setup
 
 #  Footer
 echo " ${BLACK}-  ----------------------------------------${NORMAL}"

@@ -5,6 +5,7 @@
 #
 #  =============================================================================
 
+
 #  Colors
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)
@@ -16,92 +17,6 @@ CYAN=$(tput setaf 6)
 WHITE=$(tput setaf 7)
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
-
-
-#  pip packages
-declare pip_pkgs=(
-  httpie
-  json2yaml
-  pygments
-)
-
-
-#  homebrew packages
-declare brew_pkgs=(
-  awscli
-  aws-shell
-  colordiff
-  dockutil
-  git-flow
-  grc
-  gpg
-  htop
-  hub
-  imagemagick
-  jq
-  nmap
-  pup
-  tmux
-  tree
-  unrar
-  watch
-  wget
-  z
-  bash
-  bash-completion
-)
-
-
-#  homebrew cask packages
-declare cask_pkgs=(
-  1password
-  a-better-finder-rename
-  alfred
-  caffeine
-  coconutbattery
-  dropbox
-  electric-sheep
-  firefox
-  google-chrome
-  google-hangouts
-  istat-menus
-  iterm2
-  handbrake
-  kitematic
-  macdown
-  max
-  meld
-  omnigraffle
-  querious
-  skitch
-  skype
-  slack
-  smcfancontrol
-  spectacle
-  spotify
-  sublime-text
-  teamviewer
-  the-unarchiver
-  timemachineeditor
-  transmit
-  unetbootin
-  unison
-  utorrent
-  virtualbox
-  vagrant
-  vagrant-manager
-  vlc
-  watts
-  wireshark
-)
-
-
-#  Work-related packages
-declare cask_work_pkgs=(
-  postico
-  tunnelblick
-  zoomus
-)
 
 
 function status_msg {
@@ -190,4 +105,28 @@ function run_ansible_provisioning {
   #
   status_msg 1 "ansible provisioning"
   # TODO: invoke playbook
+}
+
+
+function dock_setup {
+  #  Clean-up dock (remove all apps, folders & spacers -- put spacer between apps + folders)
+  dock_items=$(dockutil --list | cut -f1)
+  for dock_item in "${dock_items[@]}"
+  do
+     dockutil --remove '$dock_item'
+  done
+  dockutil --remove spacer-tiles
+  dockutil --add '' --type spacer --section apps
+
+  #  Add new apps
+  for dock_item in "${dock_apps[@]}"
+  do
+     dockutil --add '/Applications/${dock_item}.app'
+  done
+
+  #  Add new folders
+  for dock_item in "${dock_folders[@]}"
+  do
+     dockutil --add '$dock_item' --view grid --display folder
+  done
 }
