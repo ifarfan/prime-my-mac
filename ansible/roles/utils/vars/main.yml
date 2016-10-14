@@ -37,6 +37,7 @@ cask_pkgs:
 - electric-sheep
 - firefox
 - google-chrome
+- google-hangouts
 - istat-menus
 - iterm2
 - handbrake

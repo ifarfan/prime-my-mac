@@ -63,6 +63,7 @@ declare cask_pkgs=(
   electric-sheep
   firefox
   google-chrome
+  google-hangouts
   istat-menus
   iterm2
   handbrake
@@ -138,7 +139,7 @@ function install_pip {
   [[ "$PIP_ERR_CODE" -ne 0 ]] && sudo easy_install pip
 
   #  Install pip packages
-  for pkg in "${pip_pks[@]}"
+  for pkg in "${pip_pkgs[@]}"
   do
      sudo pip install $pkg
   done
@@ -154,13 +155,13 @@ function install_brew {
   [[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   #  Install packages
-  for pkg in "${brew_pks[@]}"
+  for pkg in "${brew_pkgs[@]}"
   do
      brew install $pkg
   done
 
   #  Install cask packages
-  for pkg in "${cask_pks[@]}"
+  for pkg in "${cask_pkgs[@]}"
   do
      brew cask install $pkg
   done
@@ -170,4 +171,23 @@ function install_brew {
   do
      brew cask install $pkg
   done
+}
+
+
+function install_ansible {
+  #
+  #  https://www.ansible.com/
+  #
+  ANSIBLE_ERR_CODE=$(command -v ansible > /dev/null 2>&1; echo $?)
+  status_msg "$ANSIBLE_ERR_CODE" "ansible"
+  [[ "$ANSIBLE_ERR_CODE" -ne 0 ]] && sudo pip install ansible --quiet
+}
+
+
+function run_ansible_provisioning {
+  #
+  #  Run ansible playbook
+  #
+  status_msg 1 "ansible provisioning"
+  # TODO: invoke playbook
 }
