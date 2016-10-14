@@ -102,7 +102,7 @@ function install_brew {
 	done
 
 	#  Install cask packages
-	cask_pks=( 1password a-better-finder-rename alfred caffeine coconutbattery dropbox firefox google-chrome istat-menus iterm2 handbrake kitematic max meld omnigraffle querious skitch skype slack smcfancontrol spectacle spotify sublime-text teamviewer the-unarchiver timemachineeditor transmit unetbootin unison utorrent virtualbox vagrant vagrant-manager vlc watts wireshark )
+	cask_pks=( 1password a-better-finder-rename alfred caffeine coconutbattery dropbox firefox google-chrome istat-menus iterm2 handbrake kitematic macdown max meld omnigraffle querious skitch skype slack smcfancontrol spectacle spotify sublime-text teamviewer the-unarchiver timemachineeditor transmit unetbootin unison utorrent virtualbox vagrant vagrant-manager vlc watts wireshark )
 	for pkg in "${cask_pks[@]}"
 	do
 	   brew cask install $pkg

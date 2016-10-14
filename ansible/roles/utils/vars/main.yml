@@ -40,6 +40,7 @@ cask_pkgs:
 - iterm2
 - handbrake
 - kitematic
+- macdown
 - max
 - meld
 - omnigraffle
@@ -64,6 +65,11 @@ cask_pkgs:
 - vlc
 - watts
 - wireshark
+
+cask_work_pkgs:
+- postico
+- tunnelblick
+- zoomus
 
 pip_pkgs:
 - httpie
