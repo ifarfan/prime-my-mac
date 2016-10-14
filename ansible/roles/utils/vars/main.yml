@@ -33,7 +33,6 @@ cask_pkgs:
 - alfred
 - caffeine
 - coconutbattery
-- cyberduck
 - dropbox
 - firefox
 - google-chrome
@@ -55,6 +54,7 @@ cask_pkgs:
 - teamviewer
 - the-unarchiver
 - timemachineeditor
+- transmit
 - unetbootin
 - unison
 - utorrent
