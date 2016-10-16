@@ -64,10 +64,10 @@ fi
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #  Install components
-[[ "$FG_ALL" == true || "$FG_PIP" == true ]]                && install_pip
-[[ "$FG_ALL" == true || "$FG_BREW" == true == true ]]       && install_brew
-[[ "$FG_ALL" == true || "$FG_BREW_CASK" == true ]]          && install_brew_cask
-[[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true == true ]] && install_brew_fonts
+[[ "$FG_ALL" == true || "$FG_PIP" == true ]]        && install_pip
+[[ "$FG_ALL" == true || "$FG_BREW" == true ]]       && install_brew
+[[ "$FG_ALL" == true || "$FG_BREW_CASK" == true ]]  && install_brew_cask
+[[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true ]] && install_brew_fonts
 
 #  OS X Customizations
 if [ "$FG_ALL" == true || "$FG_OSX" == true ]
