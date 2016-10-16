@@ -70,7 +70,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 [[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true ]] && install_brew_fonts
 
 #  OS X Customizations
-if [ "$FG_ALL" == true || "$FG_OSX" == true ]
+if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]
 then
     dock_tweaks
     finder_tweaks
@@ -82,7 +82,7 @@ then
 fi
 
 #  App specific Customizations
-if [ "$FG_ALL" == true || "$FG_APPS" == true ]
+if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
 then
     activity_monitor_app_tweaks
     google_chrome_app_tweaks
