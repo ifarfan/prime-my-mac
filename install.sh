@@ -22,9 +22,9 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 #  Usage
 usage() {
-    echo -e "${BOLD}Usage${NORMAL}: $0 [ ${BOLD}--app-tweaks${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
+    echo -e "${BOLD}Usage${NORMAL}: ${0##*/} [ ${BOLD}--app-tweaks${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
     echo -e "Note:" 1>&2
-    echo -e "- if not arguments are passed, everything installed" 1>&2
+    echo -e "- if no arguments are passed, everything is installed" 1>&2
     exit 1
 }
 
@@ -39,7 +39,7 @@ FG_BASH_IT=false
 FG_OSX=false
 FG_APPS=false
 
-#  Determine flags enabled
+#  Determine flags enabled via parameters
 if [ -z "$@" ]
 then
     FG_ALL=true                                     #  Install everything!
@@ -64,13 +64,13 @@ fi
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #  Install components
-[[ "$FG_ALL" || "$FG_PIP" ]]        && install_pip
-[[ "$FG_ALL" || "$FG_BREW" ]]       && install_brew
-[[ "$FG_ALL" || "$FG_BREW_CASK" ]]  && install_brew_cask
-[[ "$FG_ALL" || "$FG_BREW_FONTS" ]] && install_brew_fonts
+[[ "$FG_ALL" == true || "$FG_PIP" == true ]]                && install_pip
+[[ "$FG_ALL" == true || "$FG_BREW" == true == true ]]       && install_brew
+[[ "$FG_ALL" == true || "$FG_BREW_CASK" == true ]]          && install_brew_cask
+[[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true == true ]] && install_brew_fonts
 
 #  OS X Customizations
-if [ "$FG_ALL" || "$FG_OSX" ]
+if [ "$FG_ALL" == true || "$FG_OSX" == true ]
 then
     dock_tweaks
     finder_tweaks
@@ -82,7 +82,7 @@ then
 fi
 
 #  App specific Customizations
-if [ "$FG_ALL" || "$FG_APPS" ]
+if [ "$FG_ALL" == true || "$FG_APPS" == true ]
 then
     activity_monitor_app_tweaks
     google_chrome_app_tweaks
@@ -93,5 +93,5 @@ then
 fi
 
 #  Set user shell last
-[[ "$FG_ALL" || "$FG_BASH_IT" ]] && install_bash_it
-[[ "$FG_ALL" || "$FG_PREZTO" ]]  && install_prezto
+[[ "$FG_ALL" == true || "$FG_BASH_IT" == true ]] && install_bash_it
+[[ "$FG_ALL" == true || "$FG_PREZTO" == true ]]  && install_prezto
