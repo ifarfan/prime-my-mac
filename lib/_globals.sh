@@ -112,6 +112,7 @@ function install_brew_fonts {
 
 function install_prezto {
   if [ -d "$HOME/.zprezto" ]
+  then
     cd "$HOME/.zprezto" && git pull && git submodule update --init --recursive
   else
     git clone --recursive https://github.com/sorin-ionescu/prezto.git $HOME/.zprezto

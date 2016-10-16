@@ -22,9 +22,9 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 #  Usage
 usage() {
-    echo -e "${BOLD}Usage${NORMAL}: $0 [ --app-tweaks | --bash-it | --brew | --cask | --fonts | --pip | --prezto | --osx-tweaks]" 1>&2
+    echo -e "${BOLD}Usage${NORMAL}: $0 [ ${BOLD}--app-tweaks${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
     echo -e "Note:" 1>&2
-    echo -e "- if not arguments are passed, all sections are installed" 1>&2
+    echo -e "- if not arguments are passed, everything installed" 1>&2
     exit 1
 }
 
