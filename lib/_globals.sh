@@ -27,21 +27,15 @@ function status_msg {
 }
 
 
-function install_xcode_cli {
-  #
-  #  Tell "softwareupdate" that we were installing the CLI tool before and will attempt to continue
-  #  With help from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-  #
-  XCODE_ERR_CODE=$(xcode-select -p > /dev/null 2>&1; echo $?)
-  status_msg "$XCODE_ERR_CODE" "XCode Command Line Tools"
+function print_header {
+  echo " ${BLACK}-${NORMAL}  Bootstrap Go!"
+  echo " ${BLACK}-  ----------------------------------------${NORMAL}"
+}
 
-  if [ "$XCODE_ERR_CODE" -ne 0 ]
-  then
-    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    XCODE_CLT_VER=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
-    softwareupdate -i "$XCODE_CLT_VER" -v
-    rm -rf /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-  fi
+
+function print_footer {
+  echo " ${BLACK}-  ----------------------------------------${NORMAL}"
+  echo " ${BLACK}-${NORMAL}  Bootstrap Done!"
 }
 
 
@@ -61,28 +55,39 @@ function install_pip {
 }
 
 
-function install_brew {
+function brew_me {
   #
   #  http://brew.sh/
   #
   BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
   status_msg "$BREW_ERR_CODE" "homebrew"
   [[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+
+function install_brew {
+  brew_me
 
   #  Install packages
   for pkg in "${brew_pkgs[@]}"
   do
      brew install $pkg
   done
+}
+
+
+function install_brew_cask {
+  brew_me
 
   #  Install cask packages
+  brew tap "caskroom/cask"
   for pkg in "${cask_pkgs[@]}"
   do
      brew cask install $pkg
   done
   for pkg in "${cask_utils_pkgs[@]}"
   do
-     brew cask install $pkg --appdir /Applications/Utilities
+     brew cask install --appdir="/Applications/Utilities" $pkg
   done
 
   #  Install work-related packages
@@ -93,41 +98,40 @@ function install_brew {
 }
 
 
-function install_ansible {
-  #
-  #  https://www.ansible.com/
-  #
-  ANSIBLE_ERR_CODE=$(command -v ansible > /dev/null 2>&1; echo $?)
-  status_msg "$ANSIBLE_ERR_CODE" "ansible"
-  [[ "$ANSIBLE_ERR_CODE" -ne 0 ]] && sudo pip install ansible --quiet
+function install_brew_fonts {
+  brew_me
+
+  #  Install cask fonts
+  brew tap "caskroom/fonts"
+  for font in "${cask_fonts[@]}"
+  do
+    brew cask install font-$font
+  done
 }
 
 
-function run_ansible_provisioning {
-  #
-  #  Run ansible playbook
-  #
-  status_msg 1 "ansible provisioning"
-  # TODO: invoke playbook
+function install_prezto {
+  if [ -d "$HOME/.zprezto" ]
+    cd "$HOME/.zprezto" && git pull && git submodule update --init --recursive
+  else
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git $HOME/.zprezto
+    rcfiles=($HOME/.zprezto/runcoms/z*)
+    for rcfile in "${rcfiles[@]}"
+    do
+      ln -s "$rcfile" "$HOME/.${rcfile##*/}"
+    done
+    chsh -s /bin/zsh
+  fi
 }
 
 
-function dock_setup {
-
-  status_msg "0" "Custom Dock Setup"
-  #
-  #  Remove everything first
-  dockutil --remove all --no-restart
-
-  #  Add new apps
-  for dock_item in "${dock_apps[@]}"
-  do
-    dockutil --add "/Applications/${dock_item}.app"
-  done
-
-  #  Add new folders
-  for dock_item in "${dock_folders[@]}"
-  do
-    dockutil --add "${dock_item}" --view grid --display folder --sort name
-  done
+function install_bash_it {
+  if [ -d "~/.bash_it" ]
+  then
+    bash-it update
+  else
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+    ~/.bash_it/install.sh
+  fi
+  chsh -s /bin/bash
 }

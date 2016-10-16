@@ -8,6 +8,7 @@
 
 #  pip packages
 declare pip_pkgs=(
+  ansible
   httpie
   json2yaml
   pygments
@@ -19,7 +20,10 @@ declare brew_pkgs=(
   awscli
   aws-shell
   colordiff
+  coreutils
+  cowsay
   dockutil
+  fortune
   git-flow
   grc
   gpg
@@ -27,9 +31,13 @@ declare brew_pkgs=(
   hub
   imagemagick
   jq
+  ncdu
   nmap
   pup
+  pv
+  siege
   tmux
+  trash
   tree
   unrar
   watch
@@ -54,6 +62,7 @@ declare cask_pkgs=(
   meld
   omnigraffle
   querious
+  # sequel-pro
   skitch
   skype
   slack
@@ -75,6 +84,7 @@ declare cask_utils_pkgs=(
   a-better-finder-rename
   alfred
   caffeine
+  cheatsheet
   coconutbattery
   electric-sheep
   istat-menus
@@ -94,6 +104,29 @@ declare cask_work_pkgs=(
   postico
   tunnelblick
   zoomus
+)
+
+
+#  Fonts ("brew cask search /font./")
+#  See: https://github.com/powerline/fonts
+declare cask_fonts=(
+  dejavu-sans-mono-for-powerline
+  inconsolata-for-powerline
+  macondo
+  macondo-swash-caps
+  menlo-for-powerline
+  monofur-for-powerline
+  quantico
+  roboto
+  roboto-condensed
+  roboto-mono
+  roboto-mono-for-powerline
+  roboto-sla
+  source-code-pro
+  ubuntu
+  ubuntu-mono-powerline
+  verdana
+  webdings
 )
 
 
