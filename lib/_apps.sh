@@ -60,12 +60,12 @@ function google_chrome_app_tweaks {
 }
 
 
-function istatmenus_tweaks{
+function istatmenus_tweaks {
   status_msg "1" "Custom iStat Menus.app tweaks"
 }
 
 
-function iterm2_tweaks{
+function iterm2_tweaks {
   status_msg "1" "Custom iTerm2.app tweaks"
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
