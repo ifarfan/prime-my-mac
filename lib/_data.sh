@@ -112,8 +112,6 @@ declare cask_work_pkgs=(
 declare cask_fonts=(
   dejavu-sans-mono-for-powerline
   inconsolata-for-powerline
-  macondo
-  macondo-swash-caps
   menlo-for-powerline
   monofur-for-powerline
   quantico
@@ -121,12 +119,9 @@ declare cask_fonts=(
   roboto-condensed
   roboto-mono
   roboto-mono-for-powerline
-  roboto-sla
   source-code-pro
   ubuntu
   ubuntu-mono-powerline
-  verdana
-  webdings
 )
 
 
