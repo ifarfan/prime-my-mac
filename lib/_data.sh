@@ -17,20 +17,27 @@ declare pip_pkgs=(
 
 #  homebrew packages
 declare brew_pkgs=(
+  aircrack-ng
   awscli
   aws-shell
   colordiff
   coreutils
   cowsay
   dockutil
+  findutils
   fortune
   git-flow
+  gnu-sed --with-default-names
   grc
   gpg
+  homebrew/dupes/grep
+  homebrew/dupes/openssh
+  homebrew/dupes/screen
   htop
   hub
   imagemagick
   jq
+  moreutils
   ncdu
   nmap
   pup

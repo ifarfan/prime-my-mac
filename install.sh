@@ -60,7 +60,8 @@ else
     done
 fi
 
-#  Update sudo timestamp until script is finished
+#  Invoke sudo and update sudo timestamp until script is finished
+sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #  Install components
@@ -72,6 +73,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #  OS X Customizations
 if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]
 then
+    app_store_tweaks
     dock_tweaks
     finder_tweaks
     input_device_tweaks
@@ -85,10 +87,14 @@ fi
 if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
 then
     activity_monitor_app_tweaks
+    electric_sheep_app_tweaks
     google_chrome_app_tweaks
+    istatmenus_tweaks
+    iterm2_tweaks
     # mail_app_tweaks
     # messages_app_tweaks
     safari_app_tweaks
+    sublime_text_tweaks
     terminal_app_tweaks
 fi
 

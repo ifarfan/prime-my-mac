@@ -19,15 +19,78 @@ function activity_monitor_app_tweaks {
   defaults write com.apple.ActivityMonitor ShowCategory -int 0
 }
 
+function electric_sheep_app_tweaks {
+  ES_FILE="/Library/Screen Savers/Electric Sheep.saver"
+  if [ -f ${ES_FILE} ]
+  then
+    defaults -currentHost write com.apple.screensaver 'CleanExit' -string "YES"
+    defaults -currentHost write com.apple.screensaver 'PrefsVersion' -int "100"
+    defaults -currentHost write com.apple.screensaver 'idleTime' -int "600"
+    defaults -currentHost write com.apple.screensaver "moduleDict" -dict-add "moduleName" -string "Electric Sheep"
+    defaults -currentHost write com.apple.screensaver "moduleDict" -dict-add "path" -string "${ES_FILE}"
+    defaults -currentHost write com.apple.screensaver "moduleDict" -dict-add "type" -int "0"
+    defaults -currentHost write com.apple.screensaver 'ShowClock' -bool "false"
+    defaults -currentHost write com.apple.screensaver 'tokenRemovalAction' -int "0"
+  fi
+}
+
 
 function google_chrome_app_tweaks {
   status_msg "1" "Custom Google Chrome.app tweaks"
 
-  #  Disable sensitive and senseless swipe-based navigation
-  defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+  CHROME_PLIST="~/Library/Preferences/com.google.Chrome.plist"
+  if [ -f $CHROME_PLIST ]
+  then
 
-  #  Use the system print dialog
-  defaults write com.google.Chrome DisablePrintPreview -bool true
+    #  Allow installing user scripts via GitHub Gist or Userscripts.org
+    defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+
+    #  Disable the all too sensitive backswipe on trackpads
+    defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+
+    #  Disable the all too sensitive backswipe on Magic Mouse
+    defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+    #  Use the system-native print preview dialog
+    defaults write com.google.Chrome DisablePrintPreview -bool true
+
+    #  Expand the print dialog by default
+    defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+  fi
+}
+
+
+function istatmenus_tweaks{
+  status_msg "1" "Custom iStat Menus.app tweaks"
+}
+
+
+function iterm2_tweaks{
+  status_msg "1" "Custom iTerm2.app tweaks"
+#  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
+#  https://github.com/fnichol/macosx-iterm2-settings
+  ITERM2_PLIST="~/Library/Preferences/com.googlecode.iterm2.plist"
+  if [ -f $ITERM2_PLIST ]
+  then
+    defaults write com.googlecode.iterm2 CursorType -bool false
+    defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool true
+    defaults write com.googlecode.iterm2 HideTab -bool false
+    defaults write HighlightTabLabels -bool true
+    defaults write com.googlecode.iterm2 NoSyncDoNotWarnBeforeMultilinePaste -bool true
+    defaults write com.googlecode.iterm2 "NoSyncDoNotWarnBeforeMultilinePaste_selection" -bool false
+    defaults write com.googlecode.iterm2 NoSyncNeverAskAboutSettingAlternateMouseScroll -bool true
+    defaults write com.googlecode.iterm2 NoSyncPermissionToShowTip -bool false
+    defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool true
+    defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+    defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
+    defaults write com.googlecode.iterm2 SUEnableAutomaticChecks -bool true
+    defaults write com.googlecode.iterm2 SUSendProfileInfo -bool false
+    defaults write com.googlecode.iterm2 UseBorder -bool true
+    defaults write com.googlecode.iterm2 WindowNumber -bool true;
+
+    #  Set new font
+    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Normal Font\" \"UbuntuMonoDerivativePowerline-Regular 16\"" $ITERM2_PLIST
+  fi
 }
 
 
@@ -93,6 +156,12 @@ function safari_app_tweaks {
 
   #  Add a context menu item for showing the Web Inspector in web views
   defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+}
+
+
+function sublime_text_tweaks {
+  status_msg "1" "Custom Sublime Text.app tweaks"
+
 }
 
 
