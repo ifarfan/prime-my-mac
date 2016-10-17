@@ -14,8 +14,9 @@
 
 
 #  Variables
-TMP_DIR=~/.tmp_install
-GIT_REPO=https://github.com/ifarfan/prime-my-mac.git
+REPO_NAME=prime-my-mac
+TMP_DIR=${HOME}/.${REPO_NAME}
+GIT_REPO=https://github.com/ifarfan/${REPO_NAME}.git
 
 
 function install_xcode_cli {

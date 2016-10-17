@@ -20,6 +20,7 @@ declare brew_pkgs=(
   aircrack-ng
   awscli
   aws-shell
+  csshx
   colordiff
   coreutils
   cowsay

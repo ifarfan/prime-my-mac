@@ -60,7 +60,7 @@ function dock_tweaks {
   defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
   #  Set the icon size of Dock items
-  defaults write com.apple.dock tilesize -int 30
+  defaults write com.apple.dock tilesize -int 36
 
   #  Change minimize/maximize window effect
   defaults write com.apple.dock mineffect -string "scale"
@@ -179,8 +179,8 @@ function finder_tweaks {
   #  Disable the warning when changing a file extension
   defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-  #  Set sidebar icon size to medium
-  defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+  #  Set sidebar icon size to large=3 (small=1, medium=2)
+  defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
 
   #  Enable spring loading for directories
   # defaults write NSGlobalDomain com.apple.springing.enabled -bool true
@@ -207,6 +207,10 @@ function finder_tweaks {
   #  Set the size of icons on the desktop and in other icon views
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
   /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+
+  #  Set the file/folder font size in list views
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettings:textSize 14" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:textSize 14" ~/Library/Preferences/com.apple.finder.plist
 
   #  Use list view in all Finder windows by default: `icnv`, `Nlsv`, `clmv`, `Flwv`
   defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"

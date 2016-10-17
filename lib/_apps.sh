@@ -23,7 +23,7 @@ function electric_sheep_app_tweaks {
   status_msg "1" "Custom Electric Sheep.app tweaks"
 
   ES_FILE="/Library/Screen Savers/Electric Sheep.saver"
-  if [ -f ${ES_FILE} ]
+  if [ -f "${ES_FILE}" ]
   then
     defaults -currentHost write com.apple.screensaver 'CleanExit' -string "YES"
     defaults -currentHost write com.apple.screensaver 'PrefsVersion' -int "100"
@@ -33,6 +33,8 @@ function electric_sheep_app_tweaks {
     defaults -currentHost write com.apple.screensaver "moduleDict" -dict-add "type" -int "0"
     defaults -currentHost write com.apple.screensaver 'ShowClock' -bool "false"
     defaults -currentHost write com.apple.screensaver 'tokenRemovalAction' -int "0"
+
+    killall cfprefsd
   fi
 }
 
