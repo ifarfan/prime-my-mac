@@ -20,6 +20,8 @@ function activity_monitor_app_tweaks {
 }
 
 function electric_sheep_app_tweaks {
+  status_msg "1" "Custom Electric Sheep.app tweaks"
+
   ES_FILE="/Library/Screen Savers/Electric Sheep.saver"
   if [ -f ${ES_FILE} ]
   then
@@ -67,6 +69,7 @@ function istatmenus_tweaks {
 
 function iterm2_tweaks {
   status_msg "1" "Custom iTerm2.app tweaks"
+
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
   ITERM2_PLIST="~/Library/Preferences/com.googlecode.iterm2.plist"
@@ -135,7 +138,7 @@ function messages_app_tweaks {
 
 
 function safari_app_tweaks {
-  status_msg "1" "Safari.app tweaks"
+  status_msg "1" "Custom Safari.app tweaks"
 
   #  Set Safari’s home page to `about:blank` for faster loading
   defaults write com.apple.Safari HomePage -string "about:blank"

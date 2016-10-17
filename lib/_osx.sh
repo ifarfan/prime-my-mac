@@ -208,8 +208,8 @@ function finder_tweaks {
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
   /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
 
-  #  Use column view in all Finder windows by default: `icnv`, `Nlsv`, `clmv`, `Flwv`
-  defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+  #  Use list view in all Finder windows by default: `icnv`, `Nlsv`, `clmv`, `Flwv`
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
   #  Show the ~/Library folder
   chflags nohidden ~/Library
@@ -265,7 +265,7 @@ function input_device_tweaks {
 
 
 function miscellaneous_tweaks {
-  status_msg "1" "Custom miscellaneous tweaks"
+  status_msg "1" "Custom Miscellaneous OS tweaks"
 
   #  Always show scrollbars
   defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
