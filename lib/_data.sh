@@ -12,6 +12,8 @@ declare pip_pkgs=(
   httpie
   json2yaml
   pygments
+  pysphere
+  PyVmomi
 )
 
 
@@ -20,6 +22,7 @@ declare brew_pkgs=(
   aircrack-ng
   awscli
   aws-shell
+  cdrtools
   csshx
   colordiff
   coreutils
@@ -27,6 +30,7 @@ declare brew_pkgs=(
   dockutil
   findutils
   fortune
+  git
   git-flow
   gnu-sed --with-default-names
   grc
@@ -41,6 +45,7 @@ declare brew_pkgs=(
   moreutils
   ncdu
   nmap
+  node
   pup
   pv
   siege
@@ -58,7 +63,9 @@ declare brew_pkgs=(
 
 #  homebrew cask packages
 declare cask_pkgs=(
-  1password
+  # 1password
+  # cyberduck
+  diffmerge
   dropbox
   firefox
   google-chrome
@@ -67,10 +74,10 @@ declare cask_pkgs=(
   handbrake
   kitematic
   macdown
-  meld
+  # meld
   omnigraffle
-  querious
-  # sequel-pro
+  # querious
+  sequel-pro
   skitch
   skype
   slack
@@ -104,6 +111,7 @@ declare cask_utils_pkgs=(
   unetbootin
   watts
   wireshark
+  xact
 )
 
 

@@ -50,7 +50,7 @@ function install_pip {
   #  Install pip packages
   for pkg in "${pip_pkgs[@]}"
   do
-     sudo pip install $pkg
+     sudo -H pip install $pkg
   done
 }
 
@@ -71,7 +71,7 @@ function install_brew {
   #  Install packages
   for pkg in "${brew_pkgs[@]}"
   do
-     brew install $pkg
+     HOMEBREW_VERBOSE=0 HOMEBREW_NO_ANALYTICS=1 brew install $pkg
   done
 }
 
@@ -127,6 +127,9 @@ function install_prezto {
 
 
 function install_bash_it {
+  status_msg "$BREW_ERR_CODE" "bash-it"
+
+
   if [ -d "~/.bash_it" ]
   then
     bash-it update

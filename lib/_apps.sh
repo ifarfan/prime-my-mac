@@ -19,6 +19,7 @@ function activity_monitor_app_tweaks {
   defaults write com.apple.ActivityMonitor ShowCategory -int 0
 }
 
+
 function electric_sheep_app_tweaks {
   status_msg "1" "Custom Electric Sheep.app tweaks"
 
@@ -80,7 +81,7 @@ function iterm2_tweaks {
     defaults write com.googlecode.iterm2 CursorType -bool false
     defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool true
     defaults write com.googlecode.iterm2 HideTab -bool false
-    defaults write HighlightTabLabels -bool true
+    defaults write com.googlecode.iterm2 HighlightTabLabels -bool true
     defaults write com.googlecode.iterm2 NoSyncDoNotWarnBeforeMultilinePaste -bool true
     defaults write com.googlecode.iterm2 "NoSyncDoNotWarnBeforeMultilinePaste_selection" -bool false
     defaults write com.googlecode.iterm2 NoSyncNeverAskAboutSettingAlternateMouseScroll -bool true
