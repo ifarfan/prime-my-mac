@@ -18,6 +18,7 @@ WHITE=$(tput setaf 7)
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+BREW_ARGS='HOMEBREW_VERBOSE=0 HOMEBREW_NO_ANALYTICS=1'
 
 function status_msg {
   #
@@ -71,7 +72,7 @@ function install_brew {
   #  Install packages
   for pkg in "${brew_pkgs[@]}"
   do
-     HOMEBREW_VERBOSE=0 HOMEBREW_NO_ANALYTICS=1 brew install $pkg
+     ${BREW_ARGS} brew install $pkg
   done
 }
 
@@ -80,20 +81,20 @@ function install_brew_cask {
   brew_me
 
   #  Install cask packages
-  brew tap "caskroom/cask"
+  ${BREW_ARGS} brew tap "caskroom/cask"
   for pkg in "${cask_pkgs[@]}"
   do
-     brew cask install $pkg
+     ${BREW_ARGS} brew cask install $pkg
   done
   for pkg in "${cask_utils_pkgs[@]}"
   do
-     brew cask install --appdir="/Applications/Utilities" $pkg
+     ${BREW_ARGS} brew cask install --appdir="/Applications/Utilities" $pkg
   done
 
   #  Install work-related packages
   for pkg in "${cask_work_pkgs[@]}"
   do
-     brew cask install $pkg
+     ${BREW_ARGS} brew cask install $pkg
   done
 }
 
@@ -102,10 +103,10 @@ function install_brew_fonts {
   brew_me
 
   #  Install cask fonts
-  brew tap "caskroom/fonts"
+  ${BREW_ARGS} brew tap "caskroom/fonts"
   for font in "${cask_fonts[@]}"
   do
-    brew cask install font-$font
+    ${BREW_ARGS} brew cask install font-$font
   done
 }
 
