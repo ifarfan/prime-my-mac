@@ -22,7 +22,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 #  Usage
 usage() {
-    echo -e "${BOLD}Usage${NORMAL}: ${0##*/} [ ${BOLD}--all${NORMAL} | ${BOLD}--app-tweaks${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
+    echo -e "${BOLD}Usage${NORMAL}: ${0##*/} [ ${BOLD}--all${NORMAL} | ${BOLD}--app-configs${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
     exit 1
 }
 
@@ -46,7 +46,7 @@ else
         shift
         case "$arg" in
             --all)        FG_ALL=true ;;            #  EVERYTHING!
-            --app-tweaks) FG_APPS=true ;;           #  Apps
+            --app-configs) FG_APPS=true ;;           #  Apps
             --bash-it)    FG_BASH_IT=true ;;        #  bash it
             --brew)       FG_BREW=true ;;           #  Brew
             --cask)       FG_BREW_CASK=true ;;      #  Brew Cask
@@ -87,17 +87,17 @@ fi
 #  App specific Customizations
 if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
 then
-    activity_monitor_app_tweaks
-    electric_sheep_app_tweaks
-    git_app_tweaks
-    google_chrome_app_tweaks
-    istatmenus_tweaks
-    iterm2_tweaks
-    mail_app_tweaks
-    messages_app_tweaks
-    safari_app_tweaks
-    sublime_text_tweaks
-    terminal_app_tweaks
+    activity_monitor_config
+    electric_sheep_config
+    git_config
+    google_chrome_config
+    istatmenus_config
+    iterm2_config
+    mail_config
+    messages_config
+    safari_config
+    sublime_text_config
+    terminal_config
 fi
 
 #  Set user shell last

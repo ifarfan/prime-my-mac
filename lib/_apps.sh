@@ -6,8 +6,8 @@
 #  =============================================================================
 
 
-function activity_monitor_app_tweaks {
-  status_msg "1" "Custom Activity Monitor.app tweaks"
+function activity_monitor_config {
+  status_msg "1" "Custom Activity Monitor.app config"
 
   #  Show the main window when launching Activity Monitor
   defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -20,8 +20,8 @@ function activity_monitor_app_tweaks {
 }
 
 
-function electric_sheep_app_tweaks {
-  status_msg "1" "Custom Electric Sheep.app tweaks"
+function electric_sheep_config {
+  status_msg "1" "Custom Electric Sheep.app config"
 
   ES_FILE="/Library/Screen Savers/Electric Sheep.saver"
   if [ -f "${ES_FILE}" ]
@@ -40,7 +40,7 @@ function electric_sheep_app_tweaks {
 }
 
 
-function git_app_tweaks {
+function git_config {
   #  Copy git global config files
   cp -n ./files/_gitignore_global ${HOME}/.gitignore_global
   cp -n ./files/_gitconfig        ${HOME}/.gitconfig
@@ -53,8 +53,8 @@ function git_app_tweaks {
 }
 
 
-function google_chrome_app_tweaks {
-  status_msg "1" "Custom Google Chrome.app tweaks"
+function google_chrome_config {
+  status_msg "1" "Custom Google Chrome.app config"
 
   CHROME_PLIST="~/Library/Preferences/com.google.Chrome.plist"
   if [ -f $CHROME_PLIST ]
@@ -78,18 +78,18 @@ function google_chrome_app_tweaks {
 }
 
 
-function istatmenus_tweaks {
-  status_msg "1" "Custom iStat Menus.app tweaks"
+function istatmenus_config {
+  status_msg "1" "Custom iStat Menus.app config"
 }
 
 
-function iterm2_tweaks {
+function iterm2_config {
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
   ITERM2_PLIST="~/Library/Preferences/com.googlecode.iterm2.plist"
   if [ -f $ITERM2_PLIST ]
   then
-    status_msg "1" "Custom iTerm2.app tweaks"
+    status_msg "1" "Custom iTerm2.app config"
 
     defaults write com.googlecode.iterm2 CursorType -bool false
     defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool true
@@ -113,8 +113,8 @@ function iterm2_tweaks {
 }
 
 
-function mail_app_tweaks {
-  status_msg "1" "Custom Mail.app tweaks"
+function mail_config {
+  status_msg "1" "Custom Mail.app config"
 
   #  Disable send and reply animations in Mail.app
   defaults write com.apple.mail DisableReplyAnimations -bool true
@@ -139,8 +139,8 @@ function mail_app_tweaks {
 }
 
 
-function messages_app_tweaks {
-  status_msg "1" "Custom Messages.app tweaks"
+function messages_config {
+  status_msg "1" "Custom Messages.app config"
 
   #  Disable automatic emoji substitution (i.e. use plain text smileys)
   # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
@@ -153,8 +153,8 @@ function messages_app_tweaks {
 }
 
 
-function safari_app_tweaks {
-  status_msg "1" "Custom Safari.app tweaks"
+function safari_config {
+  status_msg "1" "Custom Safari.app config"
 
   #  Set Safari’s home page to `about:blank` for faster loading
   defaults write com.apple.Safari HomePage -string "about:blank"
@@ -178,12 +178,12 @@ function safari_app_tweaks {
 }
 
 
-function sublime_text_tweaks {
+function sublime_text_config {
   #  Confirm Sublime-Text was installed by homebrew
   SUBL_ERR_CODE=$(brew cask list sublime-text > /dev/null 2>&1; echo $?)
   if [ ${SUBL_ERR_CODE} -eq 0 ]
   then
-    status_msg "1" "Custom Sublime Text.app tweaks"
+    status_msg "1" "Custom Sublime Text.app config"
 
     #  Make config folders
     SUBL_CFG_DIR="${HOME}/Library/Application Support/Sublime Text 3"
@@ -204,8 +204,8 @@ function sublime_text_tweaks {
 }
 
 
-function terminal_app_tweaks {
-  status_msg "1" "Custom Terminal.app tweaks"
+function terminal_config {
+  status_msg "1" "Custom Terminal.app config"
 
   #  Only use UTF-8 in Terminal.app
   #  For Terminal theme, see: https://github.com/geerlingguy/mac-dev-playbook
