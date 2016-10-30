@@ -43,7 +43,7 @@ function download_and_run_repo {
     #  Download repo and run install
     #
     [[ -d "$TMP_DIR" ]] && cd $TMP_DIR && git pull > /dev/null 2>&1 || git clone ${GIT_REPO} $TMP_DIR/
-    cd $TMP_DIR && ./install.sh
+    cd $TMP_DIR && ./install.sh --all
 }
 
 

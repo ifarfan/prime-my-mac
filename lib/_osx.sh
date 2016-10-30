@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  =============================================================================
 #
-#  _ G L O B A L S . S H
+#  _ O S X . S H
 #
 #  Note: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 #
@@ -41,35 +41,48 @@ function app_store_tweaks {
 function dock_tweaks {
   status_msg "1" "Custom Dock tweaks"
 
-  #  Remove everything off the dock first
-  dockutil --remove all --no-restart
 
-  #  Add new dock apps
-  for dock_item in "${dock_apps[@]}"
-  do
-    dockutil --add "/Applications/${dock_item}.app"
-  done
+  if [ "${#dock_apps[@]}" -gt 0 ]
+  then
+    #  Remove everything off the dock first
+    dockutil --remove all --no-restart
 
-  #  Add new dock folders
-  for dock_item in "${dock_folders[@]}"
-  do
-    dockutil --add "${dock_item}" --view grid --display folder --sort name
-  done
+    #  Add new dock apps
+    for dock_item in "${dock_apps[@]}"
+    do
+      dockutil --add "/Applications/${dock_item}.app" --no-restart
+    done
+
+    #  Add new dock folders
+    for dock_item in "${dock_folders[@]}"
+    do
+      dockutil --add "${dock_item}" --view grid --display folder --sort name
+    done
+  fi
 
   #  Enable highlight hover effect for the grid view of a stack (Dock)
   defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
   #  Set the icon size of Dock items
-  defaults write com.apple.dock tilesize -int 36
+  defaults write com.apple.dock tilesize -int 48
 
-  #  Change minimize/maximize window effect
-  defaults write com.apple.dock mineffect -string "scale"
+  #  Change minimize/maximize window effect (scale, genie, suck)
+  defaults write com.apple.dock mineffect -string "suck"
+
+  #  Enable icon Magnifications
+  defaults write com.apple.dock magnification -bool true
+
+  #  Magnifications icon size
+  defaults write com.apple.dock largesize -float 64.000000
 
   #  Enable spring loading for all Dock items
   defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
   #  Show indicator lights for open applications in the Dock
   defaults write com.apple.dock show-process-indicators -bool true
+
+  #  Enable transparency in Mavericks
+  defaults write com.apple.dock hide-mirror -bool true
 
   #  Show only open applications in the Dock
   # defaults write com.apple.dock static-only -bool true
@@ -87,8 +100,8 @@ function dock_tweaks {
   #  Remove the auto-hiding Dock delay
   # defaults write com.apple.dock autohide-delay -float 0
 
-  #  Remove the animation when hiding/showing the Dock
-  # defaults write com.apple.dock autohide-time-modifier -float 0
+  #  Set animation time when hiding/showing the Dock (0=no delay; 1=default; 2=slow)
+  defaults write com.apple.dock autohide-time-modifier -float 2
 
   #  Automatically hide and show the Dock
   defaults write com.apple.dock autohide -bool true
@@ -135,6 +148,9 @@ function dock_tweaks {
   #  Bottom left screen corner → Desktop
   defaults write com.apple.dock wvous-bl-corner -int 4
   defaults write com.apple.dock wvous-bl-modifier -int 0
+
+  #  Now restart dock
+  killall Dock
 }
 
 
@@ -356,22 +372,27 @@ function screen_tweaks {
 
 
 function ssd_tweaks {
-  status_msg "1" "Custom SSD tweaks"
+  SSD_ERR_CODE=$(system_profiler SPSerialATADataType | grep Model | grep SSD > /dev/null 2>&1; echo $?)
 
-  #  Disable local Time Machine snapshots
-  sudo tmutil disablelocal
+  if [ "$SSD_ERR_CODE" -eq 0 ]
+  then
+    status_msg "1" "Custom SSD tweaks"
 
-  #  Disable hibernation (speeds up entering sleep mode)
-  sudo pmset -a hibernatemode 0
+    #  Disable local Time Machine snapshots
+    sudo tmutil disablelocal
 
-  #  Remove the sleep image file to save disk space
-  sudo rm /Private/var/vm/sleepimage
-  #  Create a zero-byte file instead and make sure it can’t be rewritten
-  sudo touch /Private/var/vm/sleepimage
-  sudo chflags uchg /Private/var/vm/sleepimage
+    #  Disable hibernation (speeds up entering sleep mode)
+    sudo pmset -a hibernatemode 0
 
-  # Disable the sudden motion sensor as it’s not useful for SSDs
-  sudo pmset -a sms 0
+    #  Remove the sleep image file to save disk space
+    sudo rm /Private/var/vm/sleepimage
+    #  Create a zero-byte file instead and make sure it can’t be rewritten
+    sudo touch /Private/var/vm/sleepimage
+    sudo chflags uchg /Private/var/vm/sleepimage
+
+    # Disable the sudden motion sensor as it’s not useful for SSDs
+    sudo pmset -a sms 0
+  fi
 }
 
 

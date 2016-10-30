@@ -40,6 +40,19 @@ function electric_sheep_app_tweaks {
 }
 
 
+function git_app_tweaks {
+  #  Copy git global config files
+  cp -n ./files/_gitignore_global ${HOME}/.gitignore_global
+  cp -n ./files/_gitconfig        ${HOME}/.gitconfig
+
+  #  Set global, custom git config values
+  for key in "${git_custom_config[@]}"
+  do
+     git config --global "${key%%:*}" "${key#*:}"
+  done
+}
+
+
 function google_chrome_app_tweaks {
   status_msg "1" "Custom Google Chrome.app tweaks"
 
@@ -71,13 +84,13 @@ function istatmenus_tweaks {
 
 
 function iterm2_tweaks {
-  status_msg "1" "Custom iTerm2.app tweaks"
-
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
   ITERM2_PLIST="~/Library/Preferences/com.googlecode.iterm2.plist"
   if [ -f $ITERM2_PLIST ]
   then
+    status_msg "1" "Custom iTerm2.app tweaks"
+
     defaults write com.googlecode.iterm2 CursorType -bool false
     defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool true
     defaults write com.googlecode.iterm2 HideTab -bool false
@@ -166,8 +179,28 @@ function safari_app_tweaks {
 
 
 function sublime_text_tweaks {
-  status_msg "1" "Custom Sublime Text.app tweaks"
+  #  Confirm Sublime-Text was installed by homebrew
+  SUBL_ERR_CODE=$(brew cask list sublime-text > /dev/null 2>&1; echo $?)
+  if [ ${SUBL_ERR_CODE} -eq 0 ]
+  then
+    status_msg "1" "Custom Sublime Text.app tweaks"
 
+    #  Make config folders
+    SUBL_CFG_DIR="${HOME}/Library/Application Support/Sublime Text 3"
+    mkdir -p "${SUBL_CFG_DIR}/Installed Packages"
+    mkdir -p "${SUBL_CFG_DIR}/Packages/User"
+
+    #  Download Sublime Pkg Manager
+    if [ ! -f "${SUBL_CFG_DIR}/Installed Packages/Package Control.sublime-package" ]
+    then
+      cd "${SUBL_CFG_DIR}/Installed Packages"
+      SUBL_PKG_URL = 'http://sublime.wbond.net/Package%20Control.sublime-package'
+      PKG_FILE=$(curl -silent -output "Package Control.sublime-package" "${SUBL_PKG_URL}")
+    fi
+
+    #  Copy User Files
+    rsync -a -v --ignore-existing "./files/Sublime Text 3/" "${SUBL_CFG_DIR}/"
+  fi
 }
 
 

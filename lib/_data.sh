@@ -20,43 +20,44 @@ declare pip_pkgs=(
 #  homebrew packages
 declare brew_pkgs=(
   aircrack-ng
-  awscli
-  aws-shell
-  cdrtools
-  csshx
+  awscli                            #  AWS cmd line
+  aws-shell                         #  Shell for AWS cmds
+  cli53                             #  Manage AWS Route53
+  cdrtools                          #  Server images tools
+  csshx                             #  Multiple simultaneous SSH
   colordiff
   coreutils
   cowsay
-  dockutil
+  dockutil                          #  Manage the OS X Dock
   findutils
   fortune
   git
   git-flow
-  gnu-sed --with-default-names
-  grc
+  gnu-sed --with-default-names      #  Use linux sed
+  grc                               #  Colorize output
   gpg
   homebrew/dupes/grep
   homebrew/dupes/openssh
   homebrew/dupes/screen
   htop
-  hub
+  hub                               #  Automate github
   imagemagick
-  jq
+  jq                                #  JSON parser
   moreutils
   ncdu
   nmap
-  node
-  pup
-  pv
-  siege
+  node                              #  NodeJS
+  pup                               #  HTML parser
+  pv                                #  Progres monitor
+  siege                             #  Stress testing
   tmux
-  trash
+  trash                             #  Send deleted files to OSX trash
   tree
   unrar
-  watch
-  wget
-  z
-  bash
+  watch                             #  Linux watch
+  wget                              #  Linux wget
+  z                                 #  Remember most used cd'ed folders
+  bash                              #  Bash 4.x
   bash-completion
 )
 
@@ -91,35 +92,28 @@ declare cask_pkgs=(
   vagrant
   vagrant-manager
   vlc
-)
-
-
-#  homebrew cask utility packages
-declare cask_utils_pkgs=(
-  a-better-finder-rename
-  alfred
-  caffeine
-  cheatsheet
-  coconutbattery
-  electric-sheep
-  istat-menus
-  max
-  smcfancontrol
-  spectacle
-  the-unarchiver
-  timemachineeditor
-  unetbootin
-  watts
-  wireshark
-  xact
-)
-
-
-#  Work-related packages
-declare cask_work_pkgs=(
-  postico
-  tunnelblick
-  zoomus
+#  Laptop
+#  Utilities
+  a-better-finder-rename            #  Mass file renaming
+  alfred                            #  Keyboard hotkeys
+  caffeine                          #  Prevent machine from sleeping
+  cheatsheet                        #  Shortcuts for most apps
+  coconutbattery                    #  Battery health
+  electric-sheep                    #  Screen saver
+  istat-menus                       #  Menu bar server stats
+  max                               #  Audio files
+  smcfancontrol                     #  Control fan
+  spectacle                         #  Manage app windows
+  the-unarchiver                    #  Work with multiple archive formats
+  timemachineeditor                 #  Finely manage Time Machine
+  unetbootin                        #  Audio files
+  watts                             #  Battery calibration
+  wireshark                         #  Network sniffer
+  xact                              #  Audio files
+#  Work-related
+  postico                           #  Postgres client
+  tunnelblick                       #  Open VPN client
+  zoomus                            #  Video conferencing
 )
 
 
@@ -144,11 +138,11 @@ declare cask_fonts=(
 #  Dock Apps
 declare dock_apps=(
   'Google Chrome'
-  'OmniGraffle'
-  'iTerm'
-  'Sublime Text'
   'Skitch'
   'Calculator'
+  'iTerm'
+  'OmniGraffle'
+  'Sublime Text'
   'System Preferences'
 )
 
@@ -157,4 +151,45 @@ declare dock_apps=(
 declare dock_folders=(
   '/Applications'
   '~/Downloads'
+)
+
+
+#  Apple Apps
+declare apple_apps=(
+  'App Store'
+  'Automator'
+  'Calendar'
+  'Chess'
+  'Contacts'
+  'DVD Player'
+  'Dashboard'
+  'Dictionary'
+  'FaceTime'
+  'Font Book'
+  'Game Center'
+  'Image Capture'
+  'Launchpad'
+  'Mail'
+  'Maps'
+  'Messages'
+  'Mission Control'
+  'Notes'
+  'Photo Booth'
+  'Photos'
+  'Preview'
+  'QuickTime Player'
+  'Reminders'
+  'Safari'
+  'Stickies'
+  'Time Machine'
+)
+
+
+#  Custom git settings
+declare git_custom_config=(
+  "user.name:Israel Farfan"
+  "user.email:israel.farfan@gmx.com"
+  "core.editor:nano"
+  "github.user:ifarfan"
+  "github.token:"
 )

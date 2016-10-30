@@ -1,0 +1,24 @@
+{
+	"installed_packages":
+	[
+		"Ansible",
+		"BracketHighlighter",
+		"CForm",
+		"DiffTabs",
+		"Diffy",
+		"EasyDiff",
+		"Expand Tabs on Save",
+		"Git",
+		"Highlighter",
+		"Jinja2",
+		"Materialize",
+		"nagios-sublime",
+		"Package Control",
+		"SideBarEnhancements",
+		"SublimeLinter"
+	],
+	"repositories":
+	[
+		"https://github.com/bn0/nagios-sublime"
+	]
+}
