@@ -5,6 +5,7 @@
 #
 #  =============================================================================
 #
+#  Install XCode CLI Tools
 #  Download repo and run install
 #
 #  To install:
@@ -21,7 +22,7 @@ GIT_REPO=https://github.com/ifarfan/${REPO_NAME}.git
 
 function install_xcode_cli {
     #
-    #  Tell "softwareupdate" that we were installing the CLI tool before and will attempt to continue
+    #  Tell "softwareupdate" that we were installing the CLI tool before and it will attempt to continue
     #  With help from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
     #
     XCODE_ERR_CODE=$(xcode-select -p > /dev/null 2>&1; echo $?)

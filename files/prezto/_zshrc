@@ -17,13 +17,6 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 
-#  Git bash prompt
-#if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-#    GIT_PROMPT_THEME=Default
-#    source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-#fi
-
-
 #  Some niceties
 export EDITOR=/usr/bin/nano
 export BLOCKSIZE=1k
@@ -47,7 +40,6 @@ alias edit='subl'                           # edit:         Opens any file in su
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
-#alias which='type -all'                     # which:        Find executables
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
@@ -62,16 +54,5 @@ alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 
-#  ColorDIff
-#function diff {
-#    colordiff -u "" | less -RF
-#}
-
-
 #  pgcli permanent
 alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"
-
-#  Bash completion
-#if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#   . $(brew --prefix)/etc/bash_completion
-#fi
