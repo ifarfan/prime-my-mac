@@ -74,34 +74,36 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #  OS X Customizations
 if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]
 then
-    #  Tweaks
-    dock_tweaks
-    finder_tweaks
-    input_device_tweaks
+    # #  Tweaks
+    # dock_tweaks
+    # finder_tweaks
+    # input_device_tweaks
     screen_tweaks
-    spotlight_tweaks
-    ssd_tweaks
-    miscellaneous_tweaks
+    # spotlight_tweaks
+    # ssd_tweaks
+    # miscellaneous_tweaks
 fi
 
 #  App specific Customizations
 if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
 then
-    # activity_monitor_config
-    # electric_sheep_config
+    activity_monitor_config
+    electric_sheep_config
     git_config
-    # google_chrome_config
+    google_chrome_config
     # istatmenus_config
-    # iterm2_config
-    # itunes_config
-    # mail_config
-    # messages_config
-    # safari_config
-    # # sublime_text_config
-    # terminal_config
+    iterm2_config
+    itunes_config
+    mail_config
+    messages_config
+    safari_config
+    # sublime_text_config
+    terminal_config
 fi
 
 #  Set user shell last
 [[ "$FG_ALL" == true || "$FG_BASH_IT" == true ]]  && install_bash_it
 [[ "$FG_ALL" == true || "$FG_PREZTO" == true ]]   && install_prezto
 [[ "$FG_ALL" == true || "$FG_DOTFILES" == true ]] && install_dotfiles
+
+exit 0

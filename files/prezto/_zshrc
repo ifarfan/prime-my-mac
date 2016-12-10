@@ -14,13 +14,25 @@ fi
 
 #  Iterm2 coloring
 export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-
+export LSCOLORS=exfxbEaEBxxEhEhBaDaCaD
+#export LSCOLORS=exfxBxDxCxegedabagacad
+#export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 #  Some niceties
 export EDITOR=/usr/bin/nano
 export BLOCKSIZE=1k
 
+#  Unalias some git module cmds
+unalias gs
+unalias gls
+unalias gpt
+
+#  Use gnu ls + dircolors
+eval `gdircolors ${HOME}/.dircolors`
+alias ls='gls --color=auto'
+export TERM=xterm-256color          # for common 256 color terminals (e.g. gnome-terminal)
+#export TERM=screen-256color        # for a tmux -2 session (also for screen)
+#export TERM=rxvt-unicode-256color  # for a colorful rxvt unicode session
 
 #  Aliases -- https://natelandau.com/my-mac-osx-bash_profile/
 alias cp='cp -iv'                           # Preferred 'cp' implementation
@@ -52,7 +64,6 @@ alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
-
 
 #  pgcli permanent
 alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"
