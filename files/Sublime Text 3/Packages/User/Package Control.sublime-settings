@@ -5,7 +5,6 @@
 		"BracketHighlighter",
 		"CForm",
 		"DiffTabs",
-		"Diffy",
 		"EasyDiff",
 		"Expand Tabs on Save",
 		"Git",
@@ -15,9 +14,9 @@
 		"nagios-sublime",
 		"Package Control",
 		"SideBarEnhancements",
-		"Theme - Sodarized",
-		"Solarized Color Scheme",
-		"SublimeLinter"
+		"SublimeLinter",
+		"Theme - Soda",
+		"Theme - Sodarized"
 	],
 	"repositories":
 	[

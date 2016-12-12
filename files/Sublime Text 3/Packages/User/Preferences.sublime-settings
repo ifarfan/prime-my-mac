@@ -1,12 +1,13 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/Material Cobalt (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Material Oceanic Next (SL).tmTheme",
+	"convert_tabspaces_on_save": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 15,
+	"font_face": "Ubuntu Mono",
+	"font_size": 17.5,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Package Control",
 		"Vintage"
 	],
 	"rulers":
@@ -15,8 +16,9 @@
 		100,
 		120
 	],
-	"trim_trailing_white_space_on_save": true,
+	"soda_classic_tabs": true,
+	"tab_size": 2,
+	"theme": "Sodarized Dark 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"convert_tabspaces_on_save": true,
-	"tab_size": 2
+	"trim_trailing_white_space_on_save": true
 }
