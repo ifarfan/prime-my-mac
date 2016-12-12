@@ -1,47 +1,62 @@
 [core]
-    editor = nano
-    excludesfile = ~/.gitignore_global
+  editor = nano
+  #  Ignore
+  excludesfile = ~/.git/.gitignore.global
+  #  Includes
+  include = ~/.git/.gitconfig.user
+  include = ~/.git/.gitconfig.github
+
+[credential]
+  helper = osxkeychain
+
 [alias]
-    # Get the current branch name (not so useful in itself, but used in other aliases)
-    branch-name = !git rev-parse --abbrev-ref HEAD
-    # Push the current branch to the remote "origin", and set it to track the upstream branch
-    puo = "!git push -u origin $(git branch-name)"
-    pom = pull origin master
-    # Add + Commit
-    ac = !git add . && git commit -am
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    st = status
-    co = checkout
-    com = checkout master
-    nb = checkout -b
-    # diff last commit
-    last = diff --cached HEAD^
-    recap = log --oneline --no-merges --author=ifarfan@gmx.com
-    ls = branch --list -a
+  # Get the current branch name (not so useful in itself, but used in other aliases)
+  branch-name = !git rev-parse --abbrev-ref HEAD
+  # Push the current branch to the remote "origin", and set it to track the upstream branch
+  puo = "!git push -u origin $(git branch-name)"
+  pom = pull origin master
+  # Add + Commit
+  ac = !git add . && git commit -am
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  st = status
+  co = checkout
+  com = checkout master
+  nb = checkout -b
+  # diff last commit
+  last = diff --cached HEAD^
+  recap = log --oneline --no-merges --author=ifarfan@gmx.com
+  ls = branch --list -a
+
 [color]
-    branch = auto
-    diff = auto
-    status = auto
+  branch = auto
+  diff = auto
+  status = auto
+
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
+
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
+
 [http]
-    sslVerify = false
+  sslVerify = false
+
 [diff]
-    #  Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
-    #  instead of a/b/c/d as prefixes for patches
-    mnemonicprefix = true
-    algorithm = patience
+  #  Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+  #  instead of a/b/c/d as prefixes for patches
+  mnemonicprefix = true
+  algorithm = patience
+
 [grep]
-    extendRegexp = true
-    lineNumber = true
+  extendRegexp = true
+  lineNumber = true
