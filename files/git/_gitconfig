@@ -1,10 +1,10 @@
 [core]
   editor = nano
-  #  Ignore
   excludesfile = ~/.git/.gitignore.global
-  #  Includes
-  include = ~/.git/.gitconfig.user
-  include = ~/.git/.gitconfig.github
+
+[include]
+  path = ~/.git/.gitconfig.user
+  path = ~/.git/.gitconfig.github
 
 [credential]
   helper = osxkeychain
