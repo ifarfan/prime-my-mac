@@ -87,18 +87,18 @@ fi
 #  App specific Customizations
 if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
 then
-    # activity_monitor_config
-    # electric_sheep_config
-    # git_config
-    # google_chrome_config
-    # # istatmenus_config
-    # iterm2_config
-    # itunes_config
-    # mail_config
-    # messages_config
-    # safari_config
+    activity_monitor_config
+    electric_sheep_config
+    git_config
+    google_chrome_config
+    # istatmenus_config
+    iterm2_config
+    itunes_config
+    mail_config
+    messages_config
+    safari_config
     sublime_text_config
-    # terminal_config
+    terminal_config
 fi
 
 #  Set user shell last
