@@ -15,10 +15,10 @@
 
 #  Include libraries
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-. $DIR/lib/main.sh
-. $DIR/lib/data.sh
-. $DIR/lib/osx.sh
-. $DIR/lib/apps.sh
+. $DIR/libs/main.sh
+. $DIR/libs/data.sh
+. $DIR/libs/osx.sh
+. $DIR/libs/apps.sh
 
 #  Usage
 usage() {
