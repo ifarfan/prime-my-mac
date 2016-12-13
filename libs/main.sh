@@ -36,7 +36,14 @@ function status_msg {
   #
   #  Print package install status
   #
-  [[ "$1" -ne 0 ]] && echo "${BOLD}[${RED}N${BOLD}]${NORMAL} Installing ${BLUE}$2${NORMAL}..." || echo "${BOLD}[${GREEN}Y${BOLD}]${NORMAL} ${BLUE}$2${NORMAL} installed"
+  if [[ "$1" -ne 0 ]]
+  then
+    echo "${BOLD}[${RED}N${BOLD}]${NORMAL} Installing ${BLUE}$2${NORMAL}..."
+    osascript -e 'display notification "Installing $2" with title "prime-my-mac" subtitle "..." '
+  else
+    echo "${BOLD}[${GREEN}Y${BOLD}]${NORMAL} ${BLUE}$2${NORMAL} installed"
+    osascript -e 'display notification "$2 installed" with title "prime-my-mac" subtitle "..."'
+  fi
 }
 
 
@@ -102,15 +109,17 @@ function install_brew_cask {
       pkg_name=$(echo ${pkg}   | cut -d ':' -f1)
       pkg_atribs=$(echo ${pkg} | cut -d ':' -f2)
 
-      #  Utilities go to their sub-folder
-      [[ ${pkg_atribs} =~ "u" ]] && UTIL_PATH="--appdir=/Applications/Utilities" || UTIL_PATH=""
+      # #  Utilities go to their sub-folder
+      # [[ ${pkg_atribs} =~ "u" ]] && UTIL_PATH="--appdir=/Applications/Utilities" || UTIL_PATH=""
 
       if [[ ${pkg_atribs} =~ "l" ]]
       then
         # Laptop only packages
-        [[ $IS_LAPTOP == true ]] && brew cask install ${UTIL_PATH} ${pkg_name}
+        # [[ $IS_LAPTOP == true ]] && brew cask install ${UTIL_PATH} ${pkg_name}
+        [[ $IS_LAPTOP == true ]] && brew cask install ${pkg_name}
       else
-        brew cask install ${UTIL_PATH} ${pkg_name}
+        # brew cask install ${UTIL_PATH} ${pkg_name}
+        brew cask install ${pkg_name}
       fi
     else
       #  Standard package
