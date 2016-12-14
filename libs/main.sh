@@ -39,10 +39,18 @@ function status_msg {
   if [[ "$1" -ne 0 ]]
   then
     echo "${BOLD}[${RED}N${BOLD}]${NORMAL} Installing ${BLUE}$2${NORMAL}..."
-    osascript -e 'display notification "Installing \"$2\"" with title "prime-my-mac" subtitle "..." '
+    osascript \
+      -e "on run(argv)" \
+      -e "  return display notification \"Installing \" & item 1 of argv with title \"prime-my-mac\"  subtitle \"...\"" \
+      -e "end" \
+      -- "$2"
   else
     echo "${BOLD}[${GREEN}Y${BOLD}]${NORMAL} ${BLUE}$2${NORMAL} installed"
-    osascript -e 'display notification "\"$2\" installed" with title "prime-my-mac" subtitle "..."'
+    osascript \
+      -e "on run(argv)" \
+      -e "  return display notification item 1 of argv & \" installed\" with title \"prime-my-mac\"  subtitle \"...\"" \
+      -e "end" \
+      -- "$2"
   fi
 }
 

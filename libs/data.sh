@@ -49,6 +49,7 @@ declare brew_pkgs=(
   pup                               #  HTML parser
   pv                                #  Progres monitor
   siege                             #  Stress testing
+  terminal-notifier                 #  OS X notifications via shell
   tmux
   trash                             #  Send deleted files to OSX trash
   tree
@@ -99,7 +100,6 @@ declare cask_pkgs=(
   angry-ip-scanner:u                #  IP Scanner
   arrsync:u                         #  Rsync client
   avidemux:u                        #  Video editing
-  caffeine:u                        #  Prevent machine from sleeping
   cheatsheet:u                      #  Shortcuts for most apps
   coconutbattery:lu                 #  Battery health
   electric-sheep:u                  #  Screen saver
@@ -123,6 +123,7 @@ declare cask_pkgs=(
 #  Deprecated
 #
   # 1password
+  # caffeine:u                        #  Prevent machine from sleeping
   # cyberduck
   # meld
   # querious
