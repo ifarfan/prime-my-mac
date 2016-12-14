@@ -107,5 +107,5 @@ fi
 [[ "$FG_ALL" == true || "$FG_DOTFILES" == true ]] && install_dotfiles
 
 #  Done!
-status_msg "1" "All packages and configs"
+status_msg "1" "is now complete"
 exit 0
