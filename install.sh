@@ -106,4 +106,6 @@ fi
 [[ "$FG_ALL" == true || "$FG_PREZTO" == true ]]   && install_prezto
 [[ "$FG_ALL" == true || "$FG_DOTFILES" == true ]] && install_dotfiles
 
+#  Done!
+status_msg "1" "All packages and configs"
 exit 0

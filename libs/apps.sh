@@ -24,7 +24,7 @@ function electric_sheep_config {
   status_msg "0" "Custom Electric Sheep.app config"
 
   local ES_FILE="/Library/Screen Savers/Electric Sheep.saver"
-  if [ -f "${ES_FILE}" ]
+  if [ -d "${ES_FILE}" ]
   then
     defaults -currentHost write com.apple.screensaver 'CleanExit' -string "YES"
     defaults -currentHost write com.apple.screensaver 'PrefsVersion' -int "100"
@@ -94,8 +94,12 @@ function istatmenus_config {
 
 
 function iterm2_config {
+#
+#  See:
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
+#  http://www.real-world-systems.com/docs/PlistBuddy.1.html
+#
   local ITERM2_PLIST="${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
   if [ -f ${ITERM2_PLIST} ]
   then
@@ -117,23 +121,45 @@ function iterm2_config {
     defaults write com.googlecode.iterm2 UseBorder -bool true
     defaults write com.googlecode.iterm2 WindowNumber -bool true;
 
-    #  Unlimited scrollback
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Unlimited Scrollback\" \"1\"" $ITERM2_PLIST
+    local NB_ERR_CODE=$(defaults read com.googlecode.iterm2 "New Bookmark" > /dev/null 2>&1; echo $?)
+    if [ ${NB_ERR_CODE} -eq 0 ]
+    then
+      #  Set Unlimited scrollback
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Unlimited Scrollback\" \"1\"" $ITERM2_PLIST
 
-    #  Set new font
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Normal Font\" \"UbuntuMonoDerivativePowerline-Regular 16\"" $ITERM2_PLIST
+      #  Set new font
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Normal Font\" \"UbuntuMonoDerivativePowerline-Regular 16\"" $ITERM2_PLIST
 
-    #  Set Transparency
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Transparency\" \"0.095800\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Blur\" \"false\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Blur Radius\" \"5.331800\"" $ITERM2_PLIST
+      #  Set Transparency
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Transparency\" \"0.095800\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Blur\" \"false\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Blur Radius\" \"5.331800\"" $ITERM2_PLIST
 
-    #  Set Background
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Red Component\"   \"0.072200\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Blue Component\"  \"0.072900\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Green Component\" \"0.091000\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Alpha Component\" \"1.000000\"" $ITERM2_PLIST
-    /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Color Space\" \"Calibrated\"" $ITERM2_PLIST
+      #  Set Background
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Red Component\"   \"0.072200\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Blue Component\"  \"0.072900\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Green Component\" \"0.091000\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Alpha Component\" \"1.000000\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Color Space\" \"Calibrated\"" $ITERM2_PLIST
+    else
+      #  Add Unlimited scrollback
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Unlimited Scrollback\" integer \"1\"" $ITERM2_PLIST
+
+      #  Add new font
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Normal Font\" string \"UbuntuMonoDerivativePowerline-Regular 16\"" $ITERM2_PLIST
+
+      #  Add Transparency
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Transparency\" real \"0.095800\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Blur\" bool \"false\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Blur Radius\" real \"5.331800\"" $ITERM2_PLIST
+
+      #  Add Background
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Background Color\":\"Red Component\"   real \"0.072200\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Background Color\":\"Blue Component\"  real \"0.072900\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Background Color\":\"Green Component\" real \"0.091000\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Background Color\":\"Alpha Component\" real \"1.000000\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Background Color\":\"Color Space\" string \"Calibrated\"" $ITERM2_PLIST
+    fi
   fi
 }
 
