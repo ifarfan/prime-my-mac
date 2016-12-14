@@ -99,6 +99,7 @@ function iterm2_config {
 #  http://www.starkandwayne.com/blog/tweaking-iterm2-and-playing-with-plists/
 #  https://github.com/fnichol/macosx-iterm2-settings
 #  http://www.real-world-systems.com/docs/PlistBuddy.1.html
+#  https://iterm2.com/documentation-hidden-settings.html
 #
   local ITERM2_PLIST="${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
   if [ -f ${ITERM2_PLIST} ]
@@ -121,7 +122,7 @@ function iterm2_config {
     defaults write com.googlecode.iterm2 UseBorder -bool true
     defaults write com.googlecode.iterm2 WindowNumber -bool true;
 
-    local NB_ERR_CODE=$(defaults read com.googlecode.iterm2 "New Bookmark" > /dev/null 2>&1; echo $?)
+    local NB_ERR_CODE=$(defaults read com.googlecode.iterm2 "New Bookmarks" > /dev/null 2>&1; echo $?)
     if [ ${NB_ERR_CODE} -eq 0 ]
     then
       #  Set Unlimited scrollback
@@ -142,6 +143,17 @@ function iterm2_config {
       /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Alpha Component\" \"1.000000\"" $ITERM2_PLIST
       /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Background Color\":\"Color Space\" \"Calibrated\"" $ITERM2_PLIST
     else
+      #  Create new profile
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Name\" string \"Default\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Description\" string \"Default\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Working Directory\" string \"${HOME}\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Terminal Type\" string \"xterm-256color\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Silence Bell\" integer \"0\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Visual Bell\" integer \"1\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Flashing Bell\" integer \"0\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Rows\" integer \"25\"" $ITERM2_PLIST
+      /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Columns\" integer \"80\"" $ITERM2_PLIST
+
       #  Add Unlimited scrollback
       /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"Unlimited Scrollback\" integer \"1\"" $ITERM2_PLIST
 

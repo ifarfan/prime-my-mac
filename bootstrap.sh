@@ -21,19 +21,19 @@ GIT_REPO=https://github.com/ifarfan/${REPO_NAME}.git
 
 
 function install_xcode_cli {
-    #
-    #  Tell "softwareupdate" that we were installing the CLI tool before and it will attempt to continue
-    #  With help from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-    #
     XCODE_ERR_CODE=$(xcode-select -p > /dev/null 2>&1; echo $?)
 
     if [ "$XCODE_ERR_CODE" -ne 0 ]
     then
         echo "Installing XCode Command Line Tools..."
 
+        #
+        #  Tell "softwareupdate" that we were installing the CLI tool before and it will attempt to continue
+        #  With help from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+        #
         touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-        XCODE_CLT_VER=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
-        softwareupdate -i "$XCODE_CLT_VER" -v
+        XCODE_CLT_VER=$(softwareupdate --list | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+        softwareupdate --instal "$XCODE_CLT_VER" --verbose
         rm -rf /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     fi
 }
