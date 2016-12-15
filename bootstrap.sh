@@ -53,8 +53,7 @@ EOF
 function install_xcode_cli {
     XCODE_ERR_CODE=$(xcode-select -p > /dev/null 2>&1; echo $?)
 
-    if [ "$XCODE_ERR_CODE" -ne 0 ]
-    then
+    if [ "$XCODE_ERR_CODE" -ne 0 ]; then
         echo "Installing XCode Command Line Tools..."
         osascript  -e "display notification \"Installing XCode Command Line Tools...\" with title \"prime-my-mac\"  subtitle \"...\""
 

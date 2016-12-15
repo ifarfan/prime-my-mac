@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"Anaconda",
 		"Ansible",
 		"BracketHighlighter",
 		"CForm",
@@ -8,6 +9,7 @@
 		"EasyDiff",
 		"Expand Tabs on Save",
 		"Git",
+		"GitGutter",
 		"Highlighter",
 		"Jinja2",
 		"Materialize",
@@ -15,6 +17,9 @@
 		"Package Control",
 		"SideBarEnhancements",
 		"SublimeLinter",
+		"SublimeLinter-json",
+		"SublimeLinter-pep8",
+		"SublimeLinter-pyyaml",
 		"Theme - Soda",
 		"Theme - Sodarized"
 	],

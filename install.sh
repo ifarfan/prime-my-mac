@@ -39,8 +39,7 @@ FG_OSX=false
 FG_APPS=false
 
 #  Determine flags enabled via parameters
-if [ -z "$@" ]
-then
+if [ -z "$@" ]; then
     usage
 else
     for arg in "$@"; do
@@ -63,7 +62,8 @@ fi
 
 #  Invoke sudo and update sudo timestamp until script is finished
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+    sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #  Prep local ~/Applications folder with default Apps
 init_apps_folder
@@ -78,8 +78,7 @@ init_apps_folder
 update_apps_folder
 
 #  OS X Customizations
-if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]
-then
+if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]; then
     #  Tweaks
     dock_tweaks
     finder_tweaks
@@ -91,8 +90,7 @@ then
 fi
 
 #  App specific Customizations
-if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]
-then
+if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]; then
     activity_monitor_config
     electric_sheep_config
     git_config
