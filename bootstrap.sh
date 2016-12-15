@@ -35,7 +35,7 @@ cat << EOF
 
 I know, that logo was cheesy.... but anyways.
 
-Whenever you are ready, press enter (or Ctrl+C, if you changed your mind) and let the primer run the installer.
+Whenever you are ready, press enter (or Ctrl+C, if you changed your mind) and let the installer run.
 
 Be forewarned that this installer is intended for a "virgin" machine with nothing yet configured on it.
 

@@ -65,11 +65,17 @@ fi
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+#  Prep local ~/Applications folder with default Apps
+init_apps_folder
+
 #  Install components
 [[ "$FG_ALL" == true || "$FG_PIP" == true ]]        && install_pip
 [[ "$FG_ALL" == true || "$FG_BREW" == true ]]       && install_brew
 [[ "$FG_ALL" == true || "$FG_BREW_CASK" == true ]]  && install_brew_cask
 [[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true ]] && install_brew_fonts
+
+#  Update local ~/Applications folder with new Apps
+update_apps_folder
 
 #  OS X Customizations
 if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]

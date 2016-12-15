@@ -23,9 +23,10 @@ export HOMEBREW_VERBOSE=0
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-#  Folders
-APPLE_APPS_DIR='/Applications'
-UTILS_APPS_DIR='/Applications/Utilities'
+#  My Folders
+HOME_APPS_DIR="${HOME}/Applications"
+APPLE_APPS_DIR="${HOME_APPS_DIR}/Apple"
+UTILS_APPS_DIR="${HOME_APPS_DIR}/Utilities"
 
 #  Determine if it's a laptop
 #  SEE: http://arstechnica.com/civis/viewtopic.php?f=19&t=1118530
@@ -149,18 +150,43 @@ function install_brew_fonts {
 }
 
 
-function move_apple_apps {
-  if [ "${#apple_apps[@]}" -gt 0 ]
-  then
-    cd ${APPLE_APPS_DIR}
-    [[ ! -d "Apple" ]] && sudo mkdir "Apple"
+function init_apps_folder {
 
+  if [[ ! -d "${APPLE_APPS_DIR}" ]]
+  then
+    #  Symlink Apple Apps
+    mkdir -p ${APPLE_APPS_DIR}
+
+    apple_apps=(/Applications/*.app)
     for app in "${apple_apps[@]}"
     do
-       [[ -d "${app}.app" ]] && sudo mv "${app}.app" "${APPLE_APPS_DIR}/Apple/"
+      app_name=$(basename "${app}")
+      app_name=${app_name::-4}
+      ln -s "${app}" "${APPLE_APPS_DIR}/${app_name}"
     done
-    cd -
+
+    #  Symlink Apple Utilites
+    [[ ! -d "${UTILS_APPS_DIR}" ]] && mkdir -p ${UTILS_APPS_DIR}
+
+    apple_utils=(/Applications/Utilities/*.app)
+    for app_util in "${apple_utils[@]}"
+    do
+      app_util_name=$(basename "${app_util}")
+      app_util_name=${app_util_name::-4}
+      ln -s "${app_util}" "${UTILS_APPS_DIR}/${app_util_name}"
+    done
   fi
+}
+
+
+function update_apps_folder {
+  apple_apps=(/Applications/*.app)
+  for app in "${apple_apps[@]}"
+  do
+    app_name=$(basename "${app}")
+    app_name=${app_name::-4}
+    ln -s "${app}" "${HOME_APPS_DIR}/${app_name}"
+  done
 }
 
 

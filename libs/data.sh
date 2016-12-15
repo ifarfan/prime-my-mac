@@ -69,6 +69,7 @@ declare brew_pkgs=(
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
   diffmerge
+  docker-toolbox                    #  Needed by Kitematic, duh!
   dropbox
   firefox
   google-chrome
@@ -85,7 +86,7 @@ declare cask_pkgs=(
   slack
   spotify
   sublime-text
-  teamviewer
+  teamviewer                        # NOTE: will prompt with post-install gui
   unison
   utorrent                          # NOTE: will need manual post-install steps
   virtualbox
@@ -118,7 +119,7 @@ declare cask_pkgs=(
 #
   postico                           #  Postgres client
   tunnelblick                       #  Open VPN client
-  zoomus                            #  Video conferencing
+  zoomus                            #  Video conferencing, will prompt with post-install gui
 #
 #  Deprecated
 #
