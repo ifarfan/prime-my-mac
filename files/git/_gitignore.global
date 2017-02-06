@@ -38,14 +38,17 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+Icon*
 
 #  Other
 *.bak
+*.retry
 
 #  Folders
 tmp/
 temp/
 log/
+bak/
 
 
 #

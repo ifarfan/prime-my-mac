@@ -17,6 +17,7 @@
 		"Package Control",
 		"SideBarEnhancements",
 		"SublimeLinter",
+		"SublimeLinter-contrib-bashate",
 		"SublimeLinter-json",
 		"SublimeLinter-pep8",
 		"SublimeLinter-pyyaml",

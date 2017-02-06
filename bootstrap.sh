@@ -46,7 +46,7 @@ Once the installer has finished, a reboot is in order.
 With the above being said: sit back, relax and let the machine do the "brunt" of the work for you.
 
 EOF
-    read -p "Press [Enter] key to continue... " -n1 -s
+    read -p "Press [Enter] to continue... " -n1 -s
 }
 
 

@@ -137,12 +137,12 @@ function dock_tweaks {
     #  11: Launchpad
     #  12: Notification Center
 
-    #  Top left screen corner → Desktop
-    defaults write com.apple.dock wvous-tl-corner -int 4
-    defaults write com.apple.dock wvous-tl-modifier -int 0
+    # #  Top left screen corner → Put display to sleep
+    # defaults write com.apple.dock wvous-tl-corner -int 10
+    # defaults write com.apple.dock wvous-tl-modifier -int 0
 
-    #  Top right screen corner → Put display to sleep
-    defaults write com.apple.dock wvous-tr-corner -int 10
+    #  Top right screen corner → Desktop
+    defaults write com.apple.dock wvous-tr-corner -int 4
     defaults write com.apple.dock wvous-tr-modifier -int 0
 
     #  Bottom left screen corner → Screensaver
@@ -371,6 +371,9 @@ function miscellaneous_tweaks {
 
     #  Make crash reporter appear as a notification
     defaults write com.apple.CrashReporter UseUNC 1
+
+    #   WTF APPLE!!! Why did u disable this in Sierra? Restore "Allow Apps downloaded from Anywhere"
+    sudo spctl --master-disable
 }
 
 

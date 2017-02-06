@@ -112,15 +112,10 @@ function install_brew_cask {
             pkg_name=$(echo ${pkg}   | cut -d ':' -f1)
             pkg_atribs=$(echo ${pkg} | cut -d ':' -f2)
 
-            # #  Utilities go to their sub-folder
-            # [[ ${pkg_atribs} =~ "u" ]] && UTIL_PATH="--appdir=/Applications/Utilities" || UTIL_PATH=""
-
             if [[ ${pkg_atribs} =~ "l" ]]; then
                 # Laptop only packages
-                # [[ $IS_LAPTOP == true ]] && brew cask install ${UTIL_PATH} ${pkg_name}
                 [[ $IS_LAPTOP == true ]] && brew cask install ${pkg_name}
             else
-                # brew cask install ${UTIL_PATH} ${pkg_name}
                 brew cask install ${pkg_name}
             fi
         else
@@ -176,41 +171,22 @@ function update_apps_folder {
     #  Exit if not enabled
     [[ ${CUSTOM_APPS_DIR} -ne 1 ]] && return 0
 
-    cp -rs "/Applications" "${HOME_APPS_DIR}"
-
-    items=(/Applications/*)
-    for item in "${items[@]}"; do
-        item_name=$(basename "${item}")
-
-        # #  If folder
-        # if [[ -d ${item} ]]; then
-        # fi
-
-        # #  If file
-        # if [[ -f ${item} ]]; then
-        # fi
-
+    apple_apps=(/Applications/*.app)
+    for app in "${apple_apps[@]}"; do
+        app_name=$(basename "${app}")
         app_name=${app_name::-4}
         [[ ! -f "${HOME_APPS_DIR}/${app_name}" ]] && ln -s "${app}" "${HOME_APPS_DIR}/${app_name}"
     done
-
-    # apple_apps=(/Applications/*.app)
-    # for app in "${apple_apps[@]}"
-    # do
-    #   app_name=$(basename "${app}")
-    #   app_name=${app_name::-4}
-    #   [[ ! -f "${HOME_APPS_DIR}/${app_name}" ]] && ln -s "${app}" "${HOME_APPS_DIR}/${app_name}"
-    # done
 }
 
 
 function dir_colors {
-
-    pushd . > /dev/null 2>&1      #  Mark location
-
     if [ -d "${HOME}/.dircolors-solarized" ]; then
         status_msg "0" "dircolors"
+
+        pushd . > /dev/null 2>&1      #  Mark location
         cd "${HOME}/.dircolors-solarized" && git pull
+        popd > /dev/null 2>&1           #  Return to project root
     else
         status_msg "1" "dircolors"
         git clone --recursive https://github.com/seebi/dircolors-solarized.git ${HOME}/.dircolors-solarized
@@ -218,20 +194,18 @@ function dir_colors {
 
     #  Symlink to theme
     [[ ! -f "${HOME}/.dircolors" ]] && ln -s "${HOME}/.dircolors-solarized/dircolors.256dark" "${HOME}/.dircolors"
-
-    popd > /dev/null 2>&1           #  Return to project root
 }
 
 
 function install_prezto {
     dir_colors
 
-    pushd . > /dev/null 2>&1        #  Mark location
-
     if [ -d "${HOME}/.zprezto" ]; then
         status_msg "0" "prezto"
 
+        pushd . > /dev/null 2>&1        #  Mark location
         cd "${HOME}/.zprezto" && git pull && git submodule update --init --recursive
+        popd > /dev/null 2>&1           #  Return to project root
     else
         status_msg "1" "prezto"
 
@@ -242,8 +216,6 @@ function install_prezto {
         done
         chsh -s /bin/zsh
     fi
-
-    popd > /dev/null 2>&1           #  Return to project root
 
     #  Copy over customizations
     for zshfile in zshrc zpreztorc; do
