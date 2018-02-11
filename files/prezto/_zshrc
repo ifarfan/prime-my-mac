@@ -18,6 +18,9 @@ export LSCOLORS=exfxbEaEBxxEhEhBaDaCaD
 #export LSCOLORS=exfxBxDxCxegedabagacad
 #export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
+#  Use man pages for gnu coreutils
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 #  Some niceties
 export EDITOR=/usr/bin/nano
 export BLOCKSIZE=1k
@@ -67,3 +70,5 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 
 #  pgcli permanent
 alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

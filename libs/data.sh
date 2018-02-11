@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #  =============================================================================
 #
 #  D A T A . S H
@@ -7,34 +8,43 @@
 
 #  pip packages
 declare pip_pkgs=(
-    ansible                           #  1st thing in every Mac
-    ansible-lint                      #  2nd thing in every Mac
+    ansible                           #  1st thing on every Mac
+    ansible-lint                      #  2nd thing on every Mac
     bashate                           #  Bash linting
+    boto3                             #  AWS SDK
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
     pgcli                             #  Postgres CLI client
-    pygments                          #  File colorization
+    pygments                          #  File colorization from terminal
+    # udemy-dl                        #  Download Udemy videos (optional)
+    virtualenv                        #  Virtual environments
 )
 
 #  homebrew packages
 declare brew_pkgs=(
     aircrack-ng
+    aria2                             #  Beefy download utility
     awscli                            #  AWS cmd line
     aws-shell                         #  Shell for AWS cmds
     cli53                             #  Manage AWS Route53
     cdrtools                          #  Server images tools: mkisofs
     csshx                             #  Multiple simultaneous SSH
     colordiff
-    coreutils
+    coreutils --with-default-names
     cowsay
     dockutil                          #  Manage the OS X Dock
-    findutils
+    findutils --with-default-names
     fortune
+    gawk
     git
     git-flow
+    gnu-getopt --with-default-names   #  Use linux getopt
+    gnu-indent --with-default-names   #  Use linux indent
     gnu-sed --with-default-names      #  Use linux sed
+    gnu-tar --with-default-names      #  Use linux tar
     grc                               #  Colorize output
     gpg
+    gnutls
     homebrew/dupes/grep
     homebrew/dupes/openssh
     homebrew/dupes/screen
@@ -43,14 +53,19 @@ declare brew_pkgs=(
     imagemagick
     jq                                #  JSON parser
     lastpass-cli --with-pinentry --with-doc  #  Password manager cli tool
+    lnav                              #  Log file/folder navigator
     moreutils
+    nano
     ncdu
     nmap
     node                              #  NodeJS
+    peco                              #  Interactive "grep"
+    perceptualdiff                    #  Diff images from cmdline
     pup                               #  HTML parser
     pv                                #  Shell progres bar monitor
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
+    terraform                         #  Hashicorp's infrastructure-as-code
     tmux
     trash                             #  Send deleted files to OSX trash
     tree
@@ -73,10 +88,12 @@ declare brew_pkgs=(
 #  homebrew cask packages
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
+    anaconda
     diffmerge
-    docker-toolbox                    #  Needed by Kitematic, duh!
+    docker
     dropbox
     firefox
+    free-ruler                        #  ruler gui
     google-chrome
     google-hangouts
     iterm2
@@ -96,47 +113,50 @@ declare cask_pkgs=(
     utorrent                          # NOTE: will need manual post-install steps
     virtualbox
     vagrant
-    vagrant-manager
     vlc
 #
 #  Utilities
 #
-    a-better-finder-rename:u          #  Mass file renaming
-    alfred:u                          #  Keyboard hotkeys
-    angry-ip-scanner:u                #  IP Scanner
-    arrsync:u                         #  Rsync client
-    avidemux:u                        #  Video editing
-    cheatsheet:u                      #  Shortcuts for most apps
-    coconutbattery:lu                 #  Battery health
-    electric-sheep:u                  #  Screen saver
-    flycut:u                          #  Clipboard manager
-    istat-menus:u                     #  Menu bar server stats
-    max:u                             #  Audio files
-    spectacle:u                       #  Manage app windows
-    the-unarchiver:u                  #  Work with multiple archive formats
-    timemachineeditor:u               #  Finely manage Time Machine
-    tomighty:u                        #  Pomodoro timer
-    unetbootin:u                      #  Audio files
-    watts:lu                          #  Battery calibration
-    wireshark:u                       #  Network sniffer
-    xact:u                            #  Audio file converter
+    a-better-finder-rename            #  Mass file renaming
+    alfred                            #  Keyboard hotkeys
+    angry-ip-scanner                  #  IP Scanner
+    arrsync                           #  Rsync client
+    avidemux                          #  Video editing
+    cheatsheet                        #  Shortcuts for most apps
+    coconutbattery:l                  #  Battery health
+    electric-sheep                    #  Screen saver
+    flycut                            #  Clipboard manager
+    istat-menus                       #  Menu bar server stats
+    max                               #  Audio files
+    spectacle                         #  Manage app windows
+    the-unarchiver                    #  Work with multiple archive formats
+    timemachineeditor                 #  Finely manage Time Machine
+    tomighty                          #  Pomodoro timer
+    unetbootin                        #  Audio files
+    watts:l                           #  Battery calibration
+    wireshark                         #  Network sniffer
+    xact                              #  Audio file converter
 #
 #  Work-related
 #
     postico                           #  Postgres client
     tunnelblick                       #  Open VPN client
+    x-lite                            #  VOIP client
     zoomus                            #  Video conferencing, will prompt with post-install gui
 #
 #  Deprecated
 #
   # 1password
-  # caffeine:u                        #  Prevent machine from sleeping
+  # caffeine                          #  Prevent machine from sleeping
   # cyberduck
-  # meld
+  # docker-toolbox                    #  Needed by Kitematic, duh!
+  # hipchat                           #  :(
+  # meld                              #  Diff tool
   # querious
   # transmit
-  # jubler:u                          #  Subtitle editor
-  # smcfancontrol:lu                  #  Control fan
+  # jubler                            #  Subtitle editor
+  # smcfancontrol:l                   #  Control fan
+  # vagrant-manager
 )
 
 #  Fonts ("brew cask search /font./")
@@ -399,4 +419,4 @@ declare iterm_bookmark_settings=(
 
 
 #  Whether we'll use custom-filled ~/Applications instead of /Application
-CUSTOM_APPS_DIR=1
+CUSTOM_APPS_DIR=0

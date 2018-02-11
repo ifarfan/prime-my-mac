@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #  =============================================================================
 #
 #  M A I N . S H
@@ -224,6 +225,9 @@ function install_prezto {
 
     #  Custom theme
     cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
+
+    #  Install Docker autocomplete
+    curl -fLos ~/.zprezto/modules/completion/external/src/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 }
 
 
@@ -239,7 +243,14 @@ function install_bash_it {
         ${HOME}/.bash_it/install.sh
     fi
     chsh -s /bin/bash
+
+    #  Install Docker autocomplete
+    cd /usr/local/etc/bash_completion.d
+    ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
+    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
 }
+
 
 function install_dotfiles {
     #  With lots of help from:
