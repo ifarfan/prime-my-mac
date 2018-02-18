@@ -35,6 +35,7 @@ declare brew_pkgs=(
     dockutil                          #  Manage the OS X Dock
     findutils --with-default-names
     fortune
+    exa                               #  'ls' on steroids
     gawk
     git
     git-flow
@@ -59,10 +60,13 @@ declare brew_pkgs=(
     ncdu
     nmap
     node                              #  NodeJS
+    openssl                           #  Encryption
     peco                              #  Interactive "grep"
     perceptualdiff                    #  Diff images from cmdline
     pup                               #  HTML parser
     pv                                #  Shell progres bar monitor
+    python3
+    screen                            #  Multiplexer
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
     terraform                         #  Hashicorp's infrastructure-as-code
@@ -72,6 +76,7 @@ declare brew_pkgs=(
     unrar
     watch                             #  Linux "watch" command
     wget                              #  Linux "wget" command
+    yq                                #  YML parser
     z                                 #  Remember most used cd'ed folders
     bash                              #  Bash 4.x
     bash-completion
@@ -132,7 +137,7 @@ declare cask_pkgs=(
     the-unarchiver                    #  Work with multiple archive formats
     timemachineeditor                 #  Finely manage Time Machine
     tomighty                          #  Pomodoro timer
-    unetbootin                        #  Audio files
+    unetbootin                        #  Make bootable USBs
     watts:l                           #  Battery calibration
     wireshark                         #  Network sniffer
     xact                              #  Audio file converter
