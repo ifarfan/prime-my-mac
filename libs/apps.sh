@@ -272,6 +272,9 @@ function safari_config {
     #  Prevent Safari from opening ‘safe’ files automatically after downloading
     defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
+    #  Show status bar at bottom to view URLs links on hover
+    defaults write com.apple.Safari 'ShowStatusBar' -bool true
+
     #  Disable Safari’s thumbnail cache for History and Top Sites
     defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 

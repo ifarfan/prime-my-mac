@@ -16,10 +16,9 @@
 
 #  Include libraries
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-. $DIR/libs/main.sh
-. $DIR/libs/data.sh
-. $DIR/libs/osx.sh
-. $DIR/libs/apps.sh
+for INCLUDE in $DIR/libs/*; do
+    source ${INCLUDE}
+done
 
 #  Usage
 usage() {
@@ -87,6 +86,7 @@ if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]; then
     screen_tweaks
     spotlight_tweaks
     ssd_tweaks
+    energy_tweaks
     miscellaneous_tweaks
 fi
 
@@ -96,7 +96,6 @@ if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]; then
     electric_sheep_config
     git_config
     google_chrome_config
-    # istatmenus_config
     iterm2_config
     itunes_config
     mail_config

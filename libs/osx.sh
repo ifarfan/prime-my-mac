@@ -138,7 +138,7 @@ function dock_tweaks {
     #  11: Launchpad
     #  12: Notification Center
 
-    # #  Top left screen corner → Put display to sleep
+    #  Top left screen corner → Put display to sleep
     # defaults write com.apple.dock wvous-tl-corner -int 10
     # defaults write com.apple.dock wvous-tl-modifier -int 0
 
@@ -156,6 +156,48 @@ function dock_tweaks {
 
     #  Now restart the dock
     killall Dock
+}
+
+
+function energy_tweaks {
+    status_msg "0" "Energy savings tweaks"
+
+    #  power management (pmset) flags:
+    #   -a: all
+    #   -b: battery
+    #   -c: charger
+    #   -u: UPS
+
+    #  Set standby delay to 24 hours (default is 1 hour)
+    #  You can check current values with `pmset -g`.
+    sudo pmset -a standbydelay 86400
+
+    #  Disable system sleep
+    sudo pmset -a sleep 0
+
+    #   Put display to sleep (mins)
+    sudo pmset -a displaysleep 10
+
+    #  Put hard disk to sleep when possible (mins)
+    sudo pmset -a disksleep 10
+
+    #  Dim the display when on battery
+    sudo pmset -b lessbright 0
+
+    #  Reduce brightness before display goes to sleep
+    sudo pmset -a halfdim 0
+
+    #  Wake-up on network access
+    sudo pmset -c womp 1
+
+    #  Restart after power failure
+    sudo pmset -c autorestart 1
+
+    #  Restart automatically if the computer freezes
+    sudo pmset -a panicrestart 15
+
+    #  Restart automatically if the computer freezes
+    sudo systemsetup -setrestartfreeze on
 }
 
 
@@ -184,6 +226,15 @@ function finder_tweaks {
 
     #  Show path bar
     defaults write com.apple.finder ShowPathbar -bool true
+
+    #  Show tab bar
+    # defaults write com.apple.finder ShowTabView -bool true
+
+    #  Show sidebar
+    defaults write com.apple.finder ShowSidebar -bool true
+
+    #  Hide tags
+    defaults write com.apple.finder ShowRecentTags -bool false
 
     #  Allow text selection in Quick Look
     defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -245,6 +296,9 @@ function finder_tweaks {
     #  Disable the warning before emptying the Trash
     defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
+    #  Empty trash securely
+    # defaults write com.apple.finder EmptyTrashSecurely -bool true
+
     # Expand the following File Info panes: "General", "Open with", and "Sharing & Permissions"
     defaults write com.apple.finder FXInfoPanesExpanded -dict \
         General -bool true \
@@ -257,25 +311,42 @@ function finder_tweaks {
 function input_device_tweaks {
     status_msg "0" "Custom Input Devices tweaks"
 
-    # #  Trackpad: map bottom right corner to right-click
+    #
+    #  Trackpad
+    #
+
+    #  Trackpad: map bottom right corner to right-click
     # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
     # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
     # defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
     # defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
-    #  Increase sound quality for Bluetooth headphones/headsets
-    defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+    #  Use scroll gesture with the Ctrl (^) modifier key to zoom
+    defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+    defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
     #  Disable “natural” (Lion-style) scrolling
     defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+    #  Enable moving windows via 3-finger drag
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+    #  Enable tap to click
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+    #  Enable tap to click in login screen
+    defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+    defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+    #
+    #  Keyboard
+    #
+
     #  Enable full keyboard access for all controls
     #  (e.g. enable Tab in modal dialogs - 0 = text boxes and lists, 2/3 = all controls)
     defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-    #  Use scroll gesture with the Ctrl (^) modifier key to zoom
-    defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-    defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
     #  Follow the keyboard focus while zoomed in
     defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
@@ -304,13 +375,6 @@ function miscellaneous_tweaks {
     #  Always show scrollbars
     defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
-    #  Set standby delay to 24 hours (default is 1 hour)
-    #  You can check current values with `pmset -g`.
-    sudo pmset -a standbydelay 86400
-
-    #  Disable system sleep
-    sudo pmset -a sleep 0
-
     #  Expand save panel by default
     defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
     defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -331,11 +395,8 @@ function miscellaneous_tweaks {
     #  Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
     sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-    #  Custom message at login window
-    sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Hey dude, I'm just chilling!"
-
-    #  Restart automatically if the computer freezes
-    sudo systemsetup -setrestartfreeze on
+    #  Custom message at login window (don't forget to escape special chars!)
+    sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Hey dude, I'm just chilling\!"
 
     #  Disable Notification Center
     # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
@@ -373,6 +434,16 @@ function miscellaneous_tweaks {
     #  Make crash reporter appear as a notification
     defaults write com.apple.CrashReporter UseUNC 1
 
+    #  Increase sound quality for Bluetooth headphones/headsets
+    defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+    #  Show battery percentage
+    # defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+    #  Show clock on menubar
+    # defaults write com.apple.menuextra.clock IsAnalog -bool false
+    # defaults write com.apple.menuextra.clock DateFormat "EEE MMM d h:mm a"
+
     #   WTF APPLE!!! Why did u disable this in Sierra? Restore "Allow Apps downloaded from Anywhere"
     sudo spctl --master-disable
 }
@@ -381,7 +452,7 @@ function miscellaneous_tweaks {
 function screen_tweaks {
     status_msg "0" "Custom Screen tweaks"
 
-    # #  Set background to Aqua Graphite
+    #  Set background to Aqua Graphite
     # sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Aqua Graphite.png'"
 
     #  Copy Background pix and set background image
@@ -440,7 +511,7 @@ function spotlight_tweaks {
     #  Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
     sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
-    # Restart spotlight
+    #  Restart spotlight
     killall mds > /dev/null 2>&1
 
     #  Make sure indexing is enabled for the main volume
