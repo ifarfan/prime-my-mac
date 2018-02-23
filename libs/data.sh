@@ -423,7 +423,3 @@ declare iterm_bookmark_settings=(
     [key_name]="Window Type" [key_type]="integer" [key_value]=0
     [key_name]="Working Directory" [key_type]="string" [key_value]="${HOME}"
 )
-
-
-#  Whether we'll use custom-filled ~/Applications instead of /Application
-CUSTOM_APPS_DIR=0

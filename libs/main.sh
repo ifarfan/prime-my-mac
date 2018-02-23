@@ -138,49 +138,6 @@ function install_brew_fonts {
 }
 
 
-function init_apps_folder {
-
-    #  Exit if not enabled
-    [[ ${CUSTOM_APPS_DIR} -ne 1 ]] && return 0
-
-    if [[ ! -d "${APPLE_APPS_DIR}" ]]; then
-        #  Symlink Apple Apps
-        mkdir -p ${APPLE_APPS_DIR}
-
-        apple_apps=(/Applications/*.app)
-        for app in "${apple_apps[@]}"; do
-            app_name=$(basename "${app}")
-            app_name=${app_name::-4}
-            ln -s "${app}" "${APPLE_APPS_DIR}/${app_name}"
-        done
-
-        #  Symlink Apple Utilites
-        [[ ! -d "${UTILS_APPS_DIR}" ]] && mkdir -p ${UTILS_APPS_DIR}
-
-        apple_utils=(/Applications/Utilities/*.app)
-        for app_util in "${apple_utils[@]}"; do
-            app_util_name=$(basename "${app_util}")
-            app_util_name=${app_util_name::-4}
-            ln -s "${app_util}" "${UTILS_APPS_DIR}/${app_util_name}"
-        done
-    fi
-}
-
-
-function update_apps_folder {
-
-    #  Exit if not enabled
-    [[ ${CUSTOM_APPS_DIR} -ne 1 ]] && return 0
-
-    apple_apps=(/Applications/*.app)
-    for app in "${apple_apps[@]}"; do
-        app_name=$(basename "${app}")
-        app_name=${app_name::-4}
-        [[ ! -f "${HOME_APPS_DIR}/${app_name}" ]] && ln -s "${app}" "${HOME_APPS_DIR}/${app_name}"
-    done
-}
-
-
 function dir_colors {
     if [ -d "${HOME}/.dircolors-solarized" ]; then
         status_msg "0" "dircolors"

@@ -45,15 +45,14 @@ function git_config {
 
     #  Copy configs
     mkdir -p "${HOME}/.git"
-
-    local GITFILES=(./files/git/_*)
-    for gitfile in "${GITFILES[@]}"; do
+    for gitfile in ./files/git/_*; do
         gitfile=$(basename ${gitfile} | sed 's/^_\(.*\)/\1/')
         cp -p "./files/git/_${gitfile}" "${HOME}/.git/.${gitfile}"
     done
 
-    #  Symlink to config
-    [[ ! -f "${HOME}/.gitconfig" ]] && ln -s "${HOME}/.git/.gitconfig" "${HOME}/.gitconfig"
+    #  Symlink to configs
+    [[ ! -f "${HOME}/.gitconfig"        ]] && ln -s "${HOME}/.git/.gitconfig"        "${HOME}/.gitconfig"
+    [[ ! -f "${HOME}/.gitignore_global" ]] && ln -s "${HOME}/.git/.gitignore_global" "${HOME}/.gitignore_global"
 }
 
 
@@ -297,7 +296,7 @@ function sublime_text_config {
     if [ ${SUBL_ERR_CODE} -eq 0 ]; then
         status_msg "0" "Custom Sublime Text.app config"
 
-        pushd . > /dev/null 2>&1      #  Mark location
+        pushd . > /dev/null 2>&1        #  Mark location
 
         #  Make config folders
         SUBL_CFG_DIR="${HOME}/Library/Application Support/Sublime Text 3"
