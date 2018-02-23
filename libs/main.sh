@@ -24,11 +24,6 @@ export HOMEBREW_VERBOSE=0
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-#  My Folders
-HOME_APPS_DIR="${HOME}/Applications"
-APPLE_APPS_DIR="${HOME_APPS_DIR}/Apple"
-UTILS_APPS_DIR="${HOME_APPS_DIR}/Utilities"
-
 #  Determine if it's a laptop
 #  SEE: http://arstechnica.com/civis/viewtopic.php?f=19&t=1118530
 [[ "$(sysctl -n hw.model | grep -q -i book; echo $?)" -eq 0 ]] && IS_LAPTOP=true || IS_LAPTOP=false
@@ -142,7 +137,7 @@ function dir_colors {
     if [ -d "${HOME}/.dircolors-solarized" ]; then
         status_msg "0" "dircolors"
 
-        pushd . > /dev/null 2>&1      #  Mark location
+        pushd . > /dev/null 2>&1        #  Mark location
         cd "${HOME}/.dircolors-solarized" && git pull
         popd > /dev/null 2>&1           #  Return to project root
     else
