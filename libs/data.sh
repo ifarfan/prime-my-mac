@@ -93,7 +93,6 @@ declare brew_pkgs=(
 #  homebrew cask packages
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
-    anaconda
     diffmerge
     docker
     dropbox
@@ -107,6 +106,8 @@ declare cask_pkgs=(
     macdown
     murasaki                          #  epub reader
     omnigraffle
+    plex-media-player
+    plexamp
     sequel-pro
     skitch
     skype
@@ -151,6 +152,7 @@ declare cask_pkgs=(
 #
 #  Deprecated
 #
+  # anaconda                          #  love it but it's huuuuuge
   # 1password
   # caffeine                          #  Prevent machine from sleeping
   # cyberduck

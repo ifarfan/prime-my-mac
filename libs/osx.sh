@@ -325,7 +325,7 @@ function input_device_tweaks {
     defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
     defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
-    #  Disable “natural” (Lion-style) scrolling
+    #  Disable "natural" (Lion-style) scrolling
     defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
     #  Enable moving windows via 3-finger drag
@@ -389,7 +389,7 @@ function miscellaneous_tweaks {
     #  Automatically quit printer app once the print jobs complete
     defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-    #  Disable the “Are you sure you want to open this application?” dialog
+    #  Disable the "Are you sure you want to open this application?" dialog
     defaults write com.apple.LaunchServices LSQuarantine -bool false
 
     #  Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
@@ -456,7 +456,7 @@ function screen_tweaks {
     # sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Aqua Graphite.png'"
 
     #  Copy Background pix and set background image
-    cp -Rn ./files/Backgrounds "${HOME}"
+    unzip -o ./files/Backgrounds.zip -d "${HOME}/Backgrounds"
     sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db \
         "update data set value = '${HOME}/Backgrounds/68586930-brooklyn-wallpapers.jpg'"
 
