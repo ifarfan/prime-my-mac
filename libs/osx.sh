@@ -456,7 +456,7 @@ function screen_tweaks {
     # sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Aqua Graphite.png'"
 
     #  Copy Background pix and set background image
-    unzip -o ./files/Backgrounds.zip -d "${HOME}/Backgrounds"
+    cp -Rn ./files/Backgrounds "${HOME}"
     sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db \
         "update data set value = '${HOME}/Backgrounds/68586930-brooklyn-wallpapers.jpg'"
 
