@@ -7,7 +7,7 @@
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Customize to your needs...
@@ -17,6 +17,15 @@ export CLICOLOR=1
 export LSCOLORS=exfxbEaEBxxEhEhBaDaCaD
 #export LSCOLORS=exfxBxDxCxegedabagacad
 #export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+# Prompt
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir aws vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 #  Use man pages for gnu coreutils
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -33,42 +42,42 @@ unalias gpt
 #  Use gnu ls + dircolors
 eval `gdircolors ${HOME}/.dircolors`
 alias ls='gls --color=auto'
-export TERM=xterm-256color          # for common 256 color terminals (e.g. gnome-terminal)
-#export TERM=screen-256color        # for a tmux -2 session (also for screen)
-#export TERM=rxvt-unicode-256color  # for a colorful rxvt unicode session
+export TERM=xterm-256color                          # for common 256 color terminals (e.g. gnome-terminal)
+#export TERM=screen-256color                        # for a tmux -2 session (also for screen)
+#export TERM=rxvt-unicode-256color                  # for a colorful rxvt unicode session
 
 #  Aliases -- https://natelandau.com/my-mac-osx-bash_profile/
-alias cp='cp -iv'                           # Preferred 'cp' implementation
-alias mv='mv -iv'                           # Preferred 'mv' implementation
-alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
-alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
-alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
-alias ..='cd ../'                           # Go back 1 directory level
-alias ...='cd ../../'                       # Go back 2 directory levels
-alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias edit='subl'                           # edit:         Opens any file in sublime editor
-alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
-alias ~="cd ~"                              # ~:            Go Home
-alias c='clear'                             # c:            Clear terminal display
-alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
-alias show_options='shopt'                  # Show_options: display bash options settings
-alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
-alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
-mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
-trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
-ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
-alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
+alias cp='cp -iv'                                   # Preferred 'cp' implementation
+alias mv='mv -iv'                                   # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                             # Preferred 'mkdir' implementation
+alias ll='ls -FGlAhp'                               # Preferred 'ls' implementation
+alias less='less -FSRXc'                            # Preferred 'less' implementation
+cd() { builtin cd "$@"; ll; }                       # Always list directory contents upon 'cd'
+alias cd..='cd ../'                                 # Go back 1 directory level (for fast typers)
+alias ..='cd ../'                                   # Go back 1 directory level
+alias ...='cd ../../'                               # Go back 2 directory levels
+alias .3='cd ../../../'                             # Go back 3 directory levels
+alias .4='cd ../../../../'                          # Go back 4 directory levels
+alias .5='cd ../../../../../'                       # Go back 5 directory levels
+alias .6='cd ../../../../../../'                    # Go back 6 directory levels
+alias edit='subl'                                   # edit:         Opens any file in sublime editor
+alias f='open -a Finder ./'                         # f:            Opens current directory in MacOS Finder
+alias ~="cd ~"                                      # ~:            Go Home
+alias c='clear'                                     # c:            Clear terminal display
+alias path='echo -e ${PATH//:/\\n}'                 # path:         Echo all executable Paths
+alias show_options='shopt'                          # Show_options: display bash options settings
+alias fix_stty='stty sane'                          # fix_stty:     Restore terminal settings when screwed up
+alias cic='set completion-ignore-case On'           # cic:          Make tab-completion case-insensitive
+mcd () { mkdir -p "$1" && cd "$1"; }                # mcd:          Makes new Dir and jumps inside
+trash () { command mv "$@" ~/.Trash ; }             # trash:        Moves a file to the MacOS trash
+ql () { qlmanage -p "$*" >& /dev/null; }            # ql:           Opens any file in MacOS Quicklook Preview
+alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content to file on MacOS Desktop
 
-#   lr:  Full Recursive Directory Listing
-#   ------------------------------------------
+#  lr:  Full Recursive Directory Listing
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
-#  pgcli permanent
+#  colorize pgcli
 alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"
 
+#  Enable shell integration with iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

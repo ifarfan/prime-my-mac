@@ -10,13 +10,12 @@
 declare pip_pkgs=(
     ansible                           #  1st thing on every Mac
     ansible-lint                      #  2nd thing on every Mac
-    bashate                           #  Bash linting
+    bashate                           #  3rd thing on every Mac
     boto3                             #  AWS SDK
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
-    pgcli                             #  Postgres CLI client
     pygments                          #  File colorization from terminal
-    # udemy-dl                        #  Download Udemy videos (optional)
+    udemy-dl                          #  Download Udemy videos (optional)
     virtualenv                        #  Virtual environments
 )
 
@@ -63,6 +62,7 @@ declare brew_pkgs=(
     openssl                           #  Encryption
     peco                              #  Interactive "grep"
     perceptualdiff                    #  Diff images from cmdline
+    pgcli                             #  Postgres CLI client
     pup                               #  HTML parser
     pv                                #  Shell progres bar monitor
     python3
@@ -200,7 +200,7 @@ declare dock_folders=(
     '~/Downloads'
 )
 
-#  iTerm settings in plist file
+#  iTerm2 settings in plist file
 declare iterm_bookmark_settings=(
     "ASCII Anti Aliased|integer|1"
     "Ambiguous Double Width|integer|0"

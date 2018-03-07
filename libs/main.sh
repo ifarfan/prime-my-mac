@@ -162,6 +162,7 @@ function install_prezto {
     else
         status_msg "1" "prezto"
 
+        #  Install prezto + change shell to zsh
         git clone --recursive https://github.com/sorin-ionescu/prezto.git ${HOME}/.zprezto
         rcfiles=(${HOME}/.zprezto/runcoms/z*)
         for rcfile in "${rcfiles[@]}"; do
@@ -171,15 +172,15 @@ function install_prezto {
     fi
 
     #  Copy over customizations
-    for zshfile in zshrc zpreztorc; do
+    for zshfile in zshrc zpreztorc zprofile; do
         cp -p "./files/prezto/_${zshfile}" "${HOME}/.zprezto/runcoms/${zshfile}"
     done
 
     #  Custom theme
     cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
 
-    #  Install Docker autocomplete
-    curl -fLos ~/.zprezto/modules/completion/external/src/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
+    # #  Install Docker autocomplete
+    # curl -fLos ~/.zprezto/modules/completion/external/src/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 }
 
 
