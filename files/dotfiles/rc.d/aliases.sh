@@ -1,36 +1,30 @@
-# trick to make aliases available when using sudo
+#  Trick to make aliases available when using sudo
 alias sudo='sudo '
 
-# common ls aliases
-alias ll='ls -hal'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Use neovim if available
+#  Use neovim if available, else fallback to vim
 if which nvim &> /dev/null; then
-  alias vim='nvim -p'
-  alias vi='nvim -p'
-# Fallback to vim
+    alias vim='nvim -p'
+    alias vi='nvim -p'
 elif which vim &> /dev/null; then
-  alias vi='vim -p'
+    alias vi='vim -p'
 fi
 
-# display all the history!
+#  Display all history
 alias history="cat $HISTFILE"
 
-# use colordiff if available
+#  Use colordiff if available
 if which colordiff &> /dev/null; then
-  alias diff='colordiff'
+    alias diff='colordiff'
 fi
 
-# hexdump using od
+#  Hexdump using od
 alias hd='od -Ax -tx1z -v'
 
 # alias for nice ps output (macos/linux versions)
 if [[ "$(uname)" == "Darwin" ]]; then
-  alias psc='ps xao pid,state,user,args'
+    alias psc='ps xao pid,state,user,args'
 elif [[ "$(uname)" == "Linux" ]]; then
-  alias psc='ps xawfo pid,state,user,args'
+    alias psc='ps xawfo pid,state,user,args'
 fi
 
 # alias for using rsync with sudo and ssh
@@ -39,30 +33,40 @@ alias rrsync='rsync --rsync-path sudo\ rsync --recursive --perms --copy-links --
 # sum (e.g. echo 1 2 3 |sum)
 alias sum="xargs | tr ' ' '+' | bc"
 
-# alias rg to ag/grep if ripgrep is not available
-if ! which rg &> /dev/null; then
-  # Use ag if available
-  if which ag &> /dev/null; then
-    alias rg='ag'
-  else
-    # Fallback to grep -R
-    rg() { grep -R $1 *; }
-  fi
-fi
+#  Unalias some git module cmds
+unalias gs
+unalias gls
+unalias gpt
 
-# Fallback to grep -Ri if ag is not installed
-if ! which ag &> /dev/null; then
-  ag() { grep -Ri $1 *; }
-fi
+#  Use gnu ls + dircolors
+eval `gdircolors ${HOME}/.dircolors`
+alias ls='gls --color=auto'
 
-# use vimpager as pager if available
-if which vimpager &> /dev/null; then
-  export PAGER="vimpager"
-  alias more=$PAGER
-  alias less=$PAGER
-fi
+#  Aliases -- https://natelandau.com/my-mac-osx-bash_profile/
+alias cp='cp -iv'                                   # Preferred 'cp' implementation
+alias mv='mv -iv'                                   # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                             # Preferred 'mkdir' implementation
+alias ll='ls -FGlAhp'                               # Preferred 'ls' implementation
+alias less='less -FSRXc'                            # Preferred 'less' implementation
+alias cd..='cd ../'                                 # Go back 1 directory level (for fast typers)
+alias ..='cd ../'                                   # Go back 1 directory level
+alias ...='cd ../../'                               # Go back 2 directory levels
+alias .3='cd ../../../'                             # Go back 3 directory levels
+alias .4='cd ../../../../'                          # Go back 4 directory levels
+alias .5='cd ../../../../../'                       # Go back 5 directory levels
+alias .6='cd ../../../../../../'                    # Go back 6 directory levels
+alias edit='subl'                                   # edit:         Opens any file in sublime editor
+alias f='open -a Finder ./'                         # f:            Opens current directory in MacOS Finder
+alias ~="cd ~"                                      # ~:            Go Home
+alias c='clear'                                     # c:            Clear terminal display
+alias path='echo -e ${PATH//:/\\n}'                 # path:         Echo all executable Paths
+alias show_options='shopt'                          # Show_options: display bash options settings
+alias fix_stty='stty sane'                          # fix_stty:     Restore terminal settings when screwed up
+alias cic='set completion-ignore-case On'           # cic:          Make tab-completion case-insensitive
+alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content to file on MacOS Desktop
 
-# use vimcat instead of pygmetize as hcat alias
-if which vimcat &> /dev/null; then
-  alias hcat=vimcat
-fi
+#  lr:  Full Recursive Directory Listing
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+
+#  colorize pgcli
+alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"

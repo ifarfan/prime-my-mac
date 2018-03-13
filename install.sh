@@ -88,7 +88,6 @@ fi
 if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]; then
     activity_monitor_config
     electric_sheep_config
-    git_config
     google_chrome_config
     iterm2_config
     itunes_config
@@ -100,9 +99,9 @@ if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]; then
 fi
 
 #  Set user shell last
-[[ "$FG_ALL" == true || "$FG_BASH_IT" == true ]]  && install_bash_it
-[[ "$FG_ALL" == true || "$FG_PREZTO" == true ]]   && install_prezto
 [[ "$FG_ALL" == true || "$FG_DOTFILES" == true ]] && install_dotfiles
+[[ "$FG_ALL" == true || "$FG_PREZTO" == true ]]   && install_prezto
+[[ "$FG_ALL" == true || "$FG_BASH_IT" == true ]]  && install_bash_it
 
 #  Done!
 status_msg "1" "is now complete"

@@ -60,7 +60,7 @@ function install_homebrew {
     [[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     #  Copy aggresive .curl file to manage brew installs
-    cp -n "./files/_curlrc_brew" "${HOME}/.curl"
+    cp -n "./files/.curlrc_brew" "${HOME}/.curl"
 }
 
 
@@ -133,31 +133,14 @@ function install_brew_fonts {
 }
 
 
-function dir_colors {
-    if [ -d "${HOME}/.dircolors-solarized" ]; then
-        status_msg "0" "dircolors"
-
-        pushd . > /dev/null 2>&1        #  Mark location
-        cd "${HOME}/.dircolors-solarized" && git pull
-        popd > /dev/null 2>&1           #  Return to project root
-    else
-        status_msg "1" "dircolors"
-        git clone --recursive https://github.com/seebi/dircolors-solarized.git ${HOME}/.dircolors-solarized
-    fi
-
-    #  Symlink to theme
-    [[ ! -f "${HOME}/.dircolors" ]] && ln -s "${HOME}/.dircolors-solarized/dircolors.256dark" "${HOME}/.dircolors"
-}
-
-
 function install_prezto {
-    dir_colors
+    status_msg "1" "prezto"
 
     if [ -d "${HOME}/.zprezto" ]; then
         status_msg "0" "prezto"
 
         pushd . > /dev/null 2>&1        #  Mark location
-        cd "${HOME}/.zprezto" && git pull && git submodule update --init --recursive
+        cd "${HOME}/.zprezto" && git fetch --all && git reset --hard origin/master && git submodule update --init --recursive
         popd > /dev/null 2>&1           #  Return to project root
     else
         status_msg "1" "prezto"
@@ -172,22 +155,17 @@ function install_prezto {
     fi
 
     #  Copy over customizations
-    for zshfile in zshrc zpreztorc zprofile; do
-        cp -p "./files/prezto/_${zshfile}" "${HOME}/.zprezto/runcoms/${zshfile}"
+    for zshfile in ./files/prezto/.z*; do
+        cp -p "./files/prezto/${zshfile}" "${HOME}/.zprezto/runcoms/${zshfile}"
     done
 
     #  Custom theme
     cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
-
-    # #  Install Docker autocomplete
-    # curl -fLos ~/.zprezto/modules/completion/external/src/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 }
 
 
 function install_bash_it {
     status_msg "1" "bash-it"
-
-    dir_colors
 
     if [ -d "${HOME}/.bash_it" ]; then
         bash-it update
@@ -206,13 +184,52 @@ function install_bash_it {
 
 
 function install_dotfiles {
-    #  With lots of help from:
-    #  - https://github.com/chr4/shellrc
-    #  - https://github.com/sorin-ionescu/dotfiles
-    cp -R ./files/dotfiles "${HOME}/.dotfiles"
+    #
+    #  nano syntax-highlight
+    #
+    if [ -f "${HOME}/.nanorc" ]; then
+        status_msg "0" "nano"
+        pushd . > /dev/null 2>&1
+        cd "${HOME}/.nano" && git fetch --all && git reset --hard origin/master
+        popd > /dev/null 2>&1
+    else
+        status_msg "1" "nano"
+        git clone https://github.com/scopatz/nanorc.git ${HOME}/.nano
+        ln -s ${HOME}/.nano/nanorc ${HOME}/.nanorc
+    fi
 
+    #
+    #  dircolors
+    #
+    if [ -f "${HOME}/.dircolors" ]; then
+        status_msg "0" "dircolors"
+
+        pushd . > /dev/null 2>&1
+        cd "${HOME}/.dircolors-solarized" && git fetch --all && git reset --hard origin/master
+        popd > /dev/null 2>&1
+    else
+        status_msg "1" "dircolors"
+        git clone --recursive https://github.com/seebi/dircolors-solarized.git ${HOME}/.dircolors-solarized
+        ln -s "${HOME}/.dircolors-solarized/dircolors.256dark" "${HOME}/.dircolors"
+    fi
+
+    #
+    #  git
+    #
+    status_msg "0" "Git configs"
+    mkdir -p "${HOME}/.git"
+    for g_file in ./files/git/.git*; do
+        gitfile=$(basename ${g_file})
+        cp -p "${g_file}" "${HOME}/.git/${gitfile}"
+        ln -s "${HOME}/.git/${gitfile}" "${HOME}/${gitfile}"
+    done
+
+    #
     #  Activate .dotfiles
-    for dotfile in bashrc bash_profile inputrc zshrc zlogin; do
-        ln -sf .dotfiles/${dotfile} .${dotfile}
+    #
+    cp -R ./files/dotfiles "${HOME}/.dotfiles"
+    for d_file in ./files/dotfiles/.*; do
+        dotfile=$(basename ${d_file})
+        ln -sf "${HOME}/.dotfiles/${dotfile}" "${HOME}/${dotfile}"
     done
 }

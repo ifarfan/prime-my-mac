@@ -1,7 +1,6 @@
-# Use neovim as default editor if available
-if which nvim &> /dev/null; then
-  export EDITOR=nvim
-# Fallback to vim
+#  Use nano as default editor, else fallback to vim
+if which nano &> /dev/null; then
+    export EDITOR=nano
 elif which vim &> /dev/null; then
-  export EDITOR=vim
+    export EDITOR=vim
 fi

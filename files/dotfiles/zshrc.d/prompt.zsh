@@ -1,8 +1,8 @@
-# set colorful prompt (PS1 doesn't support the color variables set above)
-if [[ ${EUID} == 0 ]]; then
-  PROMPT='%F{61}$(hostname) %F{33}%1~%F{reset}$(__git_ps1 " (%s)") %F{160}%#%F{reset} '
-else
-  PROMPT='%F{61}$(hostname) %F{33}%1~%F{reset}$(__git_ps1 " (%s)") %F{reset}%# '
-fi
+#  Powerlevel prompt settings
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 
-RPROMPT='$(vi_mode_prompt_info) $(exit_code_prompt_info)'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir aws vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)

@@ -4,8 +4,8 @@
 # globbing instead of external grep binary.
 
 # Make sure to use GNU versions of utilities are loaded before this file
-if [ -f $HOME/.shellrc/rc.d/gnuutils.sh ]; then
-    source $HOME/.shellrc/rc.d/gnuutils.sh
+if [ -f $HOME/.dotfiles/rc.d/gnuutils.sh ]; then
+    source $HOME/.dotfiles/rc.d/gnuutils.sh
 fi
 
 # enable colors for ls, etc. prefer $HOME/.dir_colors
@@ -24,16 +24,14 @@ for cmd in grep fgrep egrep; do
     fi
 done
 
-# enable --color switch for ls command, if supported
-if ls --color=auto &> /dev/null; then
-    alias ls="ls --color=auto"
-fi
-
-# macos ls doesn't support ls --color, but uses CLICOLOR environment variable
+#  Iterm2 coloring
 export CLICOLOR=1
+export LSCOLORS=exfxbEaEBxxEhEhBaDaCaD
+#export LSCOLORS=exfxBxDxCxegedabagacad
+#export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 # try to keep environment pollution down, EPA loves us.
-unset match_lhs
+unset use_color safe_term match_lhs
 
 # define prompt colors shell-independently
 if [[ -n ${ZSH_VERSION-} ]]; then

@@ -40,22 +40,6 @@ function electric_sheep_config {
 }
 
 
-function git_config {
-    status_msg "0" "Git configs"
-
-    #  Copy configs
-    mkdir -p "${HOME}/.git"
-    for gitfile in ./files/git/_*; do
-        gitfile=$(basename ${gitfile} | sed 's/^_\(.*\)/\1/')
-        cp -p "./files/git/_${gitfile}" "${HOME}/.git/.${gitfile}"
-    done
-
-    #  Symlink to configs
-    [[ ! -f "${HOME}/.gitconfig"        ]] && ln -s "${HOME}/.git/.gitconfig"        "${HOME}/.gitconfig"
-    [[ ! -f "${HOME}/.gitignore_global" ]] && ln -s "${HOME}/.git/.gitignore_global" "${HOME}/.gitignore_global"
-}
-
-
 function google_chrome_config {
     status_msg "0" "Custom Google Chrome.app config"
 
@@ -82,11 +66,6 @@ function google_chrome_config {
         #  Expand the print dialog by default
         defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
     fi
-}
-
-
-function istatmenus_config {
-    status_msg "0" "Custom iStat Menus.app config"
 }
 
 
