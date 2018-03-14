@@ -37,6 +37,7 @@ alias sum="xargs | tr ' ' '+' | bc"
 unalias gs
 unalias gls
 unalias gpt
+unalias grc
 
 #  Use gnu ls + dircolors
 eval `gdircolors ${HOME}/.dircolors`
@@ -68,5 +69,9 @@ alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content
 #  lr:  Full Recursive Directory Listing
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
-#  colorize pgcli
-alias pgcli="PAGER='grcat ~/.grc/conf.psql | less -iMSx4FXRe' pgcli"
+#  colorize!
+# alias pgcli="PAGER='grcat ~/.grc/colourfiles/conf.psql | less -iMSx4FXRe' pgcli"
+alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"
+alias ping="grc ping"
+alias tail="grc tail"
+alias netstat="grc netstat"

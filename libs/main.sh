@@ -213,6 +213,20 @@ function install_dotfiles {
     fi
 
     #
+    #  colorize
+    #
+    if [ -d "${HOME}/.grc" ]; then
+        status_msg "0" "colorize"
+
+        pushd . > /dev/null 2>&1
+        cd "${HOME}/.grc" && git fetch --all && git reset --hard origin/master
+        popd > /dev/null 2>&1
+    else
+        status_msg "1" "colorize"
+        git clone https://github.com/garabik/grc.git ${HOME}/.grc
+    fi
+
+    #
     #  git
     #
     status_msg "0" "Git configs"
