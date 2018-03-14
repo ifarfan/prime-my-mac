@@ -64,7 +64,8 @@ declare brew_pkgs=(
     perceptualdiff                    #  Diff images from cmdline
     pgcli                             #  Postgres CLI client
     pup                               #  HTML parser
-    pv                                #  Shell progres bar monitor
+    pv                                #  Shell progress bar monitor
+    python@2
     python3
     screen                            #  Multiplexer
     siege                             #  Load testing

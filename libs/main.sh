@@ -57,7 +57,7 @@ function install_homebrew {
     #
     local BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
     status_msg "$BREW_ERR_CODE" "homebrew"
-    [[ "$BREW_ERR_CODE" -ne 0 ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    [ "$BREW_ERR_CODE" -ne 0 ] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     #  Copy aggresive .curl file to manage brew installs
     cp -n "./files/.curlrc_brew" "${HOME}/.curl"
@@ -72,7 +72,7 @@ function install_pip {
     status_msg "$PYTHON_ERR_CODE" "python"
     if [ "${PYTHON_ERR_CODE}" -ne 0 ]; then
         #  Install latest version of Python
-        brew install python
+        brew install python@2
 
         #  Update pip + setuptools
         status_msg "$PYTHON_ERR_CODE" "pip + setuptools"
@@ -176,10 +176,9 @@ function install_bash_it {
     chsh -s /bin/bash
 
     #  Install Docker autocomplete
-    cd /usr/local/etc/bash_completion.d
-    ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
-    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
-    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
+    for d in docker docker-machine docker-compose; do
+        ln -s "/Applications/Docker.app/Contents/Resources/etc/${d}.bash-completion" "/usr/local/etc/bash_completion.d/${d}.bash-completion"
+    done
 }
 
 
