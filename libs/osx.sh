@@ -443,9 +443,6 @@ function miscellaneous_tweaks {
     #  Show clock on menubar
     # defaults write com.apple.menuextra.clock IsAnalog -bool false
     # defaults write com.apple.menuextra.clock DateFormat "EEE MMM d h:mm a"
-
-    #   WTF APPLE!!! Why did u disable this in Sierra? Restore "Allow Apps downloaded from Anywhere"
-    sudo spctl --master-disable
 }
 
 
@@ -474,6 +471,50 @@ function screen_tweaks {
 
     #  Enable HiDPI display modes
     sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+}
+
+
+function security_allow_run_all_apps {
+    #  Toggle "Allow Apps downloaded from Anywhere"
+    [ "$1" == true ] && sudo spctl --master-disable || sudo spctl --master-enable
+}
+
+
+function security_tweaks {
+    #
+    #  Firewall
+    #
+    #  See:
+    #  - http://krypted.com/mac-security/command-line-firewall-management-in-os-x-10-10/
+    #  - https://coderwall.com/p/zt8aqa/disable-mac-osx-firewall-from-command-line
+    #
+    #  To check log config:
+    #  $> sudo log config --status --subsystem com.apple.alf
+    #  To view log output:
+    #  $> log show --predicate 'subsystem == "com.apple.alf"' --info --last 1h
+    #
+
+    #  Set stealth mode ON
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+    sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
+
+    #  Set logging ON: throttled:0, brief:1 or detail:2
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingopt brief
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
+    sudo defaults write /Library/Preferences/com.apple.alf loggingoption  -int 1
+    sudo defaults write /Library/Preferences/com.apple.alf loggingenabled -int 1
+
+    #  Allow signed OSX Apps
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned on
+    sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -int 1
+
+    #  Start firewall!
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+    #  Block all incoming traffic (not recommended)
+    # /usr/libexec/ApplicationFirewall/socketfilterfw --setblockall on
+    # sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2
 }
 
 

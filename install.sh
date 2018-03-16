@@ -65,6 +65,9 @@ sudo -v
 while true; do
     sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+#  Enable "All Apps" install
+security_allow_run_all_apps true
+
 #  Install components
 [[ "$FG_ALL" == true || "$FG_PIP" == true ]]        && install_pip
 [[ "$FG_ALL" == true || "$FG_BREW" == true ]]       && install_brew
@@ -73,7 +76,6 @@ while true; do
 
 #  OS X Customizations
 if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]; then
-    #  Tweaks
     dock_tweaks
     finder_tweaks
     input_device_tweaks
@@ -82,6 +84,7 @@ if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]; then
     ssd_tweaks
     energy_tweaks
     miscellaneous_tweaks
+    security_tweaks
 fi
 
 #  App specific Customizations

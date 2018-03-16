@@ -159,7 +159,7 @@ function install_prezto {
         cp -p "./files/prezto/${zshfile}" "${HOME}/.zprezto/runcoms/${zshfile}"
     done
 
-    #  Custom theme
+    #  Copy over custom theme
     cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
 }
 
