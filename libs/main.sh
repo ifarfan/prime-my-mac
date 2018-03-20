@@ -153,14 +153,6 @@ function install_prezto {
         done
         chsh -s /bin/zsh
     fi
-
-    #  Copy over customizations
-    for zshfile in ./files/prezto/.z*; do
-        cp -p "./files/prezto/${zshfile}" "${HOME}/.zprezto/runcoms/${zshfile}"
-    done
-
-    #  Copy over custom theme
-    cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
 }
 
 
@@ -230,10 +222,9 @@ function install_dotfiles {
     #  git
     #
     status_msg "0" "Git configs"
-    mkdir -p "${HOME}/.git"
-    for g_file in ./files/git/.git*; do
+    cp -R ./files/git "${HOME}/.git"
+    for g_file in ./files/git/.*; do
         gitfile=$(basename ${g_file})
-        cp -p "${g_file}" "${HOME}/.git/${gitfile}"
         ln -s "${HOME}/.git/${gitfile}" "${HOME}/${gitfile}"
     done
 

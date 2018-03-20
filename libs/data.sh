@@ -52,6 +52,9 @@ declare brew_pkgs=(
     hub                               #  Automate github
     imagemagick
     jq                                #  JSON parser
+    kops                              #  Kubernetes operations
+    kube-aws                          #  CoreOS Kubernetes on AWS
+    kubernetes-cli                    #  Kubernetes CLI
     lastpass-cli --with-pinentry --with-doc  #  Password manager cli tool
     lnav                              #  Log file/folder navigator
     moreutils

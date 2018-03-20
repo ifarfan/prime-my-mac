@@ -34,10 +34,10 @@ alias rrsync='rsync --rsync-path sudo\ rsync --recursive --perms --copy-links --
 alias sum="xargs | tr ' ' '+' | bc"
 
 #  Unalias some git module cmds
-unalias gs
-unalias gls
-unalias gpt
-unalias grc
+type gs  >/dev/null && unalias gs
+type gls >/dev/null && unalias gls
+type gpt >/dev/null && unalias gpt
+type grc >/dev/null && unalias grc
 
 #  Use gnu ls + dircolors
 eval `gdircolors ${HOME}/.dircolors`

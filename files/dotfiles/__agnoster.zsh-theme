@@ -1,3 +1,6 @@
+# #  Goes here: Copy over custom theme
+# cp -p "./files/prezto/agnoster.zsh-theme" "${HOME}/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme"
+
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
 # agnoster's Theme - https://gist.github.com/3712874
