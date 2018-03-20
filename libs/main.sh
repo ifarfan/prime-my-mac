@@ -59,8 +59,8 @@ function install_homebrew {
     status_msg "$BREW_ERR_CODE" "homebrew"
     [ "$BREW_ERR_CODE" -ne 0 ] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    #  Copy aggresive .curl file to manage brew installs
-    cp -n "./files/.curlrc_brew" "${HOME}/.curl"
+    #  Copy aggresive .curl file to optimize brew installs
+    cp -n "./files/dotfiles/.curl" "${HOME}/.curl"
 }
 
 
