@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-#  =============================================================================
 #
 #  M A I N . S H
 #
-#  =============================================================================
 
 
 #  Colors
@@ -225,12 +223,13 @@ function install_dotfiles {
     cp -R ./files/git "${HOME}/.git"
     for g_file in ./files/git/.*; do
         gitfile=$(basename ${g_file})
-        ln -s "${HOME}/.git/${gitfile}" "${HOME}/${gitfile}"
+        ln -sf "${HOME}/.git/${gitfile}" "${HOME}/${gitfile}"
     done
 
     #
     #  Activate .dotfiles
     #
+    status_msg "0" "Dot-files"
     cp -R ./files/dotfiles "${HOME}/.dotfiles"
     for d_file in ./files/dotfiles/.*; do
         dotfile=$(basename ${d_file})

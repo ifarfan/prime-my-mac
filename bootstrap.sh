@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#  =============================================================================
 #
 #  B O O T S T R A P . S H
 #
@@ -12,7 +11,6 @@
 #  To install:
 #  curl -fsSL https://github.com/ifarfan/prime-my-mac/bootstrap.sh | bash
 #
-#  =============================================================================
 
 
 #  Variables

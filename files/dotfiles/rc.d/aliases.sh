@@ -66,9 +66,6 @@ alias fix_stty='stty sane'                          # fix_stty:     Restore term
 alias cic='set completion-ignore-case On'           # cic:          Make tab-completion case-insensitive
 alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content to file on MacOS Desktop
 
-#  lr:  Full Recursive Directory Listing
-alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
-
 #  colorize!
 # alias pgcli="PAGER='grcat ~/.grc/colourfiles/conf.psql | less -iMSx4FXRe' pgcli"
 alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"

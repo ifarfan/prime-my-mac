@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#  =============================================================================
 #
 #  O S X . S H
 #
@@ -9,7 +8,6 @@
 #  - http://www.defaults-write.com/
 #  - https://www.learningosx.com/101-ways-to-tweak-os-x-using-terminal/#
 #
-#  =============================================================================
 
 
 function app_store_tweaks {
@@ -532,6 +530,7 @@ function ssd_tweaks {
 
         #  Remove the sleep image file to save disk space
         sudo rm /Private/var/vm/sleepimage
+
         #  Create a zero-byte file instead and make sure it can't be rewritten
         sudo touch /Private/var/vm/sleepimage
         sudo chflags uchg /Private/var/vm/sleepimage
