@@ -248,3 +248,17 @@ function timemachine_config {
     #  Set TimeMachine backup to every 4 hours (set in seconds)
     sudo defaults write /System/Library/LaunchDaemons/com.apple.backupd-auto StartInterval -int 14400
 }
+
+function vscode_config {
+    status_msg "0" "Custom VSCode.app config"
+
+    #  Copy + symlink config file
+    mkdir -p "${HOME}/.vscode"
+    ln -sf "${HOME}/.vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
+    cp -n ./files/settings.json "${HOME}/.vscode/settings.json"
+
+    #  Install extensions
+    for extension in "${vscode_extensions[@]}"; do
+        code --install-extension ${extension} --force
+    done
+}

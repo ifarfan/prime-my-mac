@@ -1,6 +1,6 @@
 [core]
     editor = nano
-    excludesfile = ~/.git/.gitignore.global
+    excludesfile = ~/.git/.gitignore_global
 [include]
     path = ~/.git/.gitconfig.user
     #  Put your Github token here

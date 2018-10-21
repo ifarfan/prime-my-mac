@@ -12,7 +12,9 @@ declare pip_pkgs=(
     boto3                             #  AWS SDK
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
+    molecule                          #  Ansible testing
     pygments                          #  File colorization from terminal
+    pylint                            #  Python linter
     udemy-dl                          #  Download Udemy videos (optional)
     virtualenv                        #  Virtual environments
 )
@@ -78,6 +80,7 @@ declare brew_pkgs=(
     unrar
     watch                             #  Linux "watch" command
     wget                              #  Linux "wget" command
+    yamllint                          #  YAML linter
     yq                                #  YML parser
     z                                 #  Remember most used cd'ed folders
     bash                              #  Bash 4.x
@@ -110,6 +113,7 @@ declare cask_pkgs=(
     omnigraffle
     plex-media-player
     plexamp
+    postman                           # API viewer/reader/debugger
     sequel-pro
     skitch
     skype
@@ -121,6 +125,7 @@ declare cask_pkgs=(
     utorrent                          # NOTE: will need manual post-install steps
     virtualbox
     vagrant
+    visual-studio-code                # VS Code
     vlc
 #
 #  Utilities
@@ -424,4 +429,36 @@ declare iterm_bookmark_settings=(
     "Visual Bell|integer|1"
     "Window Type|integer|0"
     "Working Directory|string|${HOME}"
+)
+
+#  VS Code extenstions
+declare vscode_extensions=(
+    '2gua.rainbow-brackets'
+    'PeterJausovec.vscode-docker'
+    'PlethoraOfHate.aws-actions'
+    'TeeSeal.ayu-legacy'
+    'Tyriar.sort-lines'
+    'aaron-bond.better-comments'
+    'arcticicestudio.nord-visual-studio-code'
+    'aws-scripting-guy.cform'
+    'christian-kohler.path-intellisense'
+    'cliffordfajardo.highlight-line-vscode'
+    'dhoeric.ansible-vault'
+    'eamodio.gitlens'
+    'huizhou.githd'
+    'kddejong.vscode-cfn-lint'
+    'ms-kubernetes-tools.vscode-kubernetes-tools'
+    'ms-python.python'
+    'redhat.vscode-yaml'
+    'robertohuertasm.vscode-icons'
+    'rupisaini.vscode-ansible-linter'
+    'ryu1kn.partial-diff'
+    'ryu1kn.text-marker'
+    'samuelcolvin.jinjahtml'
+    'secanis.jenkinsfile-support'
+    'shd101wyy.markdown-preview-enhanced'
+    'spywhere.guides'
+    'vscoss.vscode-ansible'
+    'wayou.vscode-todo-highlight'
+    'xandeer.better-align'
 )

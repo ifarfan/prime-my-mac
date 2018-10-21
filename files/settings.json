@@ -1,0 +1,29 @@
+{
+    "editor.fontFamily"        : "Ubuntu Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize"          : 17,
+    "editor.lineHeight"        : 20,
+    "editor.minimap.enabled"   : false,
+    "editor.renderIndentGuides": false,
+    "editor.rulers"            : [
+        80,
+        100,
+        120,
+        140
+    ],
+    "editor.cursorBlinking"       : "phase",
+    "editor.cursorStyle"          : "line",
+    "editor.insertSpaces"         : true,
+    "editor.scrollBeyondLastLine" : false,
+    "editor.tabCompletion"        : "off",
+    "editor.tabSize"              : 4,
+    "files.insertFinalNewline"    : true,
+    "files.trimTrailingWhitespace": true,
+    "highlightLine.borderColor"   : "#18b47b",
+    "highlightLine.borderStyle"   : "dashed",
+    "highlightLine.borderWidth"   : "1px",
+    "python.pythonPath"           : "/usr/local/bin/python",
+    "textmarker.enableTelemetry"  : false,
+    "window.zoomLevel"            : 1,
+    "workbench.colorTheme"        : "Ayu Mirage (Legacy)",
+    "workbench.iconTheme"         : "vscode-icons"
+}

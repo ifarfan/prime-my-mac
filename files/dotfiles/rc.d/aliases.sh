@@ -72,3 +72,5 @@ alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"
 alias ping="grc ping"
 alias tail="grc tail"
 alias netstat="grc netstat"
+
+alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"

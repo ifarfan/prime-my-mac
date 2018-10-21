@@ -97,6 +97,7 @@ if [[ "$FG_ALL" == true || "$FG_APPS" == true ]]; then
     safari_config
     sublime_text_config
     terminal_config
+    vscode_config
 fi
 
 #  Set user shell last
