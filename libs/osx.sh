@@ -43,7 +43,6 @@ function app_store_tweaks {
 function dock_tweaks {
     status_msg "0" "Custom Dock tweaks"
 
-
     if [ "${#dock_apps[@]}" -gt 0 ]; then
         #  Remove everything off the dock first
         dockutil --remove all --no-restart

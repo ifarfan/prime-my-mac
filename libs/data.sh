@@ -7,9 +7,12 @@
 #  pip packages
 declare pip_pkgs=(
     ansible                           #  1st thing on every Mac
+    ansible-container[docker,openshift] #  Containers
     ansible-lint                      #  2nd thing on every Mac
     bashate                           #  3rd thing on every Mac
     boto3                             #  AWS SDK
+    cfn-lint                          #  Cloudformation linter
+    docker                            #  Docker lib for Ansible
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
     molecule                          #  Ansible testing
@@ -63,6 +66,7 @@ declare brew_pkgs=(
     nmap
     node                              #  NodeJS
     openssl                           #  Encryption
+    packer                            #  Hashicorp's machine image creator
     peco                              #  Interactive "grep"
     perceptualdiff                    #  Diff images from cmdline
     pgcli                             #  Postgres CLI client
@@ -153,8 +157,6 @@ declare cask_pkgs=(
 #  Work-related
 #
     postico                           #  Postgres client
-    tunnelblick                       #  Open VPN client
-    x-lite                            #  VOIP client
     zoomus                            #  Video conferencing, will prompt with post-install gui
 #
 #  Deprecated
@@ -170,7 +172,9 @@ declare cask_pkgs=(
   # transmit
   # jubler                            #  Subtitle editor
   # smcfancontrol:l                   #  Control fan
+  # tunnelblick                       #  Open VPN client
   # vagrant-manager
+  # x-lite                            #  VOIP client
 )
 
 #  Fonts ("brew cask search /font./")
@@ -196,8 +200,8 @@ declare dock_apps=(
     'Skitch'
     'Calculator'
     'iTerm'
+    'Visual Studio Code'
     'OmniGraffle'
-    'Sublime Text'
     'System Preferences'
 )
 
@@ -431,10 +435,11 @@ declare iterm_bookmark_settings=(
     "Working Directory|string|${HOME}"
 )
 
-#  VS Code extenstions
+#  VS Code extensions
 declare vscode_extensions=(
     '2gua.rainbow-brackets'
     'PeterJausovec.vscode-docker'
+    'PKief.material-icon-theme'
     'PlethoraOfHate.aws-actions'
     'TeeSeal.ayu-legacy'
     'Tyriar.sort-lines'

@@ -75,9 +75,10 @@ function iterm2_config {
 #  - http://www.real-world-systems.com/docs/PlistBuddy.1.html
 #  - https://iterm2.com/documentation-hidden-settings.html
 #
+    status_msg "0" "Custom iTerm2.app config"
+
     local ITERM2_PLIST="${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
     if [ -f ${ITERM2_PLIST} ]; then
-        status_msg "0" "Custom iTerm2.app config"
 
         #  Set custom settings
         defaults write com.googlecode.iterm2 CursorType -bool false
@@ -106,6 +107,9 @@ function iterm2_config {
             local SET_BOOKMARK=$(/usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"${key_name}\" \"${key_value}\"" ${ITERM2_PLIST} > /dev/null 2>&1; echo $?)
             [ ! ${SET_BOOKMARK} ] && /usr/libexec/PlistBuddy -c "Add :\"New Bookmarks\":0:\"${key_value}\" ${key_type} \"${key_value}\"" ${ITERM2_PLIST}
         done
+    else
+        #  Copy config file as-is
+        cp -n ./files/iterm2.plist ${ITERM2_PLIST}
     fi
 
     #  Enable iTerm2 shell integration

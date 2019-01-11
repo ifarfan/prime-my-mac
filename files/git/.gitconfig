@@ -10,9 +10,12 @@
 [alias]
     #  Get the current branch name (not so useful in itself, but used in other aliases)
     branch-name = !git rev-parse --abbrev-ref HEAD
+    #  See commits not pushed yet
+    np = "!git log origin/$(git branch-name)..$(git branch-name)"
     #  Push the current branch to the remote "origin", and set it to track the upstream branch
     puo = "!git push -u origin $(git branch-name)"
     pom = pull origin master
+    pod = pull origin develop
     #  Add + Commit
     ac = !git add . && git commit -am
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

@@ -3,8 +3,6 @@
 #
 #  I N S T A L L . S H
 #
-#  =============================================================================
-#
 #  Install OSX tools + customizations:
 #  - pip
 #  - homebrew + cask + fonts
