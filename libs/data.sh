@@ -7,7 +7,7 @@
 #  pip packages
 declare pip_pkgs=(
     ansible                           #  1st thing on every Mac
-    ansible-container[docker,openshift] #  Containers
+    'ansible-container[docker,openshift]' #  Containers
     ansible-lint                      #  2nd thing on every Mac
     bashate                           #  3rd thing on every Mac
     boto3                             #  AWS SDK
@@ -32,19 +32,19 @@ declare brew_pkgs=(
     cdrtools                          #  Server images tools: mkisofs
     csshx                             #  Multiple simultaneous SSH
     colordiff
-    coreutils --with-default-names
+    'coreutils --with-default-names'
     cowsay
     dockutil                          #  Manage the OS X Dock
-    findutils --with-default-names
+    'findutils --with-default-names'
     fortune
     exa                               #  'ls' on steroids
     gawk
     git
     git-flow
-    gnu-getopt --with-default-names   #  Use linux getopt
-    gnu-indent --with-default-names   #  Use linux indent
-    gnu-sed --with-default-names      #  Use linux sed
-    gnu-tar --with-default-names      #  Use linux tar
+    'gnu-getopt --with-default-names' #  Use linux getopt
+    'gnu-indent --with-default-names' #  Use linux indent
+    'gnu-sed --with-default-names'    #  Use linux sed
+    'gnu-tar --with-default-names'    #  Use linux tar
     grc                               #  Colorize output
     gpg
     gnutls
@@ -53,12 +53,13 @@ declare brew_pkgs=(
     homebrew/dupes/screen
     htop
     hub                               #  Automate github
+    hugo                              #  Static site generator
     imagemagick
     jq                                #  JSON parser
     kops                              #  Kubernetes operations
     kube-aws                          #  CoreOS Kubernetes on AWS
     kubernetes-cli                    #  Kubernetes CLI
-    lastpass-cli --with-pinentry --with-doc  #  Password manager cli tool
+    'lastpass-cli --with-pinentry --with-doc'  #  Password manager cli tool
     lnav                              #  Log file/folder navigator
     moreutils
     nano
@@ -123,7 +124,6 @@ declare cask_pkgs=(
     skype
     slack
     spotify
-    sublime-text
     teamviewer                        # NOTE: will prompt with post-install gui
     unison
     utorrent                          # NOTE: will need manual post-install steps
@@ -172,6 +172,7 @@ declare cask_pkgs=(
   # transmit
   # jubler                            #  Subtitle editor
   # smcfancontrol:l                   #  Control fan
+  # sublime-text
   # tunnelblick                       #  Open VPN client
   # vagrant-manager
   # x-lite                            #  VOIP client
@@ -446,6 +447,7 @@ declare vscode_extensions=(
     'aaron-bond.better-comments'
     'arcticicestudio.nord-visual-studio-code'
     'aws-scripting-guy.cform'
+    'bungcip.better-toml'
     'christian-kohler.path-intellisense'
     'cliffordfajardo.highlight-line-vscode'
     'dhoeric.ansible-vault'
@@ -466,4 +468,80 @@ declare vscode_extensions=(
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
     'xandeer.better-align'
+)
+
+#  Colorize files on terminal output
+grc_conf_dir=/usr/local/etc/
+grc_conf_url='https://raw.githubusercontent.com/garabik/grc/master/colourfiles/'
+declare grc_confs=(
+    'conf.ant'
+    'conf.blkid'
+    'conf.configure'
+    'conf.cvs'
+    'conf.df'
+    'conf.diff'
+    'conf.dig'
+    'conf.dnf'
+    'conf.docker'
+    'conf.dockerimages'
+    'conf.dockerinfo'
+    'conf.dockernetwork'
+    'conf.dockerps'
+    'conf.dockerpull'
+    'conf.dockersearch'
+    'conf.dockerversion'
+    'conf.du'
+    'conf.env'
+    'conf.fdisk'
+    'conf.findmnt'
+    'conf.free'
+    'conf.gcc'
+    'conf.getfacl'
+    'conf.getsebool'
+    'conf.id'
+    'conf.ifconfig'
+    'conf.iostat_sar'
+    'conf.ip'
+    'conf.ipaddr'
+    'conf.ipneighbor'
+    'conf.iproute'
+    'conf.iptables'
+    'conf.irclog'
+    'conf.iwconfig'
+    'conf.jobs'
+    'conf.last'
+    'conf.ldap'
+    'conf.log'
+    'conf.lolcat'
+    'conf.ls'
+    'conf.lsattr'
+    'conf.lsblk'
+    'conf.lsmod'
+    'conf.lsof'
+    'conf.lspci'
+    'conf.mount'
+    'conf.mtr'
+    'conf.mvn'
+    'conf.netstat'
+    'conf.nmap'
+    'conf.ntpdate'
+    'conf.php'
+    'conf.ping'
+    'conf.ping2'
+    'conf.ps'
+    'conf.pv'
+    'conf.sensors'
+    'conf.showmount'
+    'conf.sql'
+    'conf.ss'
+    'conf.stat'
+    'conf.sysctl'
+    'conf.systemctl'
+    'conf.tcpdump'
+    'conf.traceroute'
+    'conf.ulimit'
+    'conf.uptime'
+    'conf.vmstat'
+    'conf.wdiff'
+    'conf.whois'
 )
