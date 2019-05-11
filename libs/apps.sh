@@ -120,9 +120,6 @@ function iterm2_config {
         #  Copy config file as-is
         cp -n ./files/iterm2.plist ${ITERM2_PLIST}
     fi
-
-    #  Enable iTerm2 shell integration
-    curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | bash
 }
 
 
@@ -268,7 +265,7 @@ function vscode_config {
     #  Copy + symlink config file
     mkdir -p "${HOME}/.vscode"
     ln -sf "${HOME}/.vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
-    cp -n ./files/settings.json "${HOME}/.vscode/settings.json"
+    cp -n ./files/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
 
     #  Install extensions
     for extension in "${vscode_extensions[@]}"; do

@@ -42,10 +42,22 @@ typeset -gU cdpath fpath mailpath path
 # )
 
 # Set the list of directories that Zsh searches for programs.
+# Include MAN paths by default
 path=(
   /usr/local/{bin,sbin}
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/opt/coreutils/libexec/gnuman
+  /usr/local/opt/findutils/libexec/gnubin
+  /usr/local/opt/findutils/libexec/gnuman
+  /usr/local/opt/gnu-getopt/bin
+  /usr/local/opt/gnu-indent/libexec/gnubin
+  /usr/local/opt/gnu-indent/libexec/gnuman
+  /usr/local/opt/gnu-sed/libexec/gnubin
+  /usr/local/opt/gnu-sed/libexec/gnuman
+  /usr/local/opt/gnu-tar/libexec/gnubin
+  /usr/local/opt/gnu-tar/libexec/gnuman
+  /usr/local/opt/grep/libexec/gnubin
+  /usr/local/opt/grep/libexec/gnuman
   $path
 )
 

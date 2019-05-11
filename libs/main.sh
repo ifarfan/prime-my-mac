@@ -235,4 +235,7 @@ function install_dotfiles {
         dotfile=$(basename ${d_file})
         ln -sf "${HOME}/.dotfiles/${dotfile}" "${HOME}/${dotfile}"
     done
+
+    #  Enable iTerm2 shell integration
+    curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
 }

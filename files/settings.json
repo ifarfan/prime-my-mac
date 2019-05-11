@@ -1,6 +1,6 @@
 {
     "editor.renderIndentGuides": false,
-    "window.zoomLevel"         : 1,
+    "window.zoomLevel"         : 0,
     "editor.minimap.enabled"   : false,
     "editor.fontFamily"        : "Ubuntu Mono,Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize"          : 17,

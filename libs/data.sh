@@ -7,8 +7,8 @@
 #  pip packages
 declare pip_pkgs=(
     ansible                           #  1st thing on every Mac
-    'ansible-container[docker,openshift]' #  Containers
     ansible-lint                      #  2nd thing on every Mac
+    ansible-bender                    #  Build containers via ansible
     bashate                           #  3rd thing on every Mac
     boto3                             #  AWS SDK
     cfn-lint                          #  Cloudformation linter
@@ -20,6 +20,8 @@ declare pip_pkgs=(
     pylint                            #  Python linter
     udemy-dl                          #  Download Udemy videos (optional)
     virtualenv                        #  Virtual environments
+    # req                               #  Needed by ansible-container
+    # 'git+https://github.com/ansible/ansible-container.git@develop'
 )
 
 #  homebrew packages
@@ -31,21 +33,22 @@ declare brew_pkgs=(
     cli53                             #  Manage AWS Route53
     cdrtools                          #  Server images tools: mkisofs
     csshx                             #  Multiple simultaneous SSH
-    colordiff
-    'coreutils --with-default-names'
+    colordiff                         #  Add to .zprofile
+    coreutils
     cowsay
     dockutil                          #  Manage the OS X Dock
-    'findutils --with-default-names'
+    findutils                         #  Add to .zprofile
     fortune
     exa                               #  'ls' on steroids
     gawk
     git
     git-flow
-    'gnu-getopt --with-default-names' #  Use linux getopt
-    'gnu-indent --with-default-names' #  Use linux indent
-    'gnu-sed --with-default-names'    #  Use linux sed
-    'gnu-tar --with-default-names'    #  Use linux tar
+    gnu-getopt                        #  Use linux getopt; add to .zprofile
+    gnu-indent                        #  Use linux indent; add to .zprofile
+    gnu-sed                           #  Use linux sed; add to .zprofile
+    gnu-tar                           #  Use linux tar; add to .zprofile
     grc                               #  Colorize output
+    grep
     gpg
     gnutls
     homebrew/dupes/grep
@@ -61,9 +64,11 @@ declare brew_pkgs=(
     kubernetes-cli                    #  Kubernetes CLI
     'lastpass-cli --with-pinentry --with-doc'  #  Password manager cli tool
     lnav                              #  Log file/folder navigator
+    mkdocs                            #  Documentation via markdown
     moreutils
     nano
     ncdu
+    netcat
     nmap
     node                              #  NodeJS
     openssl                           #  Encryption
@@ -86,6 +91,7 @@ declare brew_pkgs=(
     watch                             #  Linux "watch" command
     wget                              #  Linux "wget" command
     yamllint                          #  YAML linter
+    youtube-dl                        #  Download videos from cli
     yq                                #  YML parser
     z                                 #  Remember most used cd'ed folders
     bash                              #  Bash 4.x
@@ -93,7 +99,7 @@ declare brew_pkgs=(
 #
 #  Other
 #
-    http://git.io/sshpass.rb          #  unofficial sshpass install @ https://gist.github.com/arunoda/7790979
+    'http://git.io/sshpass.rb'        #  unofficial sshpass install @ https://gist.github.com/arunoda/7790979
 #
 #  Deprecated
 #
@@ -103,6 +109,7 @@ declare brew_pkgs=(
 #  homebrew cask packages
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
+    adoptopenjdk                      #  Goddamn'd Java
     diffmerge
     docker
     dropbox
@@ -126,7 +133,6 @@ declare cask_pkgs=(
     spotify
     teamviewer                        # NOTE: will prompt with post-install gui
     unison
-    utorrent                          # NOTE: will need manual post-install steps
     virtualbox
     vagrant
     visual-studio-code                # VS Code
@@ -439,11 +445,6 @@ declare iterm_bookmark_settings=(
 #  VS Code extensions
 declare vscode_extensions=(
     '2gua.rainbow-brackets'
-    'PeterJausovec.vscode-docker'
-    'PKief.material-icon-theme'
-    'PlethoraOfHate.aws-actions'
-    'TeeSeal.ayu-legacy'
-    'Tyriar.sort-lines'
     'aaron-bond.better-comments'
     'arcticicestudio.nord-visual-studio-code'
     'aws-scripting-guy.cform'
@@ -453,11 +454,15 @@ declare vscode_extensions=(
     'dhoeric.ansible-vault'
     'eamodio.gitlens'
     'huizhou.githd'
-    'kddejong.vscode-cfn-lint'
+    'jinsihou.diff-tool'
+    # 'kddejong.vscode-cfn-lint'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
     'ms-python.python'
+    'peterjausovec.vscode-docker'
+    'pkief.material-icon-theme'
+    'plethoraofhate.aws-actions'
     'redhat.vscode-yaml'
-    'robertohuertasm.vscode-icons'
+    # 'robertohuertasm.vscode-icons'
     'rupisaini.vscode-ansible-linter'
     'ryu1kn.partial-diff'
     'ryu1kn.text-marker'
@@ -465,8 +470,13 @@ declare vscode_extensions=(
     'secanis.jenkinsfile-support'
     'shd101wyy.markdown-preview-enhanced'
     'spywhere.guides'
+    'teeseal.ayu-legacy'
+    'tomiturtiainen.rf-intellisense'
+    'tyriar.sort-lines'
+    'vscode-icons-team.vscode-icons'
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
+    'wmaurer.change-case'
     'xandeer.better-align'
 )
 
