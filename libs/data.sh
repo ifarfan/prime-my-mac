@@ -123,16 +123,15 @@ declare cask_pkgs=(
     macdown
     murasaki                          #  epub reader
     omnigraffle
+    omnidisksweeper
     plex-media-player
     plexamp
-    postman                           # API viewer/reader/debugger
     sequel-pro
     skitch
     skype
     slack
     spotify
     teamviewer                        # NOTE: will prompt with post-install gui
-    unison
     virtualbox
     vagrant
     visual-studio-code                # VS Code
@@ -167,18 +166,20 @@ declare cask_pkgs=(
 #
 #  Deprecated
 #
-  # anaconda                          #  love it but it's huuuuuge
   # 1password
+  # anaconda                          #  love it but it's huuuuuge
   # caffeine                          #  Prevent machine from sleeping
   # cyberduck
   # docker-toolbox                    #  Needed by Kitematic, duh!
   # hipchat                           #  :(
-  # meld                              #  Diff tool
-  # querious
-  # transmit
   # jubler                            #  Subtitle editor
+  # meld                              #  Diff tool
+  # postman                           # API viewer/reader/debugger
+  # querious
   # smcfancontrol:l                   #  Control fan
   # sublime-text
+  # unison
+  # transmit
   # tunnelblick                       #  Open VPN client
   # vagrant-manager
   # x-lite                            #  VOIP client
