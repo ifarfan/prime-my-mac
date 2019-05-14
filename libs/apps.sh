@@ -67,15 +67,6 @@ function google_chrome_config {
 }
 
 
-function grc_config {
-    status_msg "0" "Custom grc colorize configs"
-
-    #  Fetch colorize files directly off repo unto brew location
-    for grc_conf in "${grc_confs[@]}"; do
-        curl "${grc_conf_url}${grc_conf}" --output "${grc_conf_dirl}${grc_conf}" --silent
-    done
-}
-
 function iterm2_config {
 #
 #  See:
