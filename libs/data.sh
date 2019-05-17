@@ -121,8 +121,8 @@ declare cask_pkgs=(
     iterm2
     handbrake
     kitematic
+    libreoffice
     macdown
-    murasaki                          #  epub reader
     omnigraffle
     omnidisksweeper
     plex-media-player
@@ -206,11 +206,13 @@ declare cask_fonts=(
 #  Dock Apps
 declare dock_apps=(
     'Google Chrome'
+    '--'
+    'Visual Studio Code'
+    'iTerm'
     'Skitch'
     'Calculator'
-    'iTerm'
-    'Visual Studio Code'
     'OmniGraffle'
+    '--'
     'System Preferences'
 )
 

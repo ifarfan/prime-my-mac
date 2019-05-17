@@ -49,7 +49,12 @@ function dock_tweaks {
 
         #  Add new dock apps
         for dock_item in "${dock_apps[@]}"; do
-            dockutil --add "/Applications/${dock_item}.app" --no-restart
+            if [ "${dock_item}" == '--' ]; then
+                #  Add space divider
+                defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
+            else
+                dockutil --add "/Applications/${dock_item}.app" --no-restart
+            fi
         done
 
         #  Add new dock folders

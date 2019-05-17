@@ -26,6 +26,7 @@ if [ "$TERM" != dumb ] && [ -n "$GRC" ]; then
     alias lsblk='colourify lsblk'
     alias lspci='colourify lspci'
     # alias netstat='colourify netstat'
+    alias stat='colourify stat'
     alias ping='colourify ping'
     alias traceroute='colourify traceroute'
     alias traceroute6='colourify traceroute6'
@@ -38,5 +39,6 @@ if [ "$TERM" != dumb ] && [ -n "$GRC" ]; then
     alias semanage='colourify semanage'
     alias getsebool='colourify getsebool'
     alias ifconfig='colourify ifconfig'
+    alias whois='colourify whois'
     alias uptime='colourify uptime'
 fi
