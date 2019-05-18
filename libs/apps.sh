@@ -253,13 +253,13 @@ function timemachine_config {
 function vscode_config {
     status_msg "0" "Custom VSCode.app config"
 
-    #  Copy + symlink config file
-    mkdir -p "${HOME}/.vscode"
-    ln -sf "${HOME}/.vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
-    cp -n ./files/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
-
     #  Install extensions
     for extension in "${vscode_extensions[@]}"; do
         code --install-extension ${extension} --force
     done
+
+    #  Copy + symlink config file
+    cp -n ./files/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
+    mkdir -p "${HOME}/.vscode"
+    ln -sf "${HOME}/Library/Application\ Support/Code/User/settings.json" "${HOME}/.vscode/settings.json"
 }

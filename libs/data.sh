@@ -123,6 +123,7 @@ declare cask_pkgs=(
     kitematic
     libreoffice
     macdown
+    nightowl
     omnigraffle
     omnidisksweeper
     plex-media-player
