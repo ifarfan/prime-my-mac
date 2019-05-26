@@ -48,15 +48,17 @@ alias cp='cp -iv'                                   # Preferred 'cp' implementat
 alias mv='mv -iv'                                   # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                             # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                               # Preferred 'ls' implementation
+alias xx='exa --long -a --header --grid'            # My exa view
 alias less='less -FSRXc'                            # Preferred 'less' implementation
 alias cd..='cd ../'                                 # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                                   # Go back 1 directory level
 alias ...='cd ../../'                               # Go back 2 directory levels
+alias .2='cd ../../'                                # Go back 2 directory levels
 alias .3='cd ../../../'                             # Go back 3 directory levels
 alias .4='cd ../../../../'                          # Go back 4 directory levels
 alias .5='cd ../../../../../'                       # Go back 5 directory levels
 alias .6='cd ../../../../../../'                    # Go back 6 directory levels
-alias edit='subl'                                   # edit:         Opens any file in sublime editor
+alias edit='code'                                   # edit:         Opens any file in VS Code
 alias f='open -a Finder ./'                         # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                                      # ~:            Go Home
 alias c='clear'                                     # c:            Clear terminal display
@@ -69,8 +71,5 @@ alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content
 #  colorize!
 # alias pgcli="PAGER='grcat ~/.grc/colourfiles/conf.psql | less -iMSx4FXRe' pgcli"
 alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"
-alias ping="grc ping"
-alias tail="grc tail"
-alias netstat="grc netstat"
 
 alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"

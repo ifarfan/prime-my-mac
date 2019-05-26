@@ -221,7 +221,7 @@ function finder_tweaks {
     defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
     #  Show all filename extensions
-    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    # defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
     #  Show status bar
     defaults write com.apple.finder ShowStatusBar -bool true

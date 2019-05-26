@@ -156,6 +156,7 @@ declare cask_pkgs=(
     the-unarchiver                    #  Work with multiple archive formats
     timemachineeditor                 #  Finely manage Time Machine
     tomighty                          #  Pomodoro timer
+    tyke                              #  Quick notes on menu bar
     unetbootin                        #  Make bootable USBs
     watts:l                           #  Battery calibration
     wireshark                         #  Network sniffer

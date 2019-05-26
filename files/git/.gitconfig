@@ -23,7 +23,7 @@
     #  Add + Commit
     ac = !git add . && git commit -am
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    st = status
+    st = status -u
     co = checkout
     com = checkout master
     nb = checkout -b
