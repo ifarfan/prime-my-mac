@@ -134,8 +134,8 @@ declare cask_pkgs=(
     slack
     spotify
     teamviewer                        # NOTE: will prompt with post-install gui
-    virtualbox
-    vagrant
+    # virtualbox
+    # vagrant
     visual-studio-code                # VS Code
     vlc
 #
