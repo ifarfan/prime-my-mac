@@ -10,6 +10,7 @@ declare pip_pkgs=(
     ansible-lint                      #  2nd thing on every Mac
     ansible-bender                    #  Build containers via ansible
     bashate                           #  3rd thing on every Mac
+    bump2version                      #  Code versioning via cmd-line
     boto3                             #  AWS SDK
     cfn-lint                          #  Cloudformation linter
     docker                            #  Docker lib for Ansible
