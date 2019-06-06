@@ -129,15 +129,16 @@ declare cask_pkgs=(
     omnidisksweeper
     plex-media-player
     plexamp
+    rescuetime                        #  Monitor computer usage
     sequel-pro
     skitch
     skype
     slack
     spotify
-    teamviewer                        # NOTE: will prompt with post-install gui
+    teamviewer                        #  NOTE: will prompt with post-install gui
     # virtualbox
     # vagrant
-    visual-studio-code                # VS Code
+    visual-studio-code                #  VS Code
     vlc
 #
 #  Utilities
@@ -460,7 +461,8 @@ declare vscode_extensions=(
     'cliffordfajardo.highlight-line-vscode'
     'dhoeric.ansible-vault'
     'eamodio.gitlens'
-    'huizhou.githd'
+    'EliverLara.andromeda'
+    # 'huizhou.githd'
     'jinsihou.diff-tool'
     # 'kddejong.vscode-cfn-lint'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
@@ -484,5 +486,6 @@ declare vscode_extensions=(
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
     'wmaurer.change-case'
-    'xandeer.better-align'
+    'xandeer.better-align',
+    'zhuangtongfa.Material-theme'
 )
