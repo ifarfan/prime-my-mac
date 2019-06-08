@@ -18,21 +18,22 @@ done
 
 #  Usage
 usage() {
-    echo -e "${BOLD}Usage${NORMAL}: ${0##*/} [ ${BOLD}--all${NORMAL} | ${BOLD}--app-configs${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--dot-files${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} ]" 1>&2
+    echo -e "${BOLD}Usage${NORMAL}: ${0##*/} [ ${BOLD}--all${NORMAL} | ${BOLD}--app-configs${NORMAL} | ${BOLD}--bash-it${NORMAL} | ${BOLD}--brew${NORMAL} | ${BOLD}--cask${NORMAL} | ${BOLD}--dot-files${NORMAL} | ${BOLD}--fonts${NORMAL} | ${BOLD}--pip${NORMAL} | ${BOLD}--prezto${NORMAL} | ${BOLD}--osx-tweaks${NORMAL} | ${BOLD}--apple-store${NORMAL} ]" 1>&2
     exit 1
 }
 
 # Installation flags
 FG_ALL=false
-FG_PIP=false
+FG_APPS=false
+FG_BASH_IT=false
 FG_BREW=false
 FG_BREW_CASK=false
 FG_BREW_FONTS=false
-FG_PREZTO=false
-FG_BASH_IT=false
 FG_DOTFILES=false
+FG_MAS=false
 FG_OSX=false
-FG_APPS=false
+FG_PIP=false
+FG_PREZTO=false
 
 #  Determine flags enabled via parameters
 if [ -z "$@" ]; then
@@ -42,15 +43,16 @@ else
         shift
         case "$arg" in
             --all)         FG_ALL=true ;;               #  EVERYTHING!
+            --apple-store) FG_MAS=true ;;               #  Apple Store
             --app-configs) FG_APPS=true ;;              #  Apps
             --bash-it)     FG_BASH_IT=true ;;           #  bash it
             --brew)        FG_BREW=true ;;              #  Brew
             --cask)        FG_BREW_CASK=true ;;         #  Brew Cask
             --dot-files)   FG_DOTFILES=true ;;          #  Dot files
             --fonts)       FG_BREW_FONTS=true ;;        #  Brew Fonts
+            --osx-tweaks)  FG_OSX=true ;;               #  OS X
             --pip)         FG_PIP=true ;;               #  pip
             --prezto)      FG_PREZTO=true ;;            #  prezto
-            --osx-tweaks)  FG_OSX=true ;;               #  OS X
             *)             usage ;;
         esac
     done
@@ -69,6 +71,7 @@ security_allow_run_all_apps true
 [[ "$FG_ALL" == true || "$FG_BREW" == true ]]       && install_brew
 [[ "$FG_ALL" == true || "$FG_BREW_CASK" == true ]]  && install_brew_cask
 [[ "$FG_ALL" == true || "$FG_BREW_FONTS" == true ]] && install_brew_fonts
+[[ "$FG_ALL" == true || "$FG_MAS" == true ]]        && install_mas
 
 #  OS X Customizations
 if [[ "$FG_ALL" == true || "$FG_OSX" == true ]]; then

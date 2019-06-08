@@ -489,3 +489,14 @@ declare vscode_extensions=(
     'xandeer.better-align',
     'zhuangtongfa.Material-theme'
 )
+
+#  Apple Store packages
+declare mas_pkgs=(
+    '1295203466'                  #  Microsoft Remote Desktop (10.2.13)
+    '409183694'                   #  Keynote (9.0.2)
+    '409201541'                   #  Pages (8.0)
+    '409203825'                   #  Numbers (6.0)
+    '526298438'                   #  Lightshot Screenshot (2.18)
+    '693443591'                   #  Free MP4 Converter (6.3.7)
+    '907364780'                   #  Tomato One (1.0.6)
+)

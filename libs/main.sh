@@ -26,6 +26,9 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #  SEE: http://arstechnica.com/civis/viewtopic.php?f=19&t=1118530
 [[ "$(sysctl -n hw.model | grep -q -i book; echo $?)" -eq 0 ]] && IS_LAPTOP=true || IS_LAPTOP=false
 
+#  Determine OS minor version
+#  SEE: https://coderwall.com/p/4yz8dq/determine-os-x-version-from-the-command-line
+OS_MINOR=$(defaults read loginwindow SystemVersionStampAsString | cut -d'.' -f2)
 
 function status_msg {
     #
@@ -240,4 +243,17 @@ function install_dotfiles {
     curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
     curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
     echo "source ~/.iterm2_shell_integration.zsh" >> ~/.zshrc
+}
+
+
+function install_mas {
+    #
+    #  Install MAS cmd line (If older than 'High Sierra', use tap)
+    #
+    [[ ${OS_MINOR} -ge 13 ]] && brew install mas || brew install mas-cli/tap/mas
+
+    #  Install packages
+    for pkg in "${mas_pkgs[@]}"; do
+        mas install ${pkg}
+    done
 }
