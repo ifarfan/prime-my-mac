@@ -17,6 +17,7 @@ declare pip_pkgs=(
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
     molecule                          #  Ansible testing
+    pre-commit                        #  Pre-commits git hooks
     pygments                          #  File colorization from terminal
     pylint                            #  Python linter
     shyaml                            #  YAML parser
@@ -80,7 +81,6 @@ declare brew_pkgs=(
     pgcli                             #  Postgres CLI client
     pup                               #  HTML parser
     pv                                #  Shell progress bar monitor
-    python@2
     python3
     screen                            #  Multiplexer
     siege                             #  Load testing
@@ -467,6 +467,12 @@ declare vscode_extensions=(
     # 'kddejong.vscode-cfn-lint'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
     'ms-python.python'
+    'ms-vscode-remote.vscode-remote-extensionpack'
+    'ms-vscode-remote.remote-containers'
+    'ms-vscode-remote.remote-ssh'
+    'ms-vscode-remote.remote-ssh-edit'
+    'ms-vscode-remote.remote-ssh-explorer'
+    'ms-vscode-remote.remote-wsl'
     'peterjausovec.vscode-docker'
     'pkief.material-icon-theme'
     'plethoraofhate.aws-actions'
@@ -482,6 +488,7 @@ declare vscode_extensions=(
     'teeseal.ayu-legacy'
     'tomiturtiainen.rf-intellisense'
     'tyriar.sort-lines'
+    'VisualStudioExptTeam.vscodeintellicode'
     'vscode-icons-team.vscode-icons'
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
@@ -496,7 +503,8 @@ declare mas_pkgs=(
     '409183694'                   #  Keynote (9.0.2)
     '409201541'                   #  Pages (8.0)
     '409203825'                   #  Numbers (6.0)
-    '526298438'                   #  Lightshot Screenshot (2.18)
+    '540348655'                   #  Monosnap (3.5.8)
     '693443591'                   #  Free MP4 Converter (6.3.7)
     '907364780'                   #  Tomato One (1.0.6)
+    '1147396723'                  #  WhatsApp (0.3.3328)
 )
