@@ -20,6 +20,7 @@
     puo = "!git push -u origin $(git branch-name)"
     pom = pull origin master
     pod = pull origin develop
+    pos = pull origin staging
     #  Add + Commit
     ac = !git add . && git commit -am
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -27,13 +28,15 @@
     co = checkout
     com = checkout master
     nb = checkout -b
+    df = diff
     #  Diff last commit
     last = diff --cached HEAD^
     recap = log --oneline --no-merges --author=ifarfan@gmx.com
     ls = branch --list -a
     #  Compare current branch commits to master
     compare = "!git log --left-right --graph --cherry-pick --oneline $(git branch-name)...master"
-
+    #  Refresh local list of remote branches
+    rl = remote update origin --prune
 [color]
     branch = auto
     diff = auto

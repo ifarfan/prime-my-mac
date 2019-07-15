@@ -23,8 +23,6 @@ declare pip_pkgs=(
     shyaml                            #  YAML parser
     udemy-dl                          #  Download Udemy videos (optional)
     virtualenv                        #  Virtual environments
-    # req                               #  Needed by ansible-container
-    # 'git+https://github.com/ansible/ansible-container.git@develop'
 )
 
 #  homebrew packages
@@ -50,6 +48,7 @@ declare brew_pkgs=(
     gnu-indent                        #  Use linux indent; add to .zprofile
     gnu-sed                           #  Use linux sed; add to .zprofile
     gnu-tar                           #  Use linux tar; add to .zprofile
+    golang                            #  Go language
     grc                               #  Colorize output
     grep
     gpg
@@ -112,6 +111,7 @@ declare brew_pkgs=(
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
     adoptopenjdk                      #  Goddamn'd Java
+    balenaetcher                      #  Burn OS images to SD cards
     diffmerge
     docker
     dropbox
