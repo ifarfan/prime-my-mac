@@ -111,6 +111,7 @@ declare brew_pkgs=(
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
     adoptopenjdk                      #  Goddamn'd Java
+    android-file-transfer             #  Transfer files to Android phone
     balenaetcher                      #  Burn OS images to SD cards
     diffmerge
     docker
