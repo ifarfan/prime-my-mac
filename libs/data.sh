@@ -14,6 +14,7 @@ declare pip_pkgs=(
     boto3                             #  AWS SDK
     cfn-lint                          #  Cloudformation linter
     docker                            #  Docker lib for Ansible
+    haxor-news                        #  Hacker News in the terminal
     httpie                            #  curl 4 humans
     json2yaml                         #  YAML for the win!
     molecule                          #  Ansible testing
@@ -504,7 +505,7 @@ declare mas_pkgs=(
     '409183694'                   #  Keynote (9.0.2)
     '409201541'                   #  Pages (8.0)
     '409203825'                   #  Numbers (6.0)
-    '540348655'                   #  Monosnap (3.5.8)
+    '540348655'                   #  Monosnap (3.5.8) –– "Skitch" replacement
     '693443591'                   #  Free MP4 Converter (6.3.7)
     '907364780'                   #  Tomato One (1.0.6)
     '1147396723'                  #  WhatsApp (0.3.3328)
