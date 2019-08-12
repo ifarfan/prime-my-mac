@@ -35,8 +35,11 @@
     ls = branch --list -a
     #  Compare current branch commits to master
     compare = "!git log --left-right --graph --cherry-pick --oneline $(git branch-name)...master"
-    #  Refresh local list of remote branches
+    #  Refresh local list of remote branches (remove old ones also removed from origin)
     rl = remote update origin --prune
+    # uc = undo last commit; dc = destroy last commit
+    uc = reset HEAD~1
+    dc = reset --hard HEAD~1
 [color]
     branch = auto
     diff = auto
