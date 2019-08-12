@@ -4,13 +4,14 @@
     "editor.cursorSmoothCaretAnimation" : true,
     "editor.cursorStyle"                : "line",
     "editor.fontFamily"                 : "Ubuntu Mono, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize"                   : 17,
     "editor.fontLigatures"              : true,
+    "editor.fontSize"                   : 17,
     "editor.insertSpaces"               : true,
     "editor.lineHeight"                 : 20,
     "editor.minimap.enabled"            : false,
     "editor.multiCursorModifier"        : "ctrlCmd",
     "editor.renderIndentGuides"         : false,
+    "editor.renderWhitespace"           : "selection",
     "editor.rulers"                     : [
         80,
         100,
@@ -20,6 +21,7 @@
     "editor.scrollBeyondLastLine"           : false,
     "editor.tabCompletion"                  : "off",
     "editor.tabSize"                        : 4,
+    "explorer.confirmDragAndDrop"           : false,
     "files.associations": {
         "Vagrantfile":      "ruby",
         "*.cnf":            "ini",
@@ -27,7 +29,6 @@
         ".ansible-lint":    "yaml",
         ".yamllint*":       "yaml"
     },
-    "explorer.confirmDragAndDrop"           : false,
     "files.insertFinalNewline"              : true,
     "files.trimTrailingWhitespace"          : true,
     "highlightLine.borderColor"             : "#18b47b",
@@ -35,11 +36,14 @@
     "highlightLine.borderWidth"             : "1px",
     "material-icon-theme.folders.color"     : "#fdd835",
     "python.pythonPath"                     : "/usr/local/bin/python",
+    "terminal.integrated.cwd"               : "${fileDirname}",
     "terminal.integrated.fontFamily"        : "Ubuntu Mono derivative Powerline",
     "terminal.integrated.fontSize"          : 16,
     "textmarker.enableTelemetry"            : false,
     "window.zoomLevel"                      : 1,
     "workbench.colorCustomizations"         : {
+        "editor.selectionBackground"        : "#7c506f",
+        "editor.selectionHighlightBackground": "#7c506f",
         "editorError.foreground"            : "#f57a7a51",
         "editorWarning.foreground"          : "#ffe60033",
         "editorInfo.foreground"             : "#00ff0088"
@@ -49,6 +53,7 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.iconTheme"                   : "material-icon-theme",
     "workbench.settings.editor"             : "json",
+    "workbench.startupEditor"               : "newUntitledFile",
     "workbench.statusBar.feedback.visible"  : false,
     "yaml.customTags": [
         "!And",
