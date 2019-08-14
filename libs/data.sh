@@ -133,6 +133,7 @@ declare cask_pkgs=(
     plexamp
     rescuetime                        #  Monitor computer usage
     sequel-pro
+    sketchbook                        # Autodesk Sketchbook drawing tool
     skitch
     skype
     slack

@@ -17,7 +17,7 @@
     #  See commits not pushed yet
     np = "!git log origin/$(git branch-name)..$(git branch-name)"
     #  Push the current branch to the remote "origin", and set it to track the upstream branch
-    puo = "!git push -u origin $(git branch-name)"
+    puo = "!git push -u origin $(git branch-name) --tags"
     pom = pull origin master
     pod = pull origin develop
     pos = pull origin staging
