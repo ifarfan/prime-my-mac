@@ -123,6 +123,7 @@ declare cask_pkgs=(
     google-hangouts
     iterm2
     handbrake
+    keka                              #  File compressing/zipping
     kitematic
     libreoffice
     macdown
@@ -467,6 +468,7 @@ declare vscode_extensions=(
     'EliverLara.andromeda'
     # 'huizhou.githd'
     'jinsihou.diff-tool'
+    'johnpapa.vscode-peacock'
     # 'kddejong.vscode-cfn-lint'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
     'ms-python.python'
