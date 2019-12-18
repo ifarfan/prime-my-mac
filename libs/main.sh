@@ -73,16 +73,16 @@ function install_pip {
     status_msg "$PYTHON_ERR_CODE" "python"
     if [ "${PYTHON_ERR_CODE}" -ne 0 ]; then
         #  Install latest version of Python
-        brew install python@2
+        brew install python
 
         #  Update pip + setuptools
         status_msg "$PYTHON_ERR_CODE" "pip + setuptools"
-        pip install --upgrade pip setuptools
+        pip3 install --upgrade pip setuptools
     fi
 
     #  Install pip packages
     for pkg in "${pip_pkgs[@]}"; do
-        pip install $pkg --quiet
+        pip3 install $pkg --quiet
     done
 }
 
@@ -101,7 +101,7 @@ function install_brew_cask {
     install_homebrew
 
     #  Install cask packages
-    brew tap "caskroom/cask"
+    brew tap homebrew/cask
     for pkg in "${cask_pkgs[@]}"; do
 
         if [[ ${pkg} =~ ":" ]]; then
@@ -127,7 +127,7 @@ function install_brew_fonts {
     install_homebrew
 
     #  Install cask fonts
-    brew tap "caskroom/fonts"
+    brew tap homebrew/cask-fonts
     for font in "${cask_fonts[@]}"; do
         brew cask install font-$font
     done
