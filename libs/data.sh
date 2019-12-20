@@ -32,6 +32,7 @@ declare brew_pkgs=(
     aria2                             #  Beefy download utility
     awscli                            #  AWS cmd line
     aws-shell                         #  Shell for AWS cmds
+    azure/draft/draft                 #  Kubernetes dev tool
     cli53                             #  Manage AWS Route53
     cdrtools                          #  Server images tools: mkisofs
     csshx                             #  Multiple simultaneous SSH
@@ -54,6 +55,7 @@ declare brew_pkgs=(
     grep
     gpg
     gnutls
+    helm                              # Kubernetes package manager
     homebrew/dupes/grep
     homebrew/dupes/openssh
     homebrew/dupes/screen
@@ -62,10 +64,11 @@ declare brew_pkgs=(
     hugo                              #  Static site generator
     imagemagick
     jq                                #  JSON parser
+    'lastpass-cli --with-pinentry --with-doc'  #  Password manager cli tool
     kops                              #  Kubernetes operations
     kube-aws                          #  CoreOS Kubernetes on AWS
+    kubectx                           #  Switch kubernetes context
     kubernetes-cli                    #  Kubernetes CLI
-    'lastpass-cli --with-pinentry --with-doc'  #  Password manager cli tool
     lnav                              #  Log file/folder navigator
     mkdocs                            #  Documentation via markdown
     moreutils
@@ -86,6 +89,7 @@ declare brew_pkgs=(
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
     terraform                         #  Hashicorp's infrastructure-as-code
+    tflint                            #  Terraform linter
     tmux
     trash                             #  Send deleted files to OSX trash
     tree
@@ -159,7 +163,6 @@ declare cask_pkgs=(
     istat-menus                       #  Menu bar server stats
     max                               #  Audio files
     spectacle                         #  Manage app windows
-    the-unarchiver                    #  Work with multiple archive formats
     timemachineeditor                 #  Finely manage Time Machine
     tomighty                          #  Pomodoro timer
     tyke                              #  Quick notes on menu bar
@@ -190,6 +193,7 @@ declare cask_pkgs=(
   # unison
   # transmit
   # tunnelblick                       #  Open VPN client
+  # the-unarchiver                    #  Work with multiple archive formats
   # vagrant-manager
   # x-lite                            #  VOIP client
 )
@@ -470,15 +474,16 @@ declare vscode_extensions=(
     'jinsihou.diff-tool'
     'johnpapa.vscode-peacock'
     # 'kddejong.vscode-cfn-lint'
+    'mauve.terraform'
+    'ms-azuretools.vscode-docker'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
     'ms-python.python'
-    'ms-vscode-remote.vscode-remote-extensionpack'
     'ms-vscode-remote.remote-containers'
     'ms-vscode-remote.remote-ssh'
     'ms-vscode-remote.remote-ssh-edit'
     'ms-vscode-remote.remote-ssh-explorer'
     'ms-vscode-remote.remote-wsl'
-    'peterjausovec.vscode-docker'
+    'ms-vscode-remote.vscode-remote-extensionpack'
     'pkief.material-icon-theme'
     'plethoraofhate.aws-actions'
     'redhat.vscode-yaml'
@@ -499,7 +504,7 @@ declare vscode_extensions=(
     'wayou.vscode-todo-highlight'
     'wmaurer.change-case'
     'xandeer.better-align',
-    'zhuangtongfa.Material-theme'
+    'zhuangtongfa.material-theme'
 )
 
 #  Apple Store packages
