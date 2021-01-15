@@ -68,7 +68,7 @@ function install_homebrew {
 function install_pip {
     install_homebrew
 
-    local PYTHON_ERR_CODE=$(brew list | grep -q python; echo $?)
+    local PYTHON_ERR_CODE=$(brew list --formula | grep -q python; echo $?)
 
     status_msg "$PYTHON_ERR_CODE" "python"
     if [ "${PYTHON_ERR_CODE}" -ne 0 ]; then
@@ -82,7 +82,7 @@ function install_pip {
 
     #  Install pip packages
     for pkg in "${pip_pkgs[@]}"; do
-        pip3 install $pkg --quiet
+        /usr/local/opt/python@3.9/bin/pip3 install $pkg --quiet
     done
 }
 
@@ -111,13 +111,13 @@ function install_brew_cask {
 
             if [[ ${pkg_atribs} =~ "l" ]]; then
                 # Laptop only packages
-                [[ $IS_LAPTOP == true ]] && brew cask install ${pkg_name}
+                [[ $IS_LAPTOP == true ]] && brew install --cask ${pkg_name}
             else
-                brew cask install ${pkg_name}
+                brew install --cask ${pkg_name}
             fi
         else
             #  Standard package
-            brew cask install ${pkg}
+            brew install --cask ${pkg}
         fi
     done
 }
@@ -126,10 +126,13 @@ function install_brew_cask {
 function install_brew_fonts {
     install_homebrew
 
+    #  A few fonts still run under svn
+    brew install svn
+
     #  Install cask fonts
     brew tap homebrew/cask-fonts
     for font in "${cask_fonts[@]}"; do
-        brew cask install font-$font
+        brew install --cask font-$font
     done
 }
 
@@ -240,20 +243,22 @@ function install_dotfiles {
     done
 
     #  Enable iTerm2 shell integration
-    curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
-    curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
-    echo "source ~/.iterm2_shell_integration.zsh" >> ~/.zshrc
+    curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
+    curl -L https://iterm2.com/shell_integration/zsh  -o ~/.iterm2_shell_integration.zsh
 }
 
 
 function install_mas {
+    #  ! NOTE
+    #  ! mas-cli requires a full install of XCode, disabling it for now
+    return
     #
     #  Install MAS cmd line (If older than 'High Sierra', use tap)
     #
-    [[ ${OS_MINOR} -ge 13 ]] && brew install mas || brew install mas-cli/tap/mas
+    # [[ ${OS_MINOR} -ge 13 ]] && brew install mas || brew install mas-cli/tap/mas
 
-    #  Install packages
-    for pkg in "${mas_pkgs[@]}"; do
-        mas install ${pkg}
-    done
+    # #  Install packages
+    # for pkg in "${mas_pkgs[@]}"; do
+    #     mas install ${pkg}
+    # done
 }

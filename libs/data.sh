@@ -8,11 +8,11 @@
 declare pip_pkgs=(
     ansible                           #  1st thing on every Mac
     ansible-lint                      #  2nd thing on every Mac
-    ansible-bender                    #  Build containers via ansible
     bashate                           #  3rd thing on every Mac
-    bump2version                      #  Code versioning via cmd-line
     boto3                             #  AWS SDK
+    bump2version                      #  Code versioning via cmd-line
     cfn-lint                          #  Cloudformation linter
+    checkov                           #  Static infra checking
     docker                            #  Docker lib for Ansible
     haxor-news                        #  Hacker News in the terminal
     httpie                            #  curl 4 humans
@@ -30,31 +30,33 @@ declare pip_pkgs=(
 declare brew_pkgs=(
     aircrack-ng
     aria2                             #  Beefy download utility
-    awscli                            #  AWS cmd line
     aws-shell                         #  Shell for AWS cmds
+    awscli                            #  AWS cmd line
     azure/draft/draft                 #  Kubernetes dev tool
-    cli53                             #  Manage AWS Route53
+    bat                               #  cat replacement
     cdrtools                          #  Server images tools: mkisofs
-    csshx                             #  Multiple simultaneous SSH
+    cli53                             #  Manage AWS Route53
     colordiff                         #  Add to .zprofile
     coreutils
     cowsay
+    csshx                             #  Multiple simultaneous SSH
     dockutil                          #  Manage the OS X Dock
+    driftctl
+    exa                               #  'ls' on steroids
     findutils                         #  Add to .zprofile
     fortune
-    exa                               #  'ls' on steroids
     gawk
     git
-    git-flow
+    git-delta
     gnu-getopt                        #  Use linux getopt; add to .zprofile
     gnu-indent                        #  Use linux indent; add to .zprofile
     gnu-sed                           #  Use linux sed; add to .zprofile
     gnu-tar                           #  Use linux tar; add to .zprofile
+    gnutls
     golang                            #  Go language
+    gpg
     grc                               #  Colorize output
     grep
-    gpg
-    gnutls
     helm                              # Kubernetes package manager
     homebrew/dupes/grep
     homebrew/dupes/openssh
@@ -64,7 +66,6 @@ declare brew_pkgs=(
     hugo                              #  Static site generator
     imagemagick
     jq                                #  JSON parser
-    'lastpass-cli --with-pinentry --with-doc'  #  Password manager cli tool
     kops                              #  Kubernetes operations
     kube-aws                          #  CoreOS Kubernetes on AWS
     kubectx                           #  Switch kubernetes context
@@ -88,7 +89,7 @@ declare brew_pkgs=(
     screen                            #  Multiplexer
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
-    terraform                         #  Hashicorp's infrastructure-as-code
+    tfenv                             #  Allow multiple versions of Terraform
     tflint                            #  Terraform linter
     tmux
     trash                             #  Send deleted files to OSX trash
@@ -115,48 +116,39 @@ declare brew_pkgs=(
 #  homebrew cask packages
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
-    adoptopenjdk                      #  Goddamn'd Java
-    android-file-transfer             #  Transfer files to Android phone
     balenaetcher                      #  Burn OS images to SD cards
-    diffmerge
     docker
-    dropbox
-    firefox
-    free-ruler                        #  ruler gui
+    folx                              #  Download manager
+    free-ruler                        #  Ruler gui
     google-chrome
-    google-hangouts
-    iterm2
     handbrake
+    iterm2
+    keepingyouawake
     keka                              #  File compressing/zipping
-    kitematic
+    lens
     libreoffice
     macdown
     nightowl
-    omnigraffle
     omnidisksweeper
-    plex-media-player
-    plexamp
-    rescuetime                        #  Monitor computer usage
+    postico                           #  Postgres client
+    postman
     sequel-pro
-    sketchbook                        # Autodesk Sketchbook drawing tool
     skitch
     skype
     slack
     spotify
-    teamviewer                        #  NOTE: will prompt with post-install gui
-    # virtualbox
-    # vagrant
+    tunnelblick
     visual-studio-code                #  VS Code
     vlc
+    xld                               #  X lossless decoder
+    zoomus                            #  Video conferencing, will prompt with post-install gui
 #
 #  Utilities
 #
     a-better-finder-rename            #  Mass file renaming
-    alfred                            #  Keyboard hotkeys
     angry-ip-scanner                  #  IP Scanner
     arrsync                           #  Rsync client
     avidemux                          #  Video editing
-    cheatsheet                        #  Shortcuts for most apps
     coconutbattery:l                  #  Battery health
     electric-sheep                    #  Screen saver
     flycut                            #  Clipboard manager
@@ -164,38 +156,48 @@ declare cask_pkgs=(
     max                               #  Audio files
     spectacle                         #  Manage app windows
     timemachineeditor                 #  Finely manage Time Machine
-    tomighty                          #  Pomodoro timer
-    tyke                              #  Quick notes on menu bar
     unetbootin                        #  Make bootable USBs
     watts:l                           #  Battery calibration
     wireshark                         #  Network sniffer
     xact                              #  Audio file converter
 #
-#  Work-related
-#
-    postico                           #  Postgres client
-    zoomus                            #  Video conferencing, will prompt with post-install gui
-#
 #  Deprecated
 #
-  # 1password
-  # anaconda                          #  love it but it's huuuuuge
-  # caffeine                          #  Prevent machine from sleeping
-  # cyberduck
-  # docker-toolbox                    #  Needed by Kitematic, duh!
-  # hipchat                           #  :(
-  # jubler                            #  Subtitle editor
-  # meld                              #  Diff tool
-  # postman                           # API viewer/reader/debugger
-  # querious
-  # smcfancontrol:l                   #  Control fan
-  # sublime-text
-  # unison
-  # transmit
-  # tunnelblick                       #  Open VPN client
-  # the-unarchiver                    #  Work with multiple archive formats
-  # vagrant-manager
-  # x-lite                            #  VOIP client
+    # 1password
+    # adoptopenjdk                     #  Goddamn'd Java
+    # alfred                           #  Keyboard hotkeys
+    # anaconda                         #  love it but it's huuuuuge
+    # android-file-transfer            #  Transfer files to Android phone
+    # caffeine                         #  Prevent machine from sleeping
+    # cheatsheet                       #  Shortcuts for most apps
+    # cyberduck
+    # diffmerge
+    # docker-toolbox                   #  Needed by Kitematic, duh!
+    # dropbox
+    # firefox
+    # hipchat                          #  :(
+    # jubler                           #  Subtitle editor
+    # kitematic
+    # meld                             #  Diff tool
+    # omnigraffle
+    # plex-media-player
+    # plexamp
+    # postman                          # API viewer/reader/debugger
+    # querious
+    # rescuetime                       #  Monitor computer usage
+    # sketchbook                       # Autodesk Sketchbook drawing tool
+    # smcfancontrol:l                  #  Control fan
+    # sublime-text
+    # teamviewer                       #  NOTE: will prompt with post-install gui
+    # the-unarchiver                   #  Work with multiple archive formats
+    # tomighty                         #  Pomodoro timer
+    # transmit
+    # tyke                             #  Quick notes on menu bar
+    # unison
+    # vagrant
+    # vagrant-manager
+    # virtualbox
+    # x-lite                            #  VOIP client
 )
 
 #  Fonts ("brew cask search /font./")
@@ -207,7 +209,6 @@ declare cask_fonts=(
     monofur-for-powerline
     quantico
     roboto
-    roboto-condensed
     roboto-mono
     roboto-mono-for-powerline
     source-code-pro
@@ -470,24 +471,21 @@ declare vscode_extensions=(
     'dhoeric.ansible-vault'
     'eamodio.gitlens'
     'EliverLara.andromeda'
-    # 'huizhou.githd'
+    'hashicorp.terraform'
     'jinsihou.diff-tool'
     'johnpapa.vscode-peacock'
-    # 'kddejong.vscode-cfn-lint'
-    'mauve.terraform'
     'ms-azuretools.vscode-docker'
     'ms-kubernetes-tools.vscode-kubernetes-tools'
     'ms-python.python'
+    'ms-toolsai.jupyter'
     'ms-vscode-remote.remote-containers'
     'ms-vscode-remote.remote-ssh'
     'ms-vscode-remote.remote-ssh-edit'
-    'ms-vscode-remote.remote-ssh-explorer'
     'ms-vscode-remote.remote-wsl'
     'ms-vscode-remote.vscode-remote-extensionpack'
     'pkief.material-icon-theme'
     'plethoraofhate.aws-actions'
     'redhat.vscode-yaml'
-    # 'robertohuertasm.vscode-icons'
     'rupisaini.vscode-ansible-linter'
     'ryu1kn.partial-diff'
     'ryu1kn.text-marker'
@@ -503,18 +501,20 @@ declare vscode_extensions=(
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
     'wmaurer.change-case'
-    'xandeer.better-align',
+    'wwm.better-align'
     'zhuangtongfa.material-theme'
+    # 'huizhou.githd'
+    # 'kddejong.vscode-cfn-lint'
+    # 'robertohuertasm.vscode-icons'
 )
 
 #  Apple Store packages
 declare mas_pkgs=(
+    '1147396723'                  #  WhatsApp (0.3.3328)
     '1295203466'                  #  Microsoft Remote Desktop (10.2.13)
     '409183694'                   #  Keynote (9.0.2)
     '409201541'                   #  Pages (8.0)
     '409203825'                   #  Numbers (6.0)
-    '540348655'                   #  Monosnap (3.5.8) –– "Skitch" replacement
     '693443591'                   #  Free MP4 Converter (6.3.7)
     '907364780'                   #  Tomato One (1.0.6)
-    '1147396723'                  #  WhatsApp (0.3.3328)
 )

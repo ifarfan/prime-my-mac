@@ -15,3 +15,4 @@ if [[ $- != *i* ]] ; then
 fi
 
 [ -f $HOME/.bash_profile ] && source $HOME/.bash_profile
+[ -f $HOME/.iterm2_shell_integration.bash ] && source $HOME/.iterm2_shell_integration.bash

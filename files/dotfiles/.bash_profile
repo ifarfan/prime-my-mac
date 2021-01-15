@@ -7,13 +7,6 @@ if [ -d $HOME/.dotfiles/bashrc.d ]; then
     done
 fi
 
-#  Load rc.d files
-if [ -d $HOME/.dotfiles/rc.d ]; then
-    for file in $HOME/.dotfiles/rc.d/*.sh; do
-        source $file
-    done
-fi
-
 #  Path to the bash it configuration
 export BASH_IT="${HOME}/.bash_it"
 

@@ -69,7 +69,10 @@ alias cic='set completion-ignore-case On'           # cic:          Make tab-com
 alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content to file on MacOS Desktop
 
 #  colorize!
-# alias pgcli="PAGER='grcat ~/.grc/colourfiles/conf.psql | less -iMSx4FXRe' pgcli"
 alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"
 
 alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# New ones!
+alias tf='terraform'
+alias k='kubectl'

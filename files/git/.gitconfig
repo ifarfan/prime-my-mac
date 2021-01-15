@@ -2,6 +2,7 @@
     editor = nano
     excludesfile = ~/.git/.gitignore_global
     sshCommand = "ssh -F /dev/null -o StrictHostKeyChecking=no"
+    pager = delta
 
 [include]
     path = ~/.git/.gitconfig.user
@@ -37,9 +38,12 @@
     compare = "!git log --left-right --graph --cherry-pick --oneline $(git branch-name)...master"
     #  Refresh local list of remote branches (remove old ones also removed from origin)
     rl = remote update origin --prune
-    # uc = undo last commit; dc = destroy last commit
+    #  uc = undo last commit; dc = destroy last commit
     uc = reset HEAD~1
     dc = reset --hard HEAD~1
+    #  https://carolynvanslyck.com/blog/2020/12/git-wip/
+    wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+
 [color]
     branch = auto
     diff = auto
@@ -73,3 +77,18 @@
 [grep]
     extendRegexp = true
     lineNumber = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
+[pull]
+	rebase = false
