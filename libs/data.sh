@@ -53,11 +53,12 @@ declare brew_pkgs=(
     gnu-sed                           #  Use linux sed; add to .zprofile
     gnu-tar                           #  Use linux tar; add to .zprofile
     gnutls
-    golang                            #  Go language
+    #golang                           #  Go language
     gpg
     grc                               #  Colorize output
     grep
     helm                              # Kubernetes package manager
+    hidetatz/tap/kubecolor            # colorize kubectl output
     homebrew/dupes/grep
     homebrew/dupes/openssh
     homebrew/dupes/screen
@@ -66,11 +67,12 @@ declare brew_pkgs=(
     hugo                              #  Static site generator
     imagemagick
     jq                                #  JSON parser
-    kops                              #  Kubernetes operations
+    #kops                             #  Kubernetes operations
     kube-aws                          #  CoreOS Kubernetes on AWS
     kubectx                           #  Switch kubernetes context
     kubernetes-cli                    #  Kubernetes CLI
     lnav                              #  Log file/folder navigator
+    lsd                               #  ls on lsd
     mkdocs                            #  Documentation via markdown
     moreutils
     nano
@@ -85,7 +87,8 @@ declare brew_pkgs=(
     pgcli                             #  Postgres CLI client
     pup                               #  HTML parser
     pv                                #  Shell progress bar monitor
-    python3
+    #python3
+    ripgrep                           #  grep on steroids
     screen                            #  Multiplexer
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
@@ -94,7 +97,8 @@ declare brew_pkgs=(
     tmux
     trash                             #  Send deleted files to OSX trash
     tree
-    unrar
+    utm                               #  Run any VMs on arm64
+    #unrar
     watch                             #  Linux "watch" command
     wget                              #  Linux "wget" command
     yamllint                          #  YAML linter
@@ -117,18 +121,20 @@ declare brew_pkgs=(
 #  :l == laptop-only, :u == "Utilities" folder-only
 declare cask_pkgs=(
     balenaetcher                      #  Burn OS images to SD cards
+    divvy                             # window tile manager
     docker
-    folx                              #  Download manager
+    #folx                             #  Download manager
     free-ruler                        #  Ruler gui
-    google-chrome
-    handbrake
+    #google-chrome
+    #handbrake
     iterm2
     keepingyouawake
     keka                              #  File compressing/zipping
     lens
     libreoffice
-    macdown
+    #macdown
     nightowl
+    notion
     omnidisksweeper
     postico                           #  Postgres client
     postman
@@ -139,27 +145,27 @@ declare cask_pkgs=(
     spotify
     tunnelblick
     visual-studio-code                #  VS Code
-    vlc
-    xld                               #  X lossless decoder
-    zoomus                            #  Video conferencing, will prompt with post-install gui
+    #vlc
+    #xld                               #  X lossless decoder
+    zoom                              #  Video conferencing, will prompt with post-install gui
 #
 #  Utilities
 #
     a-better-finder-rename            #  Mass file renaming
     angry-ip-scanner                  #  IP Scanner
-    arrsync                           #  Rsync client
-    avidemux                          #  Video editing
-    coconutbattery:l                  #  Battery health
+    #arrsync                          #  Rsync client
+    #avidemux                         #  Video editing
+    #coconutbattery:l                 #  Battery health
     electric-sheep                    #  Screen saver
     flycut                            #  Clipboard manager
     istat-menus                       #  Menu bar server stats
-    max                               #  Audio files
-    spectacle                         #  Manage app windows
+    #max                              #  Audio files
+    #spectacle                        #  Manage app windows
     timemachineeditor                 #  Finely manage Time Machine
     unetbootin                        #  Make bootable USBs
-    watts:l                           #  Battery calibration
+    #watts:l                          #  Battery calibration
     wireshark                         #  Network sniffer
-    xact                              #  Audio file converter
+    #xact                             #  Audio file converter
 #
 #  Deprecated
 #
@@ -518,3 +524,5 @@ declare mas_pkgs=(
     '693443591'                   #  Free MP4 Converter (6.3.7)
     '907364780'                   #  Tomato One (1.0.6)
 )
+
+LATEST_BREW_PYTHON='python@3.10'

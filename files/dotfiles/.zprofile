@@ -45,19 +45,23 @@ typeset -gU cdpath fpath mailpath path
 # Include MAN paths by default
 path=(
   /usr/local/{bin,sbin}
-  /usr/local/opt/coreutils/libexec/gnubin
-  /usr/local/opt/coreutils/libexec/gnuman
-  /usr/local/opt/findutils/libexec/gnubin
-  /usr/local/opt/findutils/libexec/gnuman
-  /usr/local/opt/gnu-getopt/bin
-  /usr/local/opt/gnu-indent/libexec/gnubin
-  /usr/local/opt/gnu-indent/libexec/gnuman
-  /usr/local/opt/gnu-sed/libexec/gnubin
-  /usr/local/opt/gnu-sed/libexec/gnuman
-  /usr/local/opt/gnu-tar/libexec/gnubin
-  /usr/local/opt/gnu-tar/libexec/gnuman
-  /usr/local/opt/grep/libexec/gnubin
-  /usr/local/opt/grep/libexec/gnuman
+  /opt/homebrew/opt/python@3.10/bin
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
+  /opt/homebrew/opt/coreutils/libexec/gnubin
+  /opt/homebrew/opt/coreutils/libexec/gnuman
+  /opt/homebrew/opt/findutils/libexec/gnubin
+  /opt/homebrew/opt/findutils/libexec/gnuman
+  /opt/homebrew/opt/gnu-getopt/bin
+  /opt/homebrew/opt/gnu-indent/libexec/gnubin
+  /opt/homebrew/opt/gnu-indent/libexec/gnuman
+  /opt/homebrew/opt/gnu-sed/libexec/gnubin
+  /opt/homebrew/opt/gnu-sed/libexec/gnuman
+  /opt/homebrew/opt/gnu-tar/libexec/gnubin
+  /opt/homebrew/opt/gnu-tar/libexec/gnuman
+  /opt/homebrew/opt/grep/libexec/gnubin
+  /opt/homebrew/opt/grep/libexec/gnuman
+  ${HOME}/.krew/bin
   $path
 )
 

@@ -47,7 +47,7 @@ alias ls='gls --color=auto'
 alias cp='cp -iv'                                   # Preferred 'cp' implementation
 alias mv='mv -iv'                                   # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                             # Preferred 'mkdir' implementation
-alias ll='ls -FGlAhp'                               # Preferred 'ls' implementation
+alias ll='lsd -lA'                                  # Preferred 'ls' implementation
 alias xx='exa --long -a --header --grid'            # My exa view
 alias less='less -FSRXc'                            # Preferred 'less' implementation
 alias cd..='cd ../'                                 # Go back 1 directory level (for fast typers)
@@ -70,9 +70,13 @@ alias DT='tee ~/Desktop/terminalOut.txt'            # DT:           Pipe content
 
 #  colorize!
 alias pgcli="PAGER='grcat ~/.grcat | less -iMSx4FXRe' pgcli"
-
 alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # New ones!
 alias tf='terraform'
+alias tg='terragrunt'
+alias kubectl='kubecolor'
 alias k='kubectl'
+alias pkr='packer'
+alias b='bat'
+alias dk='docker'

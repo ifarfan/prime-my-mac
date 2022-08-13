@@ -73,16 +73,16 @@ function install_pip {
     status_msg "$PYTHON_ERR_CODE" "python"
     if [ "${PYTHON_ERR_CODE}" -ne 0 ]; then
         #  Install latest version of Python
-        brew install python
+        brew install ${LATEST_BREW_PYTHON}
 
         #  Update pip + setuptools
-        status_msg "$PYTHON_ERR_CODE" "pip + setuptools"
-        pip3 install --upgrade pip setuptools
+        status_msg "$PYTHON_ERR_CODE" "pip3 + setuptools"
+        /opt/homebrew/opt/${LATEST_BREW_PYTHON}/bin/pip3 install --upgrade pip setuptools
     fi
 
     #  Install pip packages
     for pkg in "${pip_pkgs[@]}"; do
-        /usr/local/opt/python@3.9/bin/pip3 install $pkg --quiet
+        /opt/homebrew/opt/${LATEST_BREW_PYTHON}/bin/pip3 install $pkg --quiet
     done
 }
 
