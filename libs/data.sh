@@ -34,6 +34,7 @@ declare brew_pkgs=(
     awscli                            #  AWS cmd line
     azure/draft/draft                 #  Kubernetes dev tool
     bat                               #  cat replacement
+    broot                             #  tree + find combined
     cdrtools                          #  Server images tools: mkisofs
     cli53                             #  Manage AWS Route53
     colordiff                         #  Add to .zprofile
@@ -125,7 +126,7 @@ declare cask_pkgs=(
     docker
     #folx                             #  Download manager
     free-ruler                        #  Ruler gui
-    #google-chrome
+    google-chrome
     #handbrake
     iterm2
     keepingyouawake

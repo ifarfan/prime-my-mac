@@ -58,7 +58,9 @@ function install_homebrew {
     #
     local BREW_ERR_CODE=$(command -v brew > /dev/null 2>&1; echo $?)
     status_msg "$BREW_ERR_CODE" "homebrew"
-    [ "$BREW_ERR_CODE" -ne 0 ] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    [ "$BREW_ERR_CODE" -ne 0 ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    export HOMEBREW_NO_ENV_HINTS=true
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
     #  Copy aggresive .curl file to optimize brew installs
     cp -n "./files/dotfiles/.curl" "${HOME}/.curl"
@@ -171,10 +173,13 @@ function install_bash_it {
     fi
     chsh -s /bin/bash
 
-    #  Install Docker autocomplete
-    for d in docker docker-machine docker-compose; do
-        ln -s "/Applications/Docker.app/Contents/Resources/etc/${d}.bash-completion" "/usr/local/etc/bash_completion.d/${d}.bash-completion"
-    done
+    # Add bash-completion folder
+    sudo mkdir -p /usr/local/etc/bash_completion.d
+
+    # #  Install Docker autocomplete
+    # for d in docker docker-machine docker-compose; do
+    #     sudo ln -s "/Applications/Docker.app/Contents/Resources/etc/${d}.bash-completion" "/usr/local/etc/bash_completion.d/${d}.bash-completion"
+    # done
 }
 
 
@@ -231,6 +236,15 @@ function install_dotfiles {
         gitfile=$(basename ${g_file})
         ln -sf "${HOME}/.git/${gitfile}" "${HOME}/${gitfile}"
     done
+
+    #
+    #  powerlevel10k style/config
+    #
+    if [ ! -f "${HOME}/.p10k.zsh" ]; then
+        status_msg "0" "powerlevel10k"
+
+        cp -n ./files/_p10k.zsh ${HOME}/.p10k.zsh
+    fi
 
     #
     #  Activate .dotfiles
