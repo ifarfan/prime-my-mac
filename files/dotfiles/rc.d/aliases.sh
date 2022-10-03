@@ -76,3 +76,4 @@ alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 # New ones!
 alias tf='terraform'
 alias k='kubectl'
+alias pkr='packer'

@@ -34,14 +34,20 @@ declare brew_pkgs=(
     awscli                            #  AWS cmd line
     azure/draft/draft                 #  Kubernetes dev tool
     bat                               #  cat replacement
+    broot                             #  tree on steroids
+    cantino/mcfly                     #  search shell history
     cdrtools                          #  Server images tools: mkisofs
     cli53                             #  Manage AWS Route53
     colordiff                         #  Add to .zprofile
     coreutils
     cowsay
     csshx                             #  Multiple simultaneous SSH
+    dive                              #  Explore contents/size of docker images
     dockutil                          #  Manage the OS X Dock
+    dog                               #  dig on steroids
     driftctl
+    duf                               #  df on steroids
+    dust                              #  du on steroids
     exa                               #  'ls' on steroids
     findutils                         #  Add to .zprofile
     fortune
@@ -57,7 +63,8 @@ declare brew_pkgs=(
     gpg
     grc                               #  Colorize output
     grep
-    helm                              # Kubernetes package manager
+    hadolint                          #  Dockerfile linter
+    helm                              #  Kubernetes package manager
     homebrew/dupes/grep
     homebrew/dupes/openssh
     homebrew/dupes/screen
@@ -65,12 +72,16 @@ declare brew_pkgs=(
     hub                               #  Automate github
     hugo                              #  Static site generator
     imagemagick
+    infracost                         #  Terraform cloud costs on-the-fly
     jq                                #  JSON parser
-    kops                              #  Kubernetes operations
-    kube-aws                          #  CoreOS Kubernetes on AWS
+    kind                              #  Kubernetes in docker
+    # kops                              #  Launch kubernetes cluster
+    kube-aws                          #  CoreOS kubernetes on AWS
     kubectx                           #  Switch kubernetes context
     kubernetes-cli                    #  Kubernetes CLI
     lnav                              #  Log file/folder navigator
+    lsd                               #  ls on steroids
+    minikube
     mkdocs                            #  Documentation via markdown
     moreutils
     nano
@@ -86,6 +97,7 @@ declare brew_pkgs=(
     pup                               #  HTML parser
     pv                                #  Shell progress bar monitor
     python3
+    ripgrep                           #  recursive grep
     screen                            #  Multiplexer
     siege                             #  Load testing
     terminal-notifier                 #  OS X notifications via shell
@@ -95,22 +107,24 @@ declare brew_pkgs=(
     trash                             #  Send deleted files to OSX trash
     tree
     unrar
-    watch                             #  Linux "watch" command
-    wget                              #  Linux "wget" command
+    wakeonlan
+    watch
+    wget
     yamllint                          #  YAML linter
     youtube-dl                        #  Download videos from cli
     yq                                #  YML parser
     z                                 #  Remember most used cd'ed folders
-    bash                              #  Bash 4.x
-    bash-completion
 #
 #  Other
 #
-    'http://git.io/sshpass.rb'        #  unofficial sshpass install @ https://gist.github.com/arunoda/7790979
+    bash                              #  Bash 4.x
+    bash-completion
+    esolitos/ipa/sshpass              # SSH pass
 #
 #  Deprecated
 #
-  # neovim/neovim/neovim              #  vim replacement
+    # 'http://git.io/sshpass.rb'        #  unofficial sshpass install @ https://gist.github.com/arunoda/7790979
+    # neovim/neovim/neovim              #  vim replacement
 )
 
 #  homebrew cask packages
@@ -133,10 +147,12 @@ declare cask_pkgs=(
     postico                           #  Postgres client
     postman
     sequel-pro
+    shottr                            # screen capture
     skitch
     skype
     slack
     spotify
+    telegram
     tunnelblick
     visual-studio-code                #  VS Code
     vlc
@@ -204,6 +220,7 @@ declare cask_pkgs=(
 #  See: https://github.com/powerline/fonts
 declare cask_fonts=(
     dejavu-sans-mono-for-powerline
+    font-hack-nerd-font
     inconsolata-for-powerline
     menlo-for-powerline
     monofur-for-powerline
@@ -462,6 +479,8 @@ declare iterm_bookmark_settings=(
 #  VS Code extensions
 declare vscode_extensions=(
     '2gua.rainbow-brackets'
+    'EliverLara.andromeda'
+    'VisualStudioExptTeam.vscodeintellicode'
     'aaron-bond.better-comments'
     'arcticicestudio.nord-visual-studio-code'
     'aws-scripting-guy.cform'
@@ -470,7 +489,6 @@ declare vscode_extensions=(
     'cliffordfajardo.highlight-line-vscode'
     'dhoeric.ansible-vault'
     'eamodio.gitlens'
-    'EliverLara.andromeda'
     'hashicorp.terraform'
     'jinsihou.diff-tool'
     'johnpapa.vscode-peacock'
@@ -483,6 +501,7 @@ declare vscode_extensions=(
     'ms-vscode-remote.remote-ssh-edit'
     'ms-vscode-remote.remote-wsl'
     'ms-vscode-remote.vscode-remote-extensionpack'
+    'oderwat.indent-rainbow'
     'pkief.material-icon-theme'
     'plethoraofhate.aws-actions'
     'redhat.vscode-yaml'
@@ -496,7 +515,6 @@ declare vscode_extensions=(
     'teeseal.ayu-legacy'
     'tomiturtiainen.rf-intellisense'
     'tyriar.sort-lines'
-    'VisualStudioExptTeam.vscodeintellicode'
     'vscode-icons-team.vscode-icons'
     'vscoss.vscode-ansible'
     'wayou.vscode-todo-highlight'
